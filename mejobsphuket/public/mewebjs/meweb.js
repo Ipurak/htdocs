@@ -18,6 +18,9 @@ var mewebjs = (function(){
 
               });
 
+              //jobsfeed
+              jobsfeed.init();//Job posts
+
               //Close model by X button
               $( document ).on({
                 click:function(){
@@ -117,6 +120,32 @@ var postJob = (function(){
 
 })()
 // ##### [END] Post Job App
+
+// ##### [START] jobsfeed app
+var jobsfeed = (function(){
+
+  var data = {
+    typ:"get"
+  }
+
+  var init = function(){
+    var GetAjax = ajax();
+  };
+
+  var ajax = function(){
+    var data = {"Test":"AAAA"};
+    return $.ajax({
+      url : base_url+'jobsfeed',
+      type: 'POST',
+      data: data
+    })
+
+  }
+
+  return {init:init};
+
+})();
+// ##### [END] jobsfeed app
 
 // ##### [START] Seeker App
 var seeker = (function() {
