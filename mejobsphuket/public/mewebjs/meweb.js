@@ -1,6 +1,6 @@
 
 // ##### [START] init #####
-var base_url;
+
 var mewebjs = (function(){
 
   return {
@@ -27,6 +27,25 @@ var mewebjs = (function(){
                    mui.overlay('off');
                 }
               },'.closemodel');
+
+              var feed = new Vue({
+                 el:'#feed',
+                 data:{
+                   feed:[],
+                   base_url:base_url
+                 },
+                 created() {
+                   axios.post(this.base_url+'jobsfeed', { typ: "test" })
+                     .then(function (response) {
+                       console.log(response);
+                       this.feed = response;
+                     })
+                     .catch(function (error) {
+                         //error
+                         console.log(error.message);
+                     });
+                 }
+              });
 
           }
         };
@@ -369,11 +388,6 @@ var seeker = (function() {
     });
 
  };
-
-// var model_Default = function(){
-//   // var template =
-//
-// };
 
 return {init:init,signin:signin}
 

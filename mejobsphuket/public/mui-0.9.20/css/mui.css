@@ -904,8 +904,8 @@ h4, h5, h6 {
 }
 
 .mui-btn--small {
-  height: 30.6px;
-  line-height: 30.6px;
+  height: 20px;
+  line-height: 21.6px;
   padding: 0 16px;
   font-size: 13px;
 }
@@ -1244,8 +1244,8 @@ h4, h5, h6 {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 9px;
+  padding-right: 9px;
 }
 
 .mui-col-xs-1, .mui-col-xs-2, .mui-col-xs-3, .mui-col-xs-4, .mui-col-xs-5, .mui-col-xs-6, .mui-col-xs-7, .mui-col-xs-8, .mui-col-xs-9, .mui-col-xs-10, .mui-col-xs-11, .mui-col-xs-12 {

@@ -1,21 +1,34 @@
 .mui--text-title > a{
   color: #fff;
 }
+
 body{
   background-color: #e9ebee;
 }
+
 #mepost-modal{/*info popup template*/
   display: none;
 }
+
 .closemodel{
   float: right;
   width:20px;
   height:20px;
   line-height:20px;
 }
+
 #cover{
   height: 250px;
 }
+
 .mui-panel{
-  margin-bottom: 14px;
+  margin-bottom: 13px;
+}
+
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
 }

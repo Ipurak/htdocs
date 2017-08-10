@@ -4,25 +4,18 @@
 <meta Content-type: "application/json"; charset="utf-8" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Me Jobs Phuket</title>
-<link href="<?=site_url("public/mui-0.9.20/css/mui.min.css");?>" rel="stylesheet" type="text/css" />
+<link href="<?=site_url("public/mui-0.9.20/css/mui.css");?>" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<?=site_url("public/font-awesome-4.7.0/css/font-awesome.min.css");?>">
 <link rel="stylesheet" href="<?=site_url("public/pure-release-1.0.0/pure-min.css");?>">
 <link rel="stylesheet" href="<?=site_url("public/mewebcss/meweb.css");?>">
 </head>
 <body>
-	<div class="mui-appbar">
+
+	<div class="mui-appbar"><!-- menu -->
 		<div class="mui-container">
 	  <table width="100%">
 	    <tr class="mui--appbar-height">
 	      <td class="mui--text-title">Me Jobs Phuket </td>
-				<td align="center">
-					<form class="mui-form--inline">
-					  <div class="mui-textfield">
-					    <input type="text">
-					  </div>
-					  <button class="mui-btn">submit</button>
-					</form>
-				</td>
 	      <td align="right">
 	        <ul class="mui-list--inline mui--text-body2">
 						<li><a href="#" id="menu-feed">ฟีดงาน</a></li>
@@ -34,9 +27,10 @@
 	  </table>
 	</div>
 </div>
+
 <div class="mui-container">
 
-	<div class="content">
+	<div class="content"><!-- รูปหน้าปก -->
 		<div class="mui-row">
 			<div class="mui-col-md-12">
 				<div class="mui-panel" id="cover">
@@ -46,12 +40,11 @@
 		</div>
 	</div>
 
-	<!-- Start Feed jobs -->
-		<div class="content" id="jobs">
+		<div class="content">
 
 			<div class="mui-row">
 
-				<div class="mui-col-md-1">
+				<div class="mui-col-md-3">
 					<div class="mui-panel"></div>
 					<div class="mui-panel"></div>
 					<div class="mui-panel"></div>
@@ -59,27 +52,42 @@
 					<div class="mui-panel"></div>
 				</div>
 
-				<div class="mui-col-md-7">
+				<div class="mui-col-md-5">
+
+					<!-- ADS -->
 					<div class="mui-panel">
 						<button class="mui-btn mui-btn--small mui-btn--primary btn-seeker"> <i class="fa fa-university" aria-hidden="true"></i> อยากได้คน </button>
 						<button class="mui-btn mui-btn--small mui-btn--primary"> <i class="fa fa-user" aria-hidden="true"></i> อยากได้งาน </button>
 					</div>
+					<div class="mui-panel"></div>
+					<div class="mui-panel"></div>
+					<div class="mui-panel"></div>
+					<div class="mui-panel"></div>
 
-					<div id="jobsfeed">
+					<!-- Feed -->
+					<div id="feed">
 
 						<div class="mui-panel">
-							<div class="mui-row">
-								<div class="mui-col-md-8">
-									<a href="#"><b>หัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงาน</b></a>
+
+							<div class="mui-row"><!-- สถานะ และ บันทึกลงในเฟสบุ๊ค -->
+								<div class="mui-col-md-3">
+									<button class="mui-btn mui-btn--small mui-btn--danger left"><i class="fa fa-bell-o" aria-hidden="true"></i> ด่วน!</button>
 								</div>
-								<div class="mui-col-md-4">
-									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-bookmark" aria-hidden="true"></i> บันทึกลงใน Facebook</button>
+								<div class="mui-col-md-9">
+									<button class="mui-btn mui-btn--small mui-btn--primary right"><i class="fa fa-bookmark" aria-hidden="true"></i> บันทึกลงใน Facebook</button>
 								</div>
 							</div>
-							<div class="mui-row">
+
+							<div class="mui-row"><!-- หัวข้องาน -->
+								<div class="mui-col-md-12">
+									<a href="#"><b>ชื่อบริษัทหรือห้างร้าน</b></a> ได้ประกาศ <b>หัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงาน</b>
+								</div>
+							</div>
+
+							<div class="mui-row"><!-- รายละเอียด -->
 								<div class="mui-col-md-12">
 									<div style="word-break: break-all;">
-										<a href="#"><b>ชื่อบริษัทหรือห้างร้าน</b></a> dwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
+										dwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
 										dwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
 										dwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
 										dwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
@@ -87,27 +95,26 @@
 									</div>
 								</div>
 							</div>
-							<div class="mui-row">
+
+							<div class="mui-row"><!-- รูปประกอบ -->
 								<div class="mui-col-md-12">
 									<img src="<?=site_url("public/images/j1.jpg");?>" style="width:100%;height:auto;">
 								</div>
+							</div>
 
-							</div>
-							<div class="mui-row">
-								<div class="mui-col-md-6">
-									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-twitter-square" aria-hidden="true"></i> ทวิต</button>
-									<a href="#">
-										<div class="line-it-button" data-lang="en" data-type="friend" data-lineid="@lineteamjp" style="display: none;"></div>
- 										<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-									</a>
-									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-comment-o" aria-hidden="true"></i> ติดต่อ</button>
-								</div>
-								<div class="mui-col-md-6" style="text-align: right;">
-									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ถูกใจ</button>
-									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-comment-o" aria-hidden="true"></i> อินบ็อก</button>
-									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-facebook-square" aria-hidden="true"></i> แชร์</button>
+							<div class="mui-row"><!-- ปุ่มโซเชียล -->
+								<div class="mui-col-md-12">
+									<div class="pure-button-group" role="group" aria-label="...">
+										<div class="right">
+											<button class="pure-button"><i class="fa fa-eye" aria-hidden="true"></i> ดู</button>
+											<button class="pure-button"><i class="fa fa-facebook-square" aria-hidden="true"></i> ถูกใจ</button>
+									    <button class="pure-button"><i class="fa fa-twitter-square" aria-hidden="true"></i> แชร์</button>
+											<button class="pure-button"><i class="fa fa-facebook-square" aria-hidden="true"></i> แชร์</button>
+										</div>
+									</div>
 								</div>
 							</div>
+
 						</div>
 
 					</div>
@@ -237,7 +244,14 @@
 	<!-- End Me post -->
 	</div>
 </body>
+
+<template>
+	<div></div>
+</template>
+
 <script src="<?=site_url("public/jquery/dist/jquery.min.js");?>"></script>
+<script src="<?=site_url("public/vue/dist/vue.min.js");?>"></script>
+<script src="<?=site_url("public/axios/dist/axios.min.js");?>"></script>
 <script src="<?=site_url("public/mui-0.9.20/js/mui.js");?>"></script>
 <script src="<?=site_url("public/countdownjs/countdown.min.js");?>"></script>
 <script src="<?=site_url("public/mewebjs/meweb.js");?>"></script>
