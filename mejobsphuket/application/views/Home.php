@@ -69,12 +69,11 @@
 
 						<div class="mui-panel">
 							<div class="mui-row">
-								<div class="mui-col-md-3">
-									<img src="#" style="width:35px;height:35px;">
-									<img src="#" style="width:35px;height:35px;">
-								</div>
-								<div class="mui-col-md-9">
+								<div class="mui-col-md-8">
 									<a href="#"><b>หัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงาน</b></a>
+								</div>
+								<div class="mui-col-md-4">
+									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-bookmark" aria-hidden="true"></i> บันทึกลงใน Facebook</button>
 								</div>
 							</div>
 							<div class="mui-row">
@@ -91,64 +90,22 @@
 							<div class="mui-row">
 								<div class="mui-col-md-12">
 									<img src="<?=site_url("public/images/j1.jpg");?>" style="width:100%;height:auto;">
-									<br />
-									<div style="word-break: break-all;">
-										dawdwadwaddaawwwwwwwwwwwwwwwwwwwwwwwww
-									</div>
 								</div>
 
 							</div>
 							<div class="mui-row">
-								<div class="mui-col-md-12">
-									<a href="#">แชร์</a>
-									<a href="#">น่าสนใจ</a>
-									<a href="#">เก็บ</a>
-									<a href="#">อินบ๊อก</a>
-									<a href="#">ไลน์</a>
-									<a href="#">อีเมล์</a>
+								<div class="mui-col-md-6">
+									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-twitter-square" aria-hidden="true"></i> ทวิต</button>
+									<a href="#">
+										<div class="line-it-button" data-lang="en" data-type="friend" data-lineid="@lineteamjp" style="display: none;"></div>
+ 										<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+									</a>
+									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-comment-o" aria-hidden="true"></i> ติดต่อ</button>
 								</div>
-							</div>
-						</div>
-
-						<div class="mui-panel">
-							<div class="mui-row">
-								<div class="mui-col-md-3">
-									<img src="#" style="width:35px;height:35px;">
-									<img src="#" style="width:35px;height:35px;">
-								</div>
-								<div class="mui-col-md-9">
-									<a href="#"><b>หัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงานหัวข้อการงาน</b></a>
-								</div>
-							</div>
-							<div class="mui-row">
-								<div class="mui-col-md-12">
-									<div style="word-break: break-all;">
-										<a href="#"><b>ชื่อบริษัทหรือห้างร้าน</b></a> dwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
-										dwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
-										dwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
-										dwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadwdwadw
-										<a href="#">ดูเพิ่มเติม</a>
-									</div>
-								</div>
-							</div>
-							<div class="mui-row">
-								<div class="mui-col-md-12">
-									<img src="<?=site_url("public/images/j2.jpg");?>" style="width:100%;height:auto;">
-									<br />
-									<div style="word-break: break-all;">
-										dawdwadwaddaawwwwwwwwwwwwwwwwwwwwwwwww
-									</div>
-								</div>
-
-							</div>
-							<div class="mui-row">
-								<div class="mui-col-md-12">
-									<a href="#">แชร์</a>
-									<a href="#">น่าสนใจ</a>
-									<a href="#">เก็บ</a>
-									<a href="#">อินบ๊อก</a>
-									<a href="#">ไลน์</a>
-									<a href="#">อีเมล์</a>
+								<div class="mui-col-md-6" style="text-align: right;">
+									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ถูกใจ</button>
+									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-comment-o" aria-hidden="true"></i> อินบ็อก</button>
+									<button class="mui-btn mui-btn--small mui-btn--primary"><i class="fa fa-facebook-square" aria-hidden="true"></i> แชร์</button>
 								</div>
 							</div>
 						</div>
