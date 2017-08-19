@@ -1,25 +1,49 @@
-
 // ##### [START] init #####
 
 var mewebjs = (function(){
 
+  var modal_option = {
+    title: '',
+    subtitle: '',
+    headerColor: '#88A0B9',
+    width: 500,
+    top: 5,
+    bottom: 5,
+    borderBottom: 5,
+    padding: 5,
+    radius: 3,
+    zindex: 999,
+    fullscreen: true,
+    openFullscreen: true,
+    closeOnEscape: true,
+    closeButton: true,
+    overlay: true,
+    overlayClose: false
+  };
+
   return {
             init:function( options ){
 
-              base_url = options.base_url;
+              //init default modal
+              var temp_login = modal_option;
+                  temp_login.title          = '<i class="fa fa-sign-in" aria-hidden="true"></i> เข้าระบบ และ <i class="fa fa-bullhorn" aria-hidden="true"></i> ประกาศงาน';
+                  temp_login.fullscreen     = 0;
+                  temp_login.openFullscreen = 0;
+              $("#login").iziModal(temp_login);
 
-              menu.init();//Menu
-              main.init();//Main
+              base_url = options.base_url;
 
               //init seeker
               $( '.btn-seeker' ).click(function(){
 
-                seeker.init();
-
+                var CheckLog = 1;
+                if(!CheckLog){
+                  $('#login').iziModal('open');
+                }else{
+                  GetPostInfo.show();
+                  // seeker.init();
+                }
               });
-
-              //jobsfeed
-              jobsfeed.init();//Job posts
 
               //Close model by X button
               $( document ).on({
@@ -29,21 +53,49 @@ var mewebjs = (function(){
               },'.closemodel');
 
               var feed = new Vue({
-                 el:'#feed',
+                el: '#feed',
                  data:{
-                   feed:[],
+                   jobs:[],
                    base_url:base_url
                  },
                  created() {
+                   const vm = this;
                    axios.post(this.base_url+'jobsfeed', { typ: "test" })
                      .then(function (response) {
-                       console.log(response);
-                       this.feed = response;
+                       vm.jobs = response.data;
                      })
                      .catch(function (error) {
                          //error
                          console.log(error.message);
                      });
+                 },
+                 methods: {
+                   view: function(){
+
+                   }
+                 }
+
+              });
+
+              var GetPostInfo = new Vue({
+                 el: '#panel',
+                 data:{
+                   post:{company:"11111"},
+                   modal:$('#panel').iziModal(),
+                   modal_option:modal_option
+                 },
+                 created(){
+
+
+                 },
+                 methods: {
+                   show:function(event){
+                     $('#modal').iziModal('destroy');
+                     this.modal_option.title = "TEST";
+                     this.modal.iziModal('open');
+                     var state = this.modal.iziModal('getState');
+                     console.log(state);
+                   }
                  }
               });
 
@@ -52,50 +104,6 @@ var mewebjs = (function(){
 
 })();
 // ##### [END] init #####
-
-//##### [START] Menu #####
-var menu = (function(){
-
-  var init = function(){
-
-    $('#menu-feed').click(function(){
-      $('.content').hide();
-      $('#jobs').show();
-    });
-    $('#menu-jobs').click(function(){
-      $('.content').hide();
-      $('#jobs').show();
-    });
-    $('#menu-post').click(function(){
-      $('.content').hide();
-      $('#post').show();
-      postJob.init();
-    });
-  }
-
-  return {init:init}
-
-})();
-// ##### [END] Menu #####
-
-// ##### [START] Main
-var main = (function(){
-
-  var init = function(){
-
-    $('input[maxlength]').keyup(function(){
-      var maxlength = $(this).attr("maxlength");
-      var str     	= $(this).val();
-      var parent		= $(this).parent();
-      $('span',parent).remove("span");
-      parent.append("<span>"+str.length+"/"+maxlength+"</span>");
-    });
-  }
-
-  return {init:init}
-
-})();
-// ##### [END] Main #####
 
 // ##### [START] Post Job App
 var postJob = (function(){
@@ -139,32 +147,6 @@ var postJob = (function(){
 
 })()
 // ##### [END] Post Job App
-
-// ##### [START] jobsfeed app
-var jobsfeed = (function(){
-
-  var data = {
-    typ:"get"
-  }
-
-  var init = function(){
-    var GetAjax = ajax();
-  };
-
-  var ajax = function(){
-    var data = {"Test":"AAAA"};
-    return $.ajax({
-      url : base_url+'jobsfeed',
-      type: 'POST',
-      data: data
-    })
-
-  }
-
-  return {init:init};
-
-})();
-// ##### [END] jobsfeed app
 
 // ##### [START] Seeker App
 var seeker = (function() {
