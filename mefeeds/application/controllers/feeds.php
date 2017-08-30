@@ -10,4 +10,11 @@ class feeds extends CI_Controller {
     $data = array();
 		$this->load->view('feeds',$data);
 	}
+	public function get()
+	{
+		$this->load->model('post');
+		$result = $this->post->get_all();
+		$data   = array('feeds'=>$result);
+		echo json_encode( $data );
+	}
 }

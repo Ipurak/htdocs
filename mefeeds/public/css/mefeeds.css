@@ -1,48 +1,28 @@
-.mui--text-title > a{
-  color: #fff;
+body
+{
+  background-color: whitesmoke;
 }
 
-body{
-  background-color: #e9ebee;
+.main-menu
+{
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 999;
 }
 
-#mepost-modal{/*info popup template*/
-  display: none;
+.other-menu
+{
+  margin-top: 56px;
 }
 
-.closemodel{
-  float: right;
-  width:20px;
-  height:20px;
-  line-height:20px;
+#top-banner
+{
+  margin-top: 0px;
 }
 
-#cover{
-  height: 250px;
-}
-
-.mui-panel{
-  margin-bottom: 13px;
-}
-
-.right{
-  float: right;
-}
-
-.left{
-  float: left;
-}
-
-.small-text{
-  font-size: x-small;
-  line-height: 0px;
-  color: #666;
-  font-weight: bold;
-}
-
-*, *:after, *::before {
-    box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+#dropdown-login
+{
+  /*left: -100% !important;*/
+  width: 350px;
 }
