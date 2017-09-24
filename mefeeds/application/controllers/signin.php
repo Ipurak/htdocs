@@ -5,16 +5,36 @@ class signin extends CI_Controller {
 
 	function __construct() {
     parent::__construct();
-
+		$this->load->library( 'session' );
 	}
 
-	public function index()
-	{
+	public function index(){
 
 		$str_JSON = file_get_contents( 'php://input' );
 		$data = json_decode( $str_JSON, true );
-		print_r( base64_decode( $data['email'] ) );
-		print_r( base64_decode( $data['pass'] ) );
+		// print_r( base64_decode( $data['email'] ) );
+		// print_r( base64_decode( $data['pass'] ) );
+
+		$this->load->model( 'authorize' );
+
+		$query = $this->authorize->check( $data );
+
+		if( $query->num_rows() == 1 ){
+
+			$result = $query->result_array();
+			$session_data = array(
+				'id_user' => $result[0]["iduser"],
+				'email' => $result[0]["email"],
+				'pass' => $result[0]["pass"],
+			);
+			$this->session->set_userdata('logged_in', $session_data);
+			// print_r( "logged: ".$this->session->has_userdata('logged_in') );
+			// print_r( $this->session->userdata('logged_in') );
+			echo json_encode( array( "status"=>true ) );
+
+		}else{
+			echo json_encode( array( "status"=>false ) );
+		}
 
 	}
 

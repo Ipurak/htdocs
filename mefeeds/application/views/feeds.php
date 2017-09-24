@@ -1,3 +1,6 @@
+<?php
+  $logged = $this->session->has_userdata('logged_in');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,8 +156,31 @@
 
             <div class="box">
 
+              <div id="logout">
+                <?php
+                  if ( $logged ){
+                    echo "<logout></logout>";
+                  }
+                  // $this->session->sess_destroy();
+                ?>
+                <!-- Logout -->
+              </div><br />
+
+              <div class="field" id="writefeed">
+                <?php
+                  if ( $logged ){
+                    echo "<writefeed></writefeed>";
+                  }
+                ?>
+                <!-- Write Feed -->
+              </div>
+
               <span id="login">
-                <login></login>
+                <?php
+                  if ( $logged != 1 ){
+                    echo "<login></login>";
+                  }
+                 ?>
                 <!-- Login -->
               </span>
 
@@ -323,23 +349,31 @@
       axios.get('feeds/get', {
         params: {}
       }).then(function (response) {
+
         console.log(response);
         vm.feeds = response.data.feeds;
+
       }).catch(function (error) {
+
         console.log(error);
+
       });
 
     },
     filters: {
+
       moment: function (dateauto) {
+
         return moment(dateauto).lang("th").subtract(0, 'days').calendar();
+
       }
+
     }
   });
 
   Vue.component('login',{
     template: `
-      <div class="dropdown" v-bind:class="{ 'is-active': isActive }">
+      <div class="dropdown is-hoverable">
         <div class="dropdown-trigger">
           <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-login" @click="active">
             <span><i class="fa fa-bullhorn" aria-hidden="true"></i> ประกาศตำแหน่งงาน</span>
@@ -394,6 +428,67 @@
     `,
     data: function () {
       return {
+        email:"hihigolgol@hotmail.com",
+        pass:"1234"
+      }
+    },
+    methods:{
+      login: function(){
+
+        let vm = this
+        axios.post('signin', {
+          email: btoa( this.email ),
+          pass:  btoa( this.pass )
+        }).then(function (response) {
+
+          if( response.data.status ){
+            location.reload();
+          }else{
+            alert("Fail!");
+          }
+
+        }).catch(function (error) {
+
+          console.log(error);
+
+        });
+
+      }
+    }
+  });
+
+  var login = new Vue({
+    el:"#login"
+  });
+
+  Vue.component('logout',{
+    template: `<nav class="level">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img src="http://bulma.io/images/placeholders/128x128.png">
+      </p>
+    </figure>
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="logout">
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="logout" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            <i class="fa fa-user"></i> แก้ไขข้อมูลทั่วไป
+          </a>
+          <hr class="dropdown-divider">
+          <a href="./logout" class="dropdown-item">
+            <i class="fa fa-sign-out"></i> ออกจากระบบ
+          </a>
+        </div>
+      </div>
+    </div>
+    </nav>`,
+    data: function () {
+      return {
         isActive:false,
         email:"",
         pass:""
@@ -412,10 +507,14 @@
         let vm = this
         axios.post('signin', {
           email: btoa( this.email ),
-          pass: btoa( this.pass )
+          pass:  btoa( this.pass )
         }).then(function (response) {
 
-          alert("Login!!");
+          if( response.data.status ){
+            location.reload();
+          }else{
+            alert("Fail!");
+          }
 
         }).catch(function (error) {
 
@@ -427,8 +526,156 @@
     }
   });
 
-  var login = new Vue({
-    el:"#login"
+  var logout = new Vue({
+    el:"#logout"
+  });
+
+  Vue.component('writefeed',{
+    template: `<div>
+        <article class="media">
+          <div class="media-content">
+            <div class="field">
+              <p class="control">
+              <div class="field">
+                <div class="control">
+                  <input v-model="title"class="input" type="text" placeholder="หัวข้องาน">
+                </div>
+              </div>
+                <textarea
+                  id="postTextarea"
+                  class="textarea"
+                  placeholder="โพสงานตรงนี้เลย..."
+                  v-model="desc"
+                  v-bind:rows="rows"
+                  type="text"
+                  style="overflow:hidden"
+                  @keyup="resize"
+                  ></textarea>
+              </p>
+            </div>
+            <nav class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <a class="button is-info" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์งานที่ฉันสร้าง</a>
+                </div>
+              </div>
+              <div class="level-right">
+                <div class="level-item">
+                  <a class="button is-info" @click="post">โพสต์</a>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </article>
+        <div id="postList">
+        <div v-for="post in mePost">
+        <hr />
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+              <footer class="card-footer">
+                <a href="#" @click="editPost" class="card-footer-item"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
+                <a href="#" class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspตัวอย่าง</a>
+                <div class="control" style="padding:5px;">
+                  <div class="select">
+                    <select>
+                      <option>เผยแพร่</option>
+                      <option>ปิดรับสมัคร</option>
+                    </select>
+                  </div>
+                </div>
+              </footer>
+                <div class="content">
+                  <p>
+                    <strong>{{ post.title }}</strong> <small>@johnsmith</small> <small>31m</small>
+                    <br>
+                    {{ post.desc }}
+                  </p>
+                </div>
+                <footer class="card-footer">
+                  <a href="#" class="card-footer-item"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
+
+                </footer>
+              </div>
+            </article>
+          </div>
+        </div>
+        </div>
+    </div>`,
+    data: function () {
+      return {
+        desc:"",
+        title:"",
+        rows:"5",
+        mePost:[
+          {"title":"title1"},
+          {"title":"title2"}
+        ]
+      }
+    },
+    methods:{
+      post:function(){
+
+        let vm = this
+        axios.post('post', {
+          desc: this.desc,
+          title: this.title
+        }).then(function (response) {
+
+          if( response.data.status ){
+            location.reload();
+          }else{
+            alert("Fail!");
+          }
+
+        }).catch(function (error) {
+
+          console.log(error);
+
+        });
+
+      },
+      postList:function(){
+
+        let vm = this
+        axios.post('postList', {
+          typ:"get"
+        }).then( function ( response ) {
+
+          console.log(response.data);
+          vm.mePost = response.data;
+
+        }).catch( function ( error ) {
+
+          console.log( error );
+
+        });
+
+      },
+      editPost:function(){
+
+        alert("Editpost");
+
+      },
+      resize:function(){
+        let postTextarea = document.getElementById("postTextarea");
+        var rows = this.desc.split("\n").length;
+        if( rows <= 5  ){
+
+          this.rows = 5;
+
+        }else{
+
+          this.rows = rows+1;
+
+        }
+
+      }
+    }
+  });
+
+  var writefeed = new Vue({
+    el:"#writefeed"
   });
 </script>
 </html>

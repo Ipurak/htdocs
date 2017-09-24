@@ -10,13 +10,11 @@ class post extends CI_Controller {
 
 	public function index()
 	{
-
-    $data = json_decode(file_get_contents("php://input"), true);
-		$this->load->model('jobs');
-    $query = $this->jobs->get_signinInfo( $data['email'], $data['pass']);
-
-		$ObjPump = $this->pumppost($query->dateauto);
-    echo json_encode( array_merge( (array) $query, (array) $ObjPump ) );
+		$str_JSON = file_get_contents( 'php://input' );
+		$data = json_decode( $str_JSON, true );
+		$this->load->model( 'mepost' );
+    $insert_status = $this->mepost->insert( $data );
+		echo json_encode( array( "status"=>$insert_status ) );
 	}
 
   public function pumppost($dateauto)
