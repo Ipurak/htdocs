@@ -23,5 +23,4 @@ class feeds extends CI_Controller {
 		$data   = array('feeds'=>$result);
 		echo json_encode( $data );
 	}
-
 }

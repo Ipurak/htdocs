@@ -8,35 +8,33 @@ class tags extends CI_Controller {
 
 	}
 
-	public function index()
-	{
+	public function index(){
 		$str_JSON = file_get_contents( 'php://input' );
 		$data = json_decode( $str_JSON, true );
 		$typ = $data["typ"];
         $tag = $data["tag"];
 
         switch ($typ) {
-            case "get":
-                echo $this->get( $tag );
-                break;
-            case "add":
-                echo "Your favorite color is blue!";
-                break;
-            default:
-                echo "wrong format";
+        case "get":
+        $this->get( $tag );
+        break;
+        case "add":
+         echo "Your favorite color is blue!";
+        break;
+        default:
+            echo "wrong format";
         }
 
 	}
 
-  public function get( $tag )
-  {
+    public function get( $tag ){
 
-    $this->load->model('metag');
-    $result = $this->metag->get_by_keyword( $tag );
-    $data   = array('feeds'=>$result);
-    echo json_encode( $data );
+        $this->load->model('metag');
+        $result = $this->metag->get_by_keyword( $tag );
+        $data   = array('tags'=>$result);
+        echo json_encode( $data );
 
-  }
+    }
 
 
 }
