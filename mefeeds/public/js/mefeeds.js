@@ -5,7 +5,9 @@
 /*##############################################################################*/
 /*##############################################################################*/
 Vue.component('writefeed',{
-  template: `<div>
+  template: `
+    <form>
+    <div>
       <article class="media">
         <div class="media-content">
           <div class="field">
@@ -17,10 +19,17 @@ Vue.component('writefeed',{
             </div>
 
             <div class="field">
+              <div v-if="!image">
                 <span style="font-size: 10px;">อัพโหลดภาพประกอบ</span>
-              <figure class="image is-128x128">
-                <img src="http://bulma.io/images/placeholders/256x256.png" @click="uploadPostImg">
-              </figure>
+                <input type="file" @change="selectFile">
+              </div>
+              <div v-else>
+                <a class="button is-danger position-absolute z-index-9999" @click="removeImage">
+                  <i class="fa fa-times-circle"></i>
+                </a>
+                <img :src="image" class="image is-1280x960 border-radius-5" />
+              </div>
+              
             </div>
 
               <textarea
@@ -97,7 +106,7 @@ Vue.component('writefeed',{
           <nav class="level">
             <div class="level-left">
               <div class="level-item">
-                <a class="button is-info" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์งานที่ฉันสร้าง</a>
+                <a class="button is-info" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์งานที่ฉันสร้าง&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
               </div>
             </div>
             <div class="level-right">
@@ -108,7 +117,7 @@ Vue.component('writefeed',{
           </nav>
         </div>
       </article>
-      <div id="postList">
+      <div id="postList" v-bind:class="{'is-hidden':isActivePostList}">
       <div v-for="post in mePost">
       <hr />
         <div class="box">
@@ -141,7 +150,8 @@ Vue.component('writefeed',{
         </div>
       </div>
       </div>
-  </div>`,
+  </div>
+  </form>`,
   data: function () {
     return {
       desc:"",
@@ -154,6 +164,8 @@ Vue.component('writefeed',{
       tagAdded:[],
       isActiveTag: false,
       isLoading: false,
+      isActivePostList: true,
+      image: '',
       delay: (function(){
         var timer = 0;
         return function(callback, ms){
@@ -299,17 +311,20 @@ Vue.component('writefeed',{
 
     },
     postList:function(){
-
+      if(this.isActivePostList){
+        this.isActivePostList = false;
+      }else{
+        this.isActivePostList = true;
+      }
       let vm = this
       axios.post('postList', {
 
         typ:"get"
 
       }).then( function ( response ) {
-
-        console.log(response.data);
-        vm.mePost = response.data;
-
+        if( response.status === 200 ){
+          vm.mePost = response.data;  
+        }
       }).catch( function ( error ) {
 
         console.log( error );
@@ -352,8 +367,24 @@ Vue.component('writefeed',{
       this.isActiveTag = false;
 
     },
-    uploadPostImg:function(){
-      alert("Upload");
+    selectFile:function( e ){
+       var files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+        return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      var image  = new Image();
+      var reader = new FileReader();
+      var vm     = this;
+
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.image = '';
     }
   }
 });

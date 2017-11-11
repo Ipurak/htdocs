@@ -338,6 +338,7 @@
 <script src="<?=site_url("public/moment/moment-with-locales.js");?>"></script>
 <script src="<?=site_url("public/js/mefeeds.js");?>"></script>
 <script src="<?=site_url("public/sweetalert2/dist/sweetalert2.min.js");?>"></script>
+<script src="<?=site_url("public/dropzone/dropzone.js");?>"></script>
 
 <script src="https://unpkg.com/vue-multiselect@2.0.0"></script>
 <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.0.0/dist/vue-multiselect.min.css">
