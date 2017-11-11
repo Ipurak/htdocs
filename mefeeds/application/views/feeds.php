@@ -125,7 +125,7 @@
 
         <div class="tile">
 
-          <div class="tile is-parent is-vertical">
+          <!-- <div class="tile is-parent is-vertical">
 
             <div class="tile is-child box">
               <article class="tile is-child notification is-warning">
@@ -146,7 +146,7 @@
               </article>
             </div>
 
-          </div>
+          </div> -->
 
         </div>
 
@@ -228,7 +228,7 @@
       </div>
       <div class="tile is-3">
 
-        <div class="tile is-parent is-vertical">
+        <!-- <div class="tile is-parent is-vertical">
 
           <div class="tile is-child box">
             <article class="tile is-child notification is-info">
@@ -253,7 +253,7 @@
             </article>
           </div>
 
-        </div>
+        </div> -->
 
       </div>
     </div>

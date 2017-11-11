@@ -23,8 +23,8 @@ date_default_timezone_set('Asia/bangkok');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'http://localhost/mefeeds/';
-$config['base_url'] = 'http://localhost:8888/mefeeds/';
+$config['base_url'] = 'http://localhost/mefeeds/';
+// $config['base_url'] = 'http://localhost:8888/mefeeds/';
 
 /*
 |--------------------------------------------------------------------------

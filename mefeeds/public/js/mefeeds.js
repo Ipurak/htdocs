@@ -20,14 +20,31 @@ Vue.component('writefeed',{
 
             <div class="field">
               <div v-if="!image">
-                <span style="font-size: 10px;">อัพโหลดภาพประกอบ</span>
-                <input type="file" @change="selectFile">
+                <div class="field">
+                  <div class="file is-small is-info has-name">
+                    <label class="file-label">
+                      <input class="file-input" type="file" @change="selectFile" name="resume">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Upload
+                        </span>
+                      </span>
+                      <span class="file-name">
+                        อัพโหลดภาพประกอบ...
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
               </div>
               <div v-else>
-                <a class="button is-danger position-absolute z-index-9999" @click="removeImage">
+                <a class="button is-danger me-position-absolute me-z-index-9999" @click="removeImage">
                   <i class="fa fa-times-circle"></i>
                 </a>
-                <img :src="image" class="image is-1280x960 border-radius-5" />
+                <img :src="image" class="image is-1280x960 me-border-radius-5" />
               </div>
               
             </div>
@@ -566,7 +583,7 @@ Vue.component('logout',{
     </div>
     <div class="dropdown-menu" id="logout" role="menu">
       <div class="dropdown-content">
-        <a href="#" class="dropdown-item">
+        <a href="./editProfile" class="dropdown-item">
           <i class="fa fa-user"></i> แก้ไขข้อมูลทั่วไป
         </a>
         <hr class="dropdown-divider">
