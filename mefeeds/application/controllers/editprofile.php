@@ -14,5 +14,20 @@ class editprofile extends CI_Controller {
 
 	}
 
+	public function update(){
+
+		
+	}
+
+	public function reset(){
+
+
+	}
+
+	public function get(){
+
+
+	}
+
 
 }

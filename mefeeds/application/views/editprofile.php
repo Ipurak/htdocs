@@ -90,7 +90,17 @@
     data: {
       message: 'Hello Vue!'
     },
+    created: function(){
+
+      
+
+    },
     methods: {
+
+      save:function(){
+
+
+      }
       
     }
   })
