@@ -33,21 +33,21 @@
               <div class="field">
                 <label class="label">ชื่อสถานประกอบการ</label>
                 <div class="control">
-                  <input class="input" type="company">
+                  <input class="input" type="company" name="company">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">ชื่อ - นามสกุล</label>
                 <div class="control">
-                  <input class="input" type="name">
+                  <input class="input" type="name" name="name">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">อีเมล</label>
                 <div class="control">
-                  <input class="input" type="email">
+                  <input class="input" type="email" email="email">
                 </div>
               </div>
 
@@ -90,7 +90,17 @@
     data: {
       message: 'Hello Vue!'
     },
+    created: function(){
+
+      
+
+    },
     methods: {
+
+      save:function(){
+
+
+      }
       
     }
   })
