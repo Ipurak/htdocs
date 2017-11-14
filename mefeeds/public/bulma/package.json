@@ -2,25 +2,25 @@
   "_args": [
     [
       {
-        "raw": "bulma",
+        "raw": "bulma@0.6.1",
         "scope": null,
         "escapedName": "bulma",
         "name": "bulma",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
+        "rawSpec": "0.6.1",
+        "spec": "0.6.1",
+        "type": "version"
       },
-      "C:\\xampp\\htdocs\\mefeeds\\public"
+      "/Users/jthomas/Desktop"
     ]
   ],
-  "_from": "bulma@latest",
-  "_id": "bulma@0.5.1",
+  "_from": "bulma@0.6.1",
+  "_id": "bulma@0.6.1",
   "_inCache": true,
   "_location": "/bulma",
   "_nodeVersion": "6.11.0",
   "_npmOperationalInternal": {
     "host": "s3://npm-registry-packages",
-    "tmp": "tmp/bulma-0.5.1.tgz_1502132843987_0.42938278312794864"
+    "tmp": "tmp/bulma-0.6.1.tgz_1509974843739_0.25196533603593707"
   },
   "_npmUser": {
     "name": "jgthms",
@@ -29,22 +29,22 @@
   "_npmVersion": "3.10.10",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "bulma",
+    "raw": "bulma@0.6.1",
     "scope": null,
     "escapedName": "bulma",
     "name": "bulma",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "rawSpec": "0.6.1",
+    "spec": "0.6.1",
+    "type": "version"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/bulma/-/bulma-0.5.1.tgz",
-  "_shasum": "db2831c94afe732250c7b12527a7b792a4dc9ef8",
+  "_resolved": "https://registry.npmjs.org/bulma/-/bulma-0.6.1.tgz",
+  "_shasum": "5f21a77c0c06f7d80051c06628c23516081bd649",
   "_shrinkwrap": null,
-  "_spec": "bulma",
-  "_where": "C:\\xampp\\htdocs\\mefeeds\\public",
+  "_spec": "bulma@0.6.1",
+  "_where": "/Users/jthomas/Desktop",
   "author": {
     "name": "Jeremy Thomas",
     "email": "bbxdesign@gmail.com",
@@ -63,8 +63,8 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "db2831c94afe732250c7b12527a7b792a4dc9ef8",
-    "tarball": "https://registry.npmjs.org/bulma/-/bulma-0.5.1.tgz"
+    "shasum": "5f21a77c0c06f7d80051c06628c23516081bd649",
+    "tarball": "https://registry.npmjs.org/bulma/-/bulma-0.6.1.tgz"
   },
   "files": [
     "css",
@@ -73,8 +73,8 @@
     "LICENSE",
     "README.md"
   ],
-  "gitHead": "459341ff8f014b02d3fb642239cee47277a918e1",
-  "homepage": "http://bulma.io",
+  "gitHead": "27c5e7bd57a8031bb477816535b90721f63f6c74",
+  "homepage": "https://bulma.io",
   "keywords": [
     "css",
     "sass",
@@ -112,5 +112,5 @@
     "test-sass": "node-sass --output-style expanded docs/bulma-test.sass docs/css/bulma-test.css"
   },
   "style": "bulma/css/bulma.css",
-  "version": "0.5.1"
+  "version": "0.6.1"
 }

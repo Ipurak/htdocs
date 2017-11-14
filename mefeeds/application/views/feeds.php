@@ -17,84 +17,29 @@
 
   <nav class="navbar is-transparent main-menu">
 
-    <div class="columns is-mobile is-desktop" style="width: 100%;">
-      <div class="column is-one-third" style="text-align: left;">
-        <a class="navbar-item is-left" href="#" style="white-space: nowrap;">
-            <span class="bd-emoji">👨‍👩‍👧‍👦 &nbsp&nbsp</span>
-            <span style="font-size: smaller;">หาคน</span>
-        </a>
-      </div>
-      <div class="column">
-        <a class="navbar-item" href="#" style="white-space: nowrap;">
-          <!-- <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"> -->
-          <b style="margin: 0 auto;">PhuketFeed</b>
-        </a>
-      </div>
-      <div class="column">
-        <a class="navbar-item is-right" href="#" style="white-space: nowrap;">
-          <span style="font-size: smaller;">หางาน</span>
-          <span class="bd-emoji">💼&nbsp&nbsp</span>
-        </a>
-      </div>
+    <div class="tabs is-fullwidth me-width-100-per">
+      <ul>
+        <li>
+          <a>
+            <span class="icon"><i class="fa fa-briefcase"></i></span>
+            <span>งาน</span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <strong>Me Feed Phuket</strong>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span>พนักงาน</span>
+            <span class="icon"><i class="fa fa-user"></i></span>
+          </a>
+        </li>
+      </ul>
     </div>
 
   </nav>
-  <!-- Nav -->
-  <nav class="navbar is-transparent other-menu">
-      <div class="navbar-brand">
-
-            <a class="navbar-item" href="#" target="_blank">
-              <span class="icon" style="color: #333;">
-                🛒
-              </span>
-              ตลาดภูเก็ต
-            </a>
-            <a class="navbar-item" href="#" target="_blank">
-              <span class="icon" style="color: #55acee;">
-                🛏️
-              </span>
-              หอพักภูเก็ต
-            </a>
-            <a class="navbar-item" href="#" target="_blank">
-              <span class="icon" style="color: #55acee;">
-                🏡
-              </span>
-              อสังหา ภูเก็ต
-            </a>
-            <a class="navbar-item" href="#" target="_blank">
-              <span class="icon" style="color: #55acee;">
-                🚗
-              </span>
-              รถมือสอง ภูเก็ต
-            </a>
-            <a class="navbar-item" href="#" target="_blank">
-              <span class="icon" style="color: #55acee;">
-                🚘
-              </span>
-              รถเช่า ภูเก็ต
-            </a>
-            <a class="navbar-item" href="#" target="_blank">
-              <span class="icon" style="color: #55acee;">
-                🍜
-              </span>
-              ของกิน ภูเก็ต
-            </a>
-            <a class="navbar-item" href="#" target="_blank">
-              <span class="icon" style="color: #55acee;">
-                🗿
-              </span>
-              พระเครื่อง ภูเก็ต
-            </a>
-            <a class="navbar-item" href="#" target="_blank">
-              <span class="icon" style="color: #55acee;">
-                🗝️
-              </span>
-              ของเก่า ภูเก็ต
-            </a>
-
-      </div>
-  </nav>
-  <!-- Nav -->
 
   <section class="hero is-primary is-medium" style="margin-bottom: 20px;" id="top-banner">
     <div class="hero-body">
