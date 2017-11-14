@@ -36,6 +36,14 @@ Vue.component('writefeed',{
                         อัพโหลดภาพประกอบ...
                       </span>
                     </label>
+                    &nbsp
+                    <div class="tags has-addons">
+                      <a class="tag icon is-warning">
+                        <i class="fa fa-question-circle"></i> 
+                      </a>
+                      <span class="tag">โพสต์ท่านจะเด่นขึ้น</span>
+                    </div>
+
                   </div>
                 </div>
 
@@ -136,7 +144,7 @@ Vue.component('writefeed',{
       </article>
       <div id="postList" v-bind:class="{'is-hidden':isActivePostList}">
       <div v-for="post in mePost">
-      <hr />
+        <hr />
         <div class="box">
           <article class="media">
             <div class="media-content">
@@ -144,13 +152,29 @@ Vue.component('writefeed',{
               <a href="#" @click="editPost" class="card-footer-item"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
               <a href="#" class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspตัวอย่าง</a>
             </footer>
+
               <div class="content">
                 <p>
                   <strong>{{ post.title }}</strong> <small>@johnsmith</small> <small>31m</small>
                   <br>
-                  {{ post.desc }}
+
+                  <div class="limit-text">
+                    {{ post.desc }}
+                  </div>
+                  <a href="#">คลิกเพื่อดูเพิ่มเติม</a>
+
                 </p>
               </div>
+
+              <div class="content">
+                <div class="field">
+                  <label class="label">Name</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="Text input">
+                  </div>
+                </div>
+              </div>
+              
               <footer class="card-footer">
                 <a href="#" class="card-footer-item"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
                 <div class="control" style="padding:5px;">
@@ -328,6 +352,7 @@ Vue.component('writefeed',{
 
     },
     postList:function(){
+      console.log("mePost: ",this.mePost);
       if(this.isActivePostList){
         this.isActivePostList = false;
       }else{
@@ -346,20 +371,6 @@ Vue.component('writefeed',{
 
         console.log( error );
 
-      });
-
-    },
-    editPost:function(){
-
-      swal({
-        title: '<i class="fa fa-pencil" aria-hidden="true"></i> แก้ไขโพสต์',
-        html:
-          '<input id="swal-input1" class="swal2-input" placeholder="หัวข้องาน">' +
-          '<textarea class="swal2-input" style="height: 500px;" placeholder="โพสงานตรงนี้เลย..."></textarea>',
-          showCancelButton: true,
-          cancelButtonText:'<i class="fa fa-times" aria-hidden="true"></i> ยกเลิก',
-          confirmButtonText:'<i class="fa fa-check" aria-hidden="true"></i> ยืนยัน',
-          focusConfirm: false
       });
 
     },
