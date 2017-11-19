@@ -41,7 +41,6 @@ Vue.component('writefeed',{
                       <a class="tag icon is-warning">
                         <i class="fa fa-question-circle"></i> 
                       </a>
-                      <span class="tag">โพสต์ท่านจะเด่นขึ้น</span>
                     </div>
 
                   </div>
@@ -105,6 +104,7 @@ Vue.component('writefeed',{
                             <i class="fa fa-times-circle"></i>
                           </a>
                         </div>
+
                         <div class="control">
                           <a class="button is-info" @click="tagClicked()">
                             แท็ก&nbsp<i class="fa fa-tag"></i>
@@ -112,14 +112,7 @@ Vue.component('writefeed',{
                         </div>
 
                       </div>
-
-                      <p>
-                        <span class="icon has-text-warning">
-                          <i class="fa fa-warning"></i>
-                        </span>
-                        <span style="font-size: 10px;"><strong> เคล็ดลับ</strong>: แท็กชื่องานเพื่อเข้าถึงกลุ่มเป้าหมายได้ง่าย เช่น ช่างเชื่อม, พนักงานเสริฟ, พนักงานขับรถ, ถลาง, กระทู้ เป็นต้น</span>
-                      </p>
-                      <hr>
+                      
                       </div>
 
                     </div>
@@ -131,7 +124,7 @@ Vue.component('writefeed',{
           <nav class="level">
             <div class="level-left">
               <div class="level-item">
-                <a class="button is-info" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์งานที่ฉันสร้าง&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
+                <a class="button is-info" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์ของฉัน&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
               </div>
             </div>
             <div class="level-right">
@@ -149,8 +142,8 @@ Vue.component('writefeed',{
           <article class="media">
             <div class="media-content">
             <footer class="card-footer">
-              <a href="#" @click="editPost" class="card-footer-item"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
-              <a href="#" class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspตัวอย่าง</a>
+              <a class="card-footer-item" @click="editPost('show')"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
+              <a class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspตัวอย่าง</a>
             </footer>
 
               <div class="content">
@@ -158,7 +151,7 @@ Vue.component('writefeed',{
                   <strong>{{ post.title }}</strong> <small>@johnsmith</small> <small>31m</small>
                   <br>
 
-                  <div class="limit-text">
+                  <div class="limit-text me-post-desc me-white-space-pre">
                     {{ post.desc }}
                   </div>
                   <a href="#">คลิกเพื่อดูเพิ่มเติม</a>
@@ -168,10 +161,26 @@ Vue.component('writefeed',{
 
               <div class="content">
                 <div class="field">
-                  <label class="label">Name</label>
                   <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
+                    <input class="input" type="text" placeholder="หัวข้องาน" v-bind:value="post.title">
                   </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <textarea class="textarea" placeholder="รายละเอียดของงาน">
+                    {{ post.desc }}
+                  </textarea>
+                </div>
+              </div>
+
+              <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                  <button type="button" class="button is-text">ยกเลิก</button>
+                </div>
+                <div class="control">
+                  <button type="button" class="button is-link" @click="editPost( post.idpost )"><i class="fa fa-check-circle"></i>&nbspยืนยันการแก้ไข</button>
                 </div>
               </div>
               
@@ -413,7 +422,32 @@ Vue.component('writefeed',{
     },
     removeImage: function (e) {
       this.image = '';
-    }
+    },
+    editPost: function ( stage ) {
+      if( stage === "show" ){
+        alert("show");
+      }else{
+        this.updatePost();
+      }
+    },
+    updatePost:function ( ){
+
+      let vm = this
+      axios.post('post/update', {
+
+        typ:"update"
+
+      }).then( function ( response ) {
+        if( response.status === 200 ){
+          // vm.mePost = response.data;  
+        }
+      }).catch( function ( error ) {
+
+        console.log( error );
+
+      });
+
+    } 
   }
 });
 

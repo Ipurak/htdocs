@@ -17,6 +17,11 @@ class post extends CI_Controller {
 		echo json_encode( array( "status"=>$insert_status ) );
 	}
 
+  public function update()
+  {
+    echo "Update";
+  }
+
   public function pumppost($dateauto)
   {
 

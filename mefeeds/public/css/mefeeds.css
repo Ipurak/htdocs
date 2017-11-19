@@ -47,12 +47,18 @@ body
   width: 100%;
 }
 
+.me-white-space-pre
+{
+  white-space: pre-line;
+}
+
 .limit-text {
    overflow: hidden;
    text-overflow: ellipsis;
    display: -webkit-box;
-   line-height: 16px;     /* fallback */
-   max-height: 32px;      /* fallback */
+   line-height: 28px;     /* fallback */
+   max-height: 64px;      /* fallback */
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
+   resize:none;
 }

@@ -156,7 +156,7 @@
                       </div>
                     </div>
 
-                    <div class="content">
+                    <div class="content me-white-space-pre">
                       {{feed.desc}}
                       <br>
                       <small class="dateformat">{{ feed.postdateauto | moment }}</small>
