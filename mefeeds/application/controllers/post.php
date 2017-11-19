@@ -5,7 +5,7 @@ class post extends CI_Controller {
 
 	function __construct() {
     parent::__construct();
-
+    $this->load->model( "mepost" );
 	}
 
 	public function index()
@@ -18,8 +18,9 @@ class post extends CI_Controller {
 	}
 
   public function update()
-  {
-    echo "Update";
+  { 
+    $data = $this->mepost->update();
+    echo json_encode( $data );
   }
 
   public function pumppost($dateauto)

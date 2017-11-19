@@ -5,8 +5,50 @@ class mepost extends CI_Model {
 
     public function __construct()
     {
-        parent::__construct();
-        $this->load->library( 'session' );
+      parent::__construct();
+      $this->load->library( 'mepost' );
+      $this->load->library( 'session' );
+    }
+
+    public function insert( $params ) {
+
+      $sess = $this->session->all_userdata( 'logged_in' );
+      $data = array(
+        'title'       => $params["title"] ,
+        'desc'        => $params["desc"] ,
+        'user_iduser' => $sess["logged_in"]["id_user"],
+        'status'      => 0
+      );
+      $this->db->set( 'datecreated', 'NOW()', FALSE );
+      $this->db->insert( 'post', $data );
+      return ( $this->db->affected_rows() != 1 ) ? false : true;
+
+    }
+
+    public function update() {
+
+      $data = $this->melibs->MeData();
+      $value = $data['data'];
+      $data  = array(
+        'title'  => $value['title'],
+        'desc'   => $value['desc'],
+        'status' => $value['status']
+      );
+
+      $this->db->where('idpost', $value['idpost']);
+      $this->db->update('post', $data);
+      if($this->db->affected_rows() > 0) {
+        return $this->melibs->MeSucc200( "updated" );
+      }else{ 
+        return $this->melibs->MeErr400( "update failed" );
+      }
+
+    }
+
+    public function get_by_idpost() {
+
+      $this->melibs->MeData();
+
     }
 
     public function get_all() {
@@ -20,29 +62,11 @@ class mepost extends CI_Model {
 
     public function get_by_session(){
       $sess = $this->session->all_userdata('logged_in');
-      $this->db->select('*');
+      $this->db->select('*, (0) AS opened');
       $this->db->from('post');
       $this->db->where('user_iduser', $sess["logged_in"]["id_user"]);
       $query = $this->db->get();
       return $query->result();
-    }
-
-    public function insert( $params ) {
-
-      $sess = $this->session->all_userdata('logged_in');
-      $data = array(
-        'title'       => $params["title"] ,
-        'desc'        => $params["desc"] ,
-        'user_iduser' => $sess["logged_in"]["id_user"],
-        'status'      => 0
-      );
-      $this->db->set('datecreated', 'NOW()', FALSE);
-      $this->db->insert('post', $data);
-      return ($this->db->affected_rows() != 1) ? false : true;
-    }
-
-    public function update(){
-      
     }
 
 }

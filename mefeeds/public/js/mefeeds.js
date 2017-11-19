@@ -136,11 +136,11 @@ Vue.component('writefeed',{
         </div>
       </article>
       <div id="postList" v-bind:class="{'is-hidden':isActivePostList}">
-      <div v-for="post in mePost">
+      <div v-for="(post, index) in mePost">
         <hr />
         <div class="box">
           <article class="media">
-            <div class="media-content">
+            <div class="media-content">{{ index+1 }}
             <footer class="card-footer">
               <a class="card-footer-item" @click="editPost('show')"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
               <a class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspตัวอย่าง</a>
@@ -154,34 +154,37 @@ Vue.component('writefeed',{
                   <div class="limit-text me-post-desc me-white-space-pre">
                     {{ post.desc }}
                   </div>
-                  <a href="#">คลิกเพื่อดูเพิ่มเติม</a>
+                  <a @click="openEditPost( index )">คลิกเพื่อดูเพิ่มเติม</a>
 
                 </p>
               </div>
 
-              <div class="content">
-                <div class="field">
-                  <div class="control">
-                    <input class="input" type="text" placeholder="หัวข้องาน" v-bind:value="post.title">
+              <div class="animated" v-bind:class="{ fadeIn : mePost[index].opened }">
+
+                <div class="content">
+                  <div class="field">
+                    <div class="control">
+                      <input class="input" type="text" placeholder="หัวข้องาน" v-model="mePost[index].title">
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="field">
-                <div class="control">
-                  <textarea class="textarea" placeholder="รายละเอียดของงาน">
-                    {{ post.desc }}
-                  </textarea>
-                </div>
-              </div>
 
-              <div class="field is-grouped is-grouped-right">
-                <div class="control">
-                  <button type="button" class="button is-text">ยกเลิก</button>
+                <div class="field">
+                  <div class="control">
+                    <textarea class="textarea" placeholder="รายละเอียดของงาน" v-model="mePost[index].desc"></textarea>
+                  </div>
                 </div>
-                <div class="control">
-                  <button type="button" class="button is-link" @click="editPost( post.idpost )"><i class="fa fa-check-circle"></i>&nbspยืนยันการแก้ไข</button>
+
+                <div class="field is-grouped is-grouped-right">
+                  <div class="control">
+                    <button type="button" class="button is-text">ยกเลิก</button>
+                  </div>
+                  <div class="control">
+                    <button type="button" class="button is-link" @click="editPost( index )"><i class="fa fa-check-circle"></i>&nbspยืนยันการแก้ไข</button>
+                  </div>
                 </div>
+
               </div>
               
               <footer class="card-footer">
@@ -361,21 +364,30 @@ Vue.component('writefeed',{
 
     },
     postList:function(){
-      console.log("mePost: ",this.mePost);
-      if(this.isActivePostList){
+
+      if ( this.isActivePostList ) {
+
         this.isActivePostList = false;
-      }else{
+
+      } else {
+
         this.isActivePostList = true;
+
       }
+
       let vm = this
       axios.post('postList', {
 
         typ:"get"
 
       }).then( function ( response ) {
+
         if( response.status === 200 ){
-          vm.mePost = response.data;  
+
+          vm.mePost = response.data;
+
         }
+
       }).catch( function ( error ) {
 
         console.log( error );
@@ -427,15 +439,16 @@ Vue.component('writefeed',{
       if( stage === "show" ){
         alert("show");
       }else{
-        this.updatePost();
+        this.updatePost( stage );
       }
     },
-    updatePost:function ( ){
+    updatePost:function ( index ){
 
       let vm = this
       axios.post('post/update', {
 
-        typ:"update"
+        typ:"update",
+        data:vm.mePost[index]
 
       }).then( function ( response ) {
         if( response.status === 200 ){
@@ -447,7 +460,12 @@ Vue.component('writefeed',{
 
       });
 
-    } 
+    },
+    openEditPost:function ( index ){
+      let post = this.mePost[index];
+      ( post.opened ) ? post.opened = false : post.opened = true;
+      console.log( post.opened );
+    }
   }
 });
 
