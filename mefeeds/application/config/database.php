@@ -78,7 +78,6 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	// 'password' => 'root',
 	'database' => 'mejobsphuket',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
