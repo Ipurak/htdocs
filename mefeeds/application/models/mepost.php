@@ -62,7 +62,7 @@ class mepost extends CI_Model {
 
     public function get_by_session(){
       $sess = $this->session->all_userdata('logged_in');
-      $this->db->select('*, (0) AS opened');
+      $this->db->select('*, CAST(1 AS INTEGER) AS opened, CAST(1 AS INTEGER) AS closed ');
       $this->db->from('post');
       $this->db->where('user_iduser', $sess["logged_in"]["id_user"]);
       $query = $this->db->get();

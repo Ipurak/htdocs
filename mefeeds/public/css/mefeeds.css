@@ -52,6 +52,14 @@ body
   white-space: pre-line;
 }
 
+.me-show{
+  display: block;
+}
+
+.me-hide{
+  display: none;
+}
+
 .limit-text {
    overflow: hidden;
    text-overflow: ellipsis;

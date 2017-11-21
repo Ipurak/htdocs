@@ -142,11 +142,11 @@ Vue.component('writefeed',{
           <article class="media">
             <div class="media-content">{{ index+1 }}
             <footer class="card-footer">
-              <a class="card-footer-item" @click="editPost('show')"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
-              <a class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspตัวอย่าง</a>
+              <a class="card-footer-item" @click="openEditPost( index )"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
+              <a class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspมุมมอง</a>
             </footer>
 
-              <div class="content">
+              <div class="content" v-show="mePost[index].opened">
                 <p>
                   <strong>{{ post.title }}</strong> <small>@johnsmith</small> <small>31m</small>
                   <br>
@@ -154,12 +154,12 @@ Vue.component('writefeed',{
                   <div class="limit-text me-post-desc me-white-space-pre">
                     {{ post.desc }}
                   </div>
-                  <a @click="openEditPost( index )">คลิกเพื่อดูเพิ่มเติม</a>
+                  <a>คลิกเพื่อดูเพิ่มเติม</a>
 
                 </p>
               </div>
 
-              <div class="animated" v-bind:class="{ fadeIn : mePost[index].opened }">
+              <div class="animated" v-bind:class="{ 'me-hide' : mePost[index].closed }">
 
                 <div class="content">
                   <div class="field">
@@ -436,11 +436,9 @@ Vue.component('writefeed',{
       this.image = '';
     },
     editPost: function ( stage ) {
-      if( stage === "show" ){
-        alert("show");
-      }else{
-        this.updatePost( stage );
-      }
+      
+      this.updatePost( stage );
+      
     },
     updatePost:function ( index ){
 
@@ -462,9 +460,13 @@ Vue.component('writefeed',{
 
     },
     openEditPost:function ( index ){
+
       let post = this.mePost[index];
-      ( post.opened ) ? post.opened = false : post.opened = true;
-      console.log( post.opened );
+      console.log( "open: ",post.opened );
+      console.log( "close: ",post.closed );
+      ( post.opened == 1 ) ? post.opened = false : post.opened = true;
+      ( post.closed == 1 ) ? post.closed = false : post.closed = true;
+
     }
   }
 });
