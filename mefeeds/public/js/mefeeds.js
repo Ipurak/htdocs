@@ -64,7 +64,7 @@ Vue.component('writefeed',{
                 v-bind:rows="rows"
                 type="text"
                 style="overflow:hidden"
-                @keyup="resize"
+                @keyup="resizePost"
                 ></textarea>
                 <div class="field">
                   <div class="control">
@@ -172,7 +172,7 @@ Vue.component('writefeed',{
 
                 <div class="field">
                   <div class="control">
-                    <textarea class="textarea" placeholder="รายละเอียดของงาน" v-model="mePost[index].desc"></textarea>
+                    <textarea class="textarea" @click="resizePostEdit( index )" placeholder="รายละเอียดของงาน" v-model="mePost[index].desc" ></textarea>
                   </div>
                 </div>
 
@@ -395,10 +395,27 @@ Vue.component('writefeed',{
       });
 
     },
-    resize:function(){
+    resizePostEdit:function( event,index ){
+      
+      var rows = this.mePost[index].desc.split("\n").length;
+      console.log( rows )
 
-      let postTextarea = document.getElementById("postTextarea");
+      if( rows <= 5  ){
+
+        this.rows = 5;
+        // document.getElementsByTagName("H1")[0].setAttribute("class", "democlass");
+
+      }else{
+
+        this.rows = rows+1;
+
+      }
+
+    },
+    resizePost:function( event ){
+
       var rows = this.desc.split("\n").length;
+
       if( rows <= 5  ){
 
         this.rows = 5;
