@@ -143,7 +143,7 @@ Vue.component('writefeed',{
             <div class="media-content">{{ index+1 }}
             <footer class="card-footer">
               <a class="card-footer-item" @click="openEditPost( index )"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
-              <a class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspมุมมอง</a>
+              <a href="viewpost" target="_blank" class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspมุมมอง</a>
             </footer>
 
               <div class="content" v-show="mePost[index].opened">
@@ -172,13 +172,13 @@ Vue.component('writefeed',{
 
                 <div class="field">
                   <div class="control">
-                    <textarea class="textarea" @click="resizePostEdit( index )" placeholder="รายละเอียดของงาน" v-model="mePost[index].desc" ></textarea>
+                    <textarea class="textarea" @click="resizePostEdit( $event, index )" placeholder="รายละเอียดของงาน" v-model="mePost[index].desc" ></textarea>
                   </div>
                 </div>
 
                 <div class="field is-grouped is-grouped-right">
                   <div class="control">
-                    <button type="button" class="button is-text">ยกเลิก</button>
+                    <button type="button" @click="openEditPost( index )" class="button is-text">ยกเลิก</button>
                   </div>
                   <div class="control">
                     <button type="button" class="button is-link" @click="editPost( index )"><i class="fa fa-check-circle"></i>&nbspยืนยันการแก้ไข</button>
@@ -395,19 +395,18 @@ Vue.component('writefeed',{
       });
 
     },
-    resizePostEdit:function( event,index ){
-      
-      var rows = this.mePost[index].desc.split("\n").length;
-      console.log( rows )
+    resizePostEdit:function( event, index ){
+
+      let element = event.target
+      let rows    = element.value.split("\n").length
 
       if( rows <= 5  ){
 
-        this.rows = 5;
-        // document.getElementsByTagName("H1")[0].setAttribute("class", "democlass");
+        event.target.setAttribute("rows", 5)
 
       }else{
 
-        this.rows = rows+1;
+        event.target.setAttribute("rows", rows+1)
 
       }
 
