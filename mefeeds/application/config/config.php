@@ -24,8 +24,8 @@ date_default_timezone_set('Asia/bangkok');
 |
 */
 
-$config['base_url'] = './';
-// $config['base_url'] = 'http://localhost:8888/mefeeds/';
+// $config['base_url'] = './';
+$config['base_url'] = 'http://localhost/mefeeds/';
 
 /*
 |--------------------------------------------------------------------------

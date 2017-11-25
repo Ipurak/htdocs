@@ -45,9 +45,13 @@ class mepost extends CI_Model {
 
     }
 
-    public function get_by_idpost() {
+    public function get_by_idpost( $id ) {
 
-      $this->melibs->MeData();
+      $this->db->select( '*' );
+      $this->db->from( 'post' );
+      $this->db->where( 'idpost', $id );
+      $query = $this->db->get();
+      return $query->result();
 
     }
 

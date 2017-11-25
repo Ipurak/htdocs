@@ -143,7 +143,7 @@ Vue.component('writefeed',{
             <div class="media-content">{{ index+1 }}
             <footer class="card-footer">
               <a class="card-footer-item" @click="openEditPost( index )"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
-              <a href="viewpost" target="_blank" class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspมุมมอง</a>
+              <a v-bind:href="'viewpost/index/' + mePost[index].idpost" target="_blank" class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspมุมมอง</a>
             </footer>
 
               <div class="content" v-show="mePost[index].opened">
