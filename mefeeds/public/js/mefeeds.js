@@ -190,10 +190,11 @@ Vue.component('writefeed',{
               <footer class="card-footer">
                 <a href="#" class="card-footer-item"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
                 <div class="control" style="padding:5px;">
-                  <div class="select">
+                  <div class="select" @change="updateStatus( index )">
                     <select>
-                      <option>เผยแพร่</option>
-                      <option>ปิดรับสมัคร</option>
+                      <option v-for="option in status.options" v-bind:value="option.value">
+                        {{ option.text }}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -219,6 +220,12 @@ Vue.component('writefeed',{
       isLoading: false,
       isActivePostList: true,
       image: '',
+      status:{
+        options: [
+          { text: 'เผยแพร่', value: 1 },
+          { text: 'ปิดรีบสมัคร', value: 0 },
+        ]
+      },
       delay: (function(){
         var timer = 0;
         return function(callback, ms){
@@ -482,6 +489,25 @@ Vue.component('writefeed',{
       console.log( "close: ",post.closed );
       ( post.opened == 1 ) ? post.opened = false : post.opened = true;
       ( post.closed == 1 ) ? post.closed = false : post.closed = true;
+
+    },
+    updateStatus:function ( index ){
+
+      let vm = this
+      axios.post('post/update', {
+
+        typ:"status",
+        data:vm.mePost[index]
+
+      }).then( function ( response ) {
+        if( response.status === 200 ){
+          // vm.mePost = response.data;  
+        }
+      }).catch( function ( error ) {
+
+        console.log( error );
+
+      });
 
     }
   }
