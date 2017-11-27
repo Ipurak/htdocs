@@ -23,6 +23,12 @@ class post extends CI_Controller {
     echo json_encode( $data );
   }
 
+  public function status()
+  { 
+    $data = $this->mepost->status();
+    echo json_encode( $data );
+  }
+
   public function pumppost($dateauto)
   {
 

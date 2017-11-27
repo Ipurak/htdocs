@@ -190,7 +190,7 @@ Vue.component('writefeed',{
               <footer class="card-footer">
                 <a href="#" class="card-footer-item"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
                 <div class="control" style="padding:5px;">
-                  <div class="select" @change="updateStatus( index )">
+                  <div class="select" @change="updateStatus( mePost[index].idpost )">
                     <select>
                       <option v-for="option in status.options" v-bind:value="option.value">
                         {{ option.text }}
@@ -485,8 +485,6 @@ Vue.component('writefeed',{
     openEditPost:function ( index ){
 
       let post = this.mePost[index];
-      console.log( "open: ",post.opened );
-      console.log( "close: ",post.closed );
       ( post.opened == 1 ) ? post.opened = false : post.opened = true;
       ( post.closed == 1 ) ? post.closed = false : post.closed = true;
 
@@ -494,10 +492,13 @@ Vue.component('writefeed',{
     updateStatus:function ( index ){
 
       let vm = this
-      axios.post('post/update', {
+      axios.post('post/status', {
 
         typ:"status",
-        data:vm.mePost[index]
+        data:{
+          value:1,
+          idpost:index
+        }
 
       }).then( function ( response ) {
         if( response.status === 200 ){
