@@ -79,7 +79,7 @@
                       <div class="media-content">
                         <div class="media-content">
                           <p class="title is-6"><a href="#"><?=$post[0]->title?></a></p>
-                          <p class="subtitle is-6">@<?=$user[0]->company?></p>
+                          <p class="subtitle is-6">@<?=$post[0]->company?></p>
                         </div>
                       </div>
                     </div>
