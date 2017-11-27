@@ -150,7 +150,7 @@
                       </div>
                       <div class="media-content">
                         <div class="media-content">
-                          <p class="title is-6"><a href="#">{{feed.title}}</a></p>
+                          <p class="title is-6"><a v-bind:href="'./viewpost/post/'+feed.idpost" target="_blank">{{feed.title}}</a></p>
                           <p class="subtitle is-6">@{{feed.company}}</p>
                         </div>
                       </div>
