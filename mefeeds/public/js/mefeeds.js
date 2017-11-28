@@ -192,6 +192,7 @@ Vue.component('writefeed',{
                 <div class="control" style="padding:5px;">
                   <div class="select">
                     <select @change="updateStatus( index )">
+                    <select v-model="mePost[index].status" @change="updateStatus( index )">
                       <option v-for="option in status.options" v-bind:value="option.value">
                         {{ option.text }}
                       </option>
@@ -498,6 +499,8 @@ Vue.component('writefeed',{
         data:{
           value:vm.mePost[index]["status"],
           idpost:index
+          value:vm.mePost[index].status,
+          idpost:vm.mePost[index].idpost
         }
 
       }).then( function ( response ) {
