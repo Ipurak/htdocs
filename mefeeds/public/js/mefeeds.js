@@ -190,8 +190,8 @@ Vue.component('writefeed',{
               <footer class="card-footer">
                 <a href="#" class="card-footer-item"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
                 <div class="control" style="padding:5px;">
-                  <div class="select" @change="updateStatus( mePost[index].idpost )">
-                    <select>
+                  <div class="select">
+                    <select v-model="mePost[index].status" @change="updateStatus( index )">
                       <option v-for="option in status.options" v-bind:value="option.value">
                         {{ option.text }}
                       </option>
@@ -496,8 +496,8 @@ Vue.component('writefeed',{
 
         typ:"status",
         data:{
-          value:1,
-          idpost:index
+          value:vm.mePost[index].status,
+          idpost:vm.mePost[index].idpost
         }
 
       }).then( function ( response ) {
