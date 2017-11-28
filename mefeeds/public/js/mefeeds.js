@@ -191,11 +191,7 @@ Vue.component('writefeed',{
                 <a href="#" class="card-footer-item"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
                 <div class="control" style="padding:5px;">
                   <div class="select">
-<<<<<<< HEAD
-                    <select @change="updateStatus( index )">
-=======
                     <select v-model="mePost[index].status" @change="updateStatus( index )">
->>>>>>> 1ada1f957cba698aa0ba4ad35ec6ae3faae82612
                       <option v-for="option in status.options" v-bind:value="option.value">
                         {{ option.text }}
                       </option>
@@ -500,13 +496,8 @@ Vue.component('writefeed',{
 
         typ:"status",
         data:{
-<<<<<<< HEAD
-          value:vm.mePost[index]["status"],
-          idpost:index
-=======
           value:vm.mePost[index].status,
           idpost:vm.mePost[index].idpost
->>>>>>> 1ada1f957cba698aa0ba4ad35ec6ae3faae82612
         }
 
       }).then( function ( response ) {
