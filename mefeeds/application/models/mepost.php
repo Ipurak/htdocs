@@ -63,6 +63,44 @@ class mepost extends CI_Model {
 
     }
 
+    public function get_dateauto(  ){
+
+      $data = $this->melibs->MeData();
+      
+      if( $data["data"]["typ"] === "pump" ){
+        $idpost = $data["data"]["idpost"];
+        $this->db->select( 'datepush' );
+        $this->db->from( 'post' );
+        $this->db->where( 'idpost', $idpost );
+        $query = $this->db->get();
+        return $query->result();
+      }else{
+        return 0;
+      }
+      
+    }
+
+    public function update_dateauto( $arr ){
+
+      $NOW = date('Y-m-d H:i:s');
+      $data   = $this->melibs->MeData();
+      $value  = $data["data"];
+      $data   = array(
+        'datepush' => $arr["datepush"]
+      );
+
+      $this->db->where('idpost', $value['idpost']);
+      $this->db->update('post', $data);
+      if($this->db->affected_rows() > 0) {
+
+        return $this->melibs->MeSucc200( "update success" );
+
+      }else{ 
+        return $this->melibs->MeErr400( "update failed" );
+      }
+
+    }
+
     public function get_by_idpost( $id ) {
 
       $this->db->select( '*' );

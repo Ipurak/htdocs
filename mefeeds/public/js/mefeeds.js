@@ -140,7 +140,8 @@ Vue.component('writefeed',{
         <hr />
         <div class="box">
           <article class="media">
-            <div class="media-content">{{ index+1 }}
+            <div class="media-content">
+            <span class="tag is-light">{{ index+1 }}</span>
             <footer class="card-footer">
               <a class="card-footer-item" @click="openEditPost( index )"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
               <a v-bind:href="'viewpost/post/' + mePost[index].idpost" target="_blank" class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspมุมมอง</a>
@@ -188,7 +189,12 @@ Vue.component('writefeed',{
               </div>
               
               <footer class="card-footer">
-                <a href="#" class="card-footer-item"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
+
+
+                <a href="#" class="card-footer-item"><i class="fa fa-circle-o-notch"></i> &nbspพร้อมดันโพสในอีก</a>
+
+                <a href="#" class="card-footer-item" @click="pumppost( index )"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
+
                 <div class="control" style="padding:5px;">
                   <div class="select">
                     <select v-model="mePost[index].status" @change="updateStatus( index )">
@@ -497,6 +503,27 @@ Vue.component('writefeed',{
         typ:"status",
         data:{
           value:vm.mePost[index].status,
+          idpost:vm.mePost[index].idpost
+        }
+
+      }).then( function ( response ) {
+        if( response.status === 200 ){
+          // vm.mePost = response.data;  
+        }
+      }).catch( function ( error ) {
+
+        console.log( error );
+
+      });
+
+    },
+    pumppost:function ( index ){
+
+      let vm = this
+      axios.post('pumppost', {
+
+        data:{
+          typ:"pump",
           idpost:vm.mePost[index].idpost
         }
 

@@ -10,8 +10,11 @@ class postList extends CI_Controller {
 
 	public function index()
 	{
+
     $result = $this->mepost->get_by_session();
     echo  json_encode( $result );
+    // print_r( $result );
+
 	}
 
 }
