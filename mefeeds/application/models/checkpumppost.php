@@ -22,9 +22,22 @@ class checkpumppost extends CI_Model {
       $Hours = $Hours + ( $diff->days*24 );
 
       if ( $Hours >= 3 && $NOWDateTime > $datepushDateTime ){//Can pump post
-        return array( "status" => 1, "datepush" => $NOW, "nexttime" => date('Y-m-d H:i:s', strtotime('+3 hour',strtotime( $NOW ) ) ) );
+
+        return array( 
+          "status"   => 1,
+          "datepush" => $NOW,
+          "nexttime" => date('Y-m-d H:i:s', strtotime('+3 hour',strtotime( $NOW ) ) ),
+          "original" => $datepush
+        );
+
       }else{//Can not pump post may 1. Amount of hour 2. datepush more than server time
-        return array( "status" => 0, "nexttime" => date('Y-m-d H:i:s', strtotime('+3 hour',strtotime( $datepush ) ) ) );
+
+        return array( 
+          "status"   => 0, 
+          "nexttime" => date('Y-m-d H:i:s', strtotime('+3 hour',strtotime( $datepush ) ) ),
+          "original" => $datepush
+        );
+
       }
 
     }

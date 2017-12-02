@@ -20,6 +20,7 @@ class mepost extends CI_Model {
         'status'      => 0
       );
       $this->db->set( 'datecreated', 'NOW()', FALSE );
+      $this->db->set( 'datepush', 'NOW()', FALSE );
       $this->db->insert( 'post', $data );
       return ( $this->db->affected_rows() != 1 ) ? false : true;
 

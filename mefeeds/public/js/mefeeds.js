@@ -190,10 +190,9 @@ Vue.component('writefeed',{
               
               <footer class="card-footer">
 
+                <a v-if="mePost[index].datepush.status === 1" href="#" class="card-footer-item" @click="pumppost( index )"><i class="fa fa-hand-o-up"></i> &nbspดันโพสต์</a>
 
-                <a href="#" class="card-footer-item"><i class="fa fa-circle-o-notch"></i> &nbspพร้อมดันโพสในอีก</a>
-
-                <a href="#" class="card-footer-item" @click="pumppost( index )"><i class="fa fa-hand-o-up" aria-hidden="true"></i> &nbspดันโพสต์</a>
+                <a v-else  href="#" class="card-footer-item"><i class="fa fa-circle-o-notch fa-spin"></i> &nbspดันได้อีก{{ mePost[index].datepush.nexttime | moment }}</a>
 
                 <div class="control" style="padding:5px;">
                   <div class="select">
@@ -229,7 +228,7 @@ Vue.component('writefeed',{
       status:{
         options: [
           { text: 'เผยแพร่', value: 1 },
-          { text: 'ปิดรีบสมัคร', value: 0 },
+          { text: 'ปิดรับสมัคร', value: 0 },
         ]
       },
       delay: (function(){
@@ -240,6 +239,15 @@ Vue.component('writefeed',{
         };
       })()
     }
+  },
+  filters: {
+
+    moment: function (dateauto) {
+
+      return moment( dateauto ).lang( "th" ).calendar()
+
+    }
+
   },
   methods:{
     post:function(){
@@ -529,7 +537,10 @@ Vue.component('writefeed',{
 
       }).then( function ( response ) {
         if( response.status === 200 ){
-          // vm.mePost = response.data;  
+
+          let data = response.data
+          vm.mePost[index].datepush.status = data.datepush.status //update pust status
+
         }
       }).catch( function ( error ) {
 
