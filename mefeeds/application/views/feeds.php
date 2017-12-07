@@ -133,9 +133,25 @@
             </div>
 
             <div id="feeds">
-              <div class="tile is-child box" v-for="feed in feeds">
+              <div class="box" v-for="feed in feeds">
 
-                <div class="card">
+                <!-- <div class="card">   -->
+
+                  <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="tag is-danger">
+                          <span class="icon"><i class="fa fa-bell-o"></i></span>
+                          ด่วนมาก
+                        </span>
+                    </p>
+                    <a class="button card-header-icon me-margin-top-5px me-margin-right-5px">
+                      รายงาน
+                       <span class="icon is-clearfix">
+                        <i class="fa fa-exclamation"></i>
+                      </span>
+                    </a>
+                  </header>
+
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
@@ -162,7 +178,7 @@
                       <small class="dateformat">{{ feed.postdateauto | moment }}</small>
                     </div>
                   </div>
-                </div>
+                <!-- </div> -->
 
               </div>
 
@@ -204,77 +220,10 @@
     </div>
  </div>
 
- <div class="modal" >
-   <div class="modal-background"></div>
-   <div class="modal-card">
-     <header class="modal-card-head">
-       <p class="modal-card-title">Modal title</p>
-       <button class="delete" aria-label="close"></button>
-     </header>
-     <section class="modal-card-body">
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
-     </section>
-     <footer class="modal-card-foot">
-       <button class="button is-success">Save changes</button>
-       <button class="button">Cancel</button>
-     </footer>
-   </div>
- </div><!-- Signin -->
+ <div id="signin">
+   <signin></signin>
+ </div>
+
 </body>
 
 <script src="<?=site_url("public/jquery/dist/jquery.min.js");?>"></script>

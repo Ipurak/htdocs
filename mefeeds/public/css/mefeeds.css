@@ -27,6 +27,18 @@ body
   width: 350px;
 }
 
+.me-post-content-public
+{
+  /*background-color: rgba(10, 10, 10, 0.1);*/
+  background-color: #e0ffe8;
+}
+
+.me-post-content-closed
+{
+  /*background-color: rgba(10, 10, 10, 0.1);*/
+  background-color: #ffe0e0;
+}
+
 .me-border-radius-5
 {
 	border-radius: 5px;
@@ -58,6 +70,30 @@ body
 
 .me-hide{
   display: none;
+}
+
+.me-margin-top-5px{
+  margin-top: 5px;
+}
+
+.me-margin-right-5px{
+  margin-right: 5px;
+}
+
+.showHashtag{
+  /*background-color: cornsilk;*/
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.showHashtag a{
+
+  background-color: #e9ebee;
+  margin-right: 2px;
+  border-radius: 18px;
+  line-height: 42px;
+  padding: 9px 12px;
+  word-break: break-word;
 }
 
 .limit-text {

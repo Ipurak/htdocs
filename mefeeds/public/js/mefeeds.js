@@ -56,7 +56,11 @@ Vue.component('writefeed',{
               
             </div>
 
+              <div class="showHashtag" v-html="showHashtag"></div>
+
               <textarea
+
+                contenteditable="true"
                 id="postTextarea"
                 class="textarea"
                 placeholder="โพสงานตรงนี้เลย..."
@@ -64,8 +68,10 @@ Vue.component('writefeed',{
                 v-bind:rows="rows"
                 type="text"
                 style="overflow:hidden"
-                @keyup="resizePost"
-                ></textarea>
+                @keyup="textareaFn"
+                >
+              </textarea>
+
                 <div class="field">
                   <div class="control">
 
@@ -138,7 +144,7 @@ Vue.component('writefeed',{
       <div id="postList" v-bind:class="{'is-hidden':isActivePostList}">
       <div v-for="(post, index) in mePost">
         <hr />
-        <div class="box">
+        <div class="box" v-bind:class="{ 'me-post-content-public' : mePost[index].status == 1, 'me-post-content-closed' : mePost[index].status == 0 }" >
           <article class="media">
             <div class="media-content">
             <span class="tag is-light">{{ index+1 }}</span>
@@ -152,10 +158,13 @@ Vue.component('writefeed',{
                   <strong>{{ post.title }}</strong> <small>@johnsmith</small> <small>31m</small>
                   <br>
 
-                  <div class="limit-text me-post-desc me-white-space-pre">
+                  <div class="me-post-desc me-white-space-pre" v-bind:class="{ 'limit-text' : mePost[index].readmore }">
                     {{ post.desc }}
                   </div>
-                  <a>คลิกเพื่อดูเพิ่มเติม</a>
+
+                  <span v-bind:class="{ 'me-hide' : mePost[index].readmore == 0 }">
+                    ... <a @click="readmore( $event, index )">ดูเพิ่มเติม</a>
+                  </span>
 
                 </p>
               </div>
@@ -190,11 +199,11 @@ Vue.component('writefeed',{
               
               <footer class="card-footer">
 
-                <a v-if="mePost[index].datepush.status === 1" href="#" class="card-footer-item" @click="pumppost( index )"><i class="fa fa-hand-o-up"></i> &nbspดันโพสต์</a>
+                <a v-if="mePost[index].datepush.status === 1" class="card-footer-item button is-primary" @click="pumppost( index )"><i class="fa fa-hand-o-up"></i> &nbspดันโพสต์</a>
 
-                <a v-else  href="#" class="card-footer-item"><i class="fa fa-circle-o-notch fa-spin"></i> &nbspดันได้อีก{{ mePost[index].datepush.nexttime | moment }}</a>
+                <a v-else class="card-footer-item"><i class="fa fa-circle-o-notch fa-spin"></i> &nbspดันได้อีก{{ mePost[index].datepush.nexttime | moment }}</a>
 
-                <div class="control" style="padding:5px;">
+                <div class="control">
                   <div class="select">
                     <select v-model="mePost[index].status" @change="updateStatus( index )">
                       <option v-for="option in status.options" v-bind:value="option.value">
@@ -225,6 +234,8 @@ Vue.component('writefeed',{
       isLoading: false,
       isActivePostList: true,
       image: '',
+      hashtag:[],
+      showHashtag:'',
       status:{
         options: [
           { text: 'เผยแพร่', value: 1 },
@@ -240,9 +251,16 @@ Vue.component('writefeed',{
       })()
     }
   },
+  mounted: function () {
+
+    this.$nextTick(function () {
+
+    })
+
+  },
   filters: {
 
-    moment: function (dateauto) {
+    moment: function ( dateauto ) {
 
       return moment( dateauto ).lang( "th" ).calendar()
 
@@ -432,6 +450,12 @@ Vue.component('writefeed',{
       }
 
     },
+    textareaFn:function(  ){
+
+      this.resizePost()
+      this.hashtagFilters()
+
+    },
     resizePost:function( event ){
 
       var rows = this.desc.split("\n").length;
@@ -443,6 +467,23 @@ Vue.component('writefeed',{
       }else{
 
         this.rows = rows+1;
+
+      }
+
+    },
+    hashtagFilters:function(){
+
+      this.hashtag = this.desc.match( /(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<span class='hash_tag'>$2</span>")
+      
+      if( this.hashtag != null ){
+
+        let arr = this.hashtag
+        this.showHashtag = ""
+        for (var i = 0; i < arr.length ; i++) {
+
+          this.showHashtag = this.showHashtag + '<a href="#">' +this.hashtag[i]+'</a>'
+   
+        }
 
       }
 
@@ -547,6 +588,20 @@ Vue.component('writefeed',{
         console.log( error );
 
       });
+
+    },
+    readmore:function( event, index ){
+
+      let meReadmore = this.mePost[index].readmore
+      if( meReadmore === 1 || meReadmore === "1" ){
+
+        this.mePost[index].readmore = 0
+
+      }else{
+
+        this.mePost[index].readmore = 1
+
+      }
 
     }
   }
@@ -786,5 +841,47 @@ var logout = new Vue({
 /*##############################################################################*/
 /*##############################################################################*/
 /*[END] LOGOUT*/
+/*##############################################################################*/
+/*##############################################################################*/
+
+/*##############################################################################*/
+/*##############################################################################*/
+/*[START] SIGNIN*/
+/*##############################################################################*/
+/*##############################################################################*/
+Vue.component('signin',{
+  template: `<div class="modal is-active">
+              dawddw
+              <div class="modal-background">
+                wdwadwa
+              </div>
+              <div class="modal-content">
+                dawdwwdwd
+              </div>
+              <button class="modal-close is-large" aria-label="close"></button>
+            </div>`,
+  data: function () {
+    return {
+      isActive:true
+    }
+  },
+  methods:{
+    active: function () {
+      if(this.isActive){
+        this.isActive = false;
+      }else{
+        this.isActive = true;
+      }
+    }
+  }
+});
+
+var signin = new Vue({
+  el:"#signin"
+});
+
+/*##############################################################################*/
+/*##############################################################################*/
+/*[END] SIGNIN*/
 /*##############################################################################*/
 /*##############################################################################*/
