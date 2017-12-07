@@ -850,15 +850,62 @@ var logout = new Vue({
 /*##############################################################################*/
 /*##############################################################################*/
 Vue.component('signin',{
-  template: `<div class="modal is-active">
-              dawddw
-              <div class="modal-background">
-                wdwadwa
-              </div>
+  template: `<div id="modal" class="modal is-active">
+              <div class="modal-background"></div>
               <div class="modal-content">
-                dawdwwdwd
+                <div class="box">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+                        
+                        <div class="field">
+                          <label class="label">ชื่อขสกุล</label>
+                          <div class="control has-icons-left has-icons-right">
+                            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                              <i class="fa fa-warning"></i>
+                            </span>
+                          </div>
+                          <p class="help is-danger">This email is invalid</p>
+                        </div>
+
+                        <div class="field">
+                          <label class="label">อีเมล</label>
+                          <div class="control has-icons-left has-icons-right">
+                            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                              <i class="fa fa-warning"></i>
+                            </span>
+                          </div>
+                          <p class="help is-danger">This email is invalid</p>
+                        </div>
+
+                        <div class="field">
+                          <label class="label">ชิ้อบริษัทห้างร้าน</label>
+                          <div class="control has-icons-left has-icons-right">
+                            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                              <i class="fa fa-warning"></i>
+                            </span>
+                          </div>
+                          <p class="help is-danger">This email is invalid</p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
               </div>
-              <button class="modal-close is-large" aria-label="close"></button>
+              <button class="modal-close is-large"></button>
             </div>`,
   data: function () {
     return {
