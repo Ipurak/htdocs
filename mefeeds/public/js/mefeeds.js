@@ -715,7 +715,11 @@ Vue.component('login',{
           <div class="dropdown-item">
 
             <p>สมัครสมาชิก - ยังไม่มีบัญชี</p>
+            <signin></signin>
             <a class="button is-info">สร้างบัญชีใหม่</a>
+
+            
+            <signin ref="signin"></signin>
 
           </div>
         </div>
@@ -850,7 +854,7 @@ var logout = new Vue({
 /*##############################################################################*/
 /*##############################################################################*/
 Vue.component('signin',{
-  template: `<div id="modal" class="modal is-active">
+  template: `<div id="modal" class="modal" v-bind:class="{ 'is-active': isActive }">
               <div class="modal-background"></div>
               <div class="modal-content">
                 <div class="box">
@@ -859,23 +863,23 @@ Vue.component('signin',{
                       <div class="content">
                         
                         <div class="field">
-                          <label class="label">ชื่อขสกุล</label>
+                          <label class="label">ชื่อ-สกุล</label>
                           <div class="control has-icons-left has-icons-right">
-                            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                            <input class="input is-danger" type="email" placeholder="มานี มีนา">
                             <span class="icon is-small is-left">
-                              <i class="fa fa-envelope"></i>
+                              <i class="fa fa-user"></i>
                             </span>
                             <span class="icon is-small is-right">
                               <i class="fa fa-warning"></i>
                             </span>
                           </div>
-                          <p class="help is-danger">This email is invalid</p>
+                          <p class="help is-danger">กรุณากรอกชื่อ</p>
                         </div>
 
                         <div class="field">
                           <label class="label">อีเมล</label>
                           <div class="control has-icons-left has-icons-right">
-                            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                            <input class="input is-danger" type="email" placeholder="example@example.com">
                             <span class="icon is-small is-left">
                               <i class="fa fa-envelope"></i>
                             </span>
@@ -887,11 +891,11 @@ Vue.component('signin',{
                         </div>
 
                         <div class="field">
-                          <label class="label">ชิ้อบริษัทห้างร้าน</label>
+                          <label class="label">ชื่อบริษัทห้างร้าน</label>
                           <div class="control has-icons-left has-icons-right">
-                            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                            <input class="input is-danger" type="email" placeholder="Mavel Hotel, ไพบูล การยาง, ร้านช่างสี">
                             <span class="icon is-small is-left">
-                              <i class="fa fa-envelope"></i>
+                              <i class="fa fa-building" ></i>
                             </span>
                             <span class="icon is-small is-right">
                               <i class="fa fa-warning"></i>
@@ -899,6 +903,19 @@ Vue.component('signin',{
                           </div>
                           <p class="help is-danger">This email is invalid</p>
                         </div>
+
+                        <footer class="card-footer">
+                          <p class="card-footer-item" @click="close">
+                            <span>
+                              <a href="#">ยกเลิก</a>
+                            </span>
+                          </p>
+                          <p class="card-footer-item">
+                            <span>
+                              <a href="#">สมัครใช้งาน</a>
+                            </span>
+                          </p>
+                        </footer>
 
                       </div>
                     </div>
@@ -913,12 +930,17 @@ Vue.component('signin',{
     }
   },
   methods:{
-    active: function () {
+    open: function () {
       if(this.isActive){
         this.isActive = false;
       }else{
         this.isActive = true;
       }
+    },
+    close: function(){
+
+      this.isActive = false;
+
     }
   }
 });

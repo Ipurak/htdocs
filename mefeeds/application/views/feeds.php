@@ -220,9 +220,6 @@
     </div>
  </div>
 
- <div id="signin">
-   <signin></signin>
- </div>
 
 </body>
 
