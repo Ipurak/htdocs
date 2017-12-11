@@ -6,19 +6,27 @@ class post extends CI_Controller {
 	function __construct() {
     parent::__construct();
     $this->load->model( "mepost" );
+    $this->load->model( "hashtag" );
 	}
 
 	public function index()
 	{
 		$str_JSON = file_get_contents( 'php://input' );
-		$data = json_decode( $str_JSON, true );
+		$data     = json_decode( $str_JSON, true );
 		$this->load->model( 'mepost' );
-    $insert_status = $this->mepost->insert( $data );
-		echo json_encode( array( "status"=>$insert_status ) );
+    $post = $this->mepost->insert( $data );
+
+    if ( $post["status"] ) {
+
+      $statusInserted = $this->hashtag->insertForPost( $data["hashtag"], $post["insertedid"] );
+
+    }
+    
+		// echo json_encode( array( "status"=>$insert_status ) );
 	}
 
   public function update()
-  { 
+  {
     $data = $this->mepost->update();
     echo json_encode( $data );
   }

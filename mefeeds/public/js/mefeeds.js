@@ -273,7 +273,8 @@ Vue.component('writefeed',{
       let vm = this
       axios.post('post', {
         desc: this.desc,
-        title: this.title
+        title: this.title,
+        hashtag: this.hashtag
       }).then(function (response) {
 
         if( response.data.status ){
@@ -473,12 +474,13 @@ Vue.component('writefeed',{
     },
     hashtagFilters:function(){
 
+      this.hashtag = []
+      this.showHashtag = ""
       this.hashtag = this.desc.match( /(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<span class='hash_tag'>$2</span>")
       
       if( this.hashtag != null ){
 
         let arr = this.hashtag
-        this.showHashtag = ""
         for (var i = 0; i < arr.length ; i++) {
 
           this.showHashtag = this.showHashtag + '<a href="#">' +this.hashtag[i]+'</a>'
