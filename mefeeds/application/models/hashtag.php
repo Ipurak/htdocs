@@ -11,7 +11,7 @@ class hashtag extends CI_Model {
     }
 
     public function insertForPost( $params, $idpost ) {
-      
+      print_r( ">>: ".$params );
       $tempArr  = array();
       foreach ( $params as $hashtag ) {
 

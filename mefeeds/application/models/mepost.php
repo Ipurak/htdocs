@@ -124,6 +124,17 @@ class mepost extends CI_Model {
       return $query->result();
     }
 
+    public function get_by_hashtag( $hashtag ){
+
+      $this->db->select('*,post.dateauto as postdateauto');
+      $this->db->from('post');
+      $this->db->join('user', 'post.user_iduser = user.iduser');
+      $this->db->where("post.idpost in (select post_idpost from post_has_tag where tag_idtag = (select idtag from tag where name = '".$hashtag."'))");
+      $query = $this->db->get();
+      return $query->result();
+
+    }
+
     public function get_by_session(){
       $sess = $this->session->all_userdata('logged_in');
       $this->db->select('*, CAST(1 AS BINARY) AS opened, CAST(1 AS BINARY) AS closed, CAST(1 AS BINARY) AS readmore ');

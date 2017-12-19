@@ -9,18 +9,33 @@ class feeds extends CI_Controller {
 	}
 
 	public function index()
-	{
-		// $this->load->model('jobs');
-		// $result = $this->jobs->get_all();
-		// $data = array("feeds"=>$result);
+	{	
 		$this->load->view('feeds');
 	}
 
 	public function get()
-	{
-		$this->load->model('mepost');
-		$result = $this->mepost->get_all();
-		$data   = array('feeds'=>$result);
-		echo json_encode( $data );
+	{	
+		$data  	 = $this->melibs->MeData();
+		$type 	 = $data["data"]["type"];
+		$hashtag = $data["data"]["hashtag"];
+		
+		if( $type === "all" ){
+
+			$this->load->model('mepost');
+			$result = $this->mepost->get_all();
+			$data   = array('feeds'=>$result);
+			echo json_encode( $data );
+
+		}elseif( $type === "hashtag" ){
+
+			$this->load->model('mepost');
+			$result = $this->mepost->get_by_hashtag( $hashtag );
+			$data   = array('feeds'=>$result);
+			echo json_encode( $data );
+
+		}
+
+		
 	}
+	
 }

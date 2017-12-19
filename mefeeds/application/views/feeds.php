@@ -173,7 +173,7 @@
                     </div>
 
                     <div class="content me-white-space-pre">
-                      {{feed.desc}}
+                      <p v-html="hastag(feed.desc)"></p>
                       <br>
                       <small class="dateformat">{{ feed.postdateauto | moment }}</small>
                     </div>

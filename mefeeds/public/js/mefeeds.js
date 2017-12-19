@@ -13,8 +13,9 @@ Vue.component('writefeed',{
           <div class="field">
             <p class="control">
             <div class="field">
-              <div class="control">
-                <input v-model="title"class="input" type="text" placeholder="หัวข้องาน">
+              <div class="control has-icons-right">
+                <input v-model="title" class="input" v-bind:class="{'is-success': validateTitleInput}" @change="validate("title")" type="text" placeholder="หัวข้องาน">
+                <p class="help is-danger" v-bind:class="{'is-hidden': validateTitle}">This email is invalid</p>
               </div>
             </div>
 
@@ -63,68 +64,18 @@ Vue.component('writefeed',{
                 contenteditable="true"
                 id="postTextarea"
                 class="textarea"
+                v-bind:class="{'is-success': validateTitleInput}"
                 placeholder="โพสงานตรงนี้เลย..."
                 v-model="desc"
                 v-bind:rows="rows"
                 type="text"
                 style="overflow:hidden"
                 @keyup="textareaFn"
+                @change="validate("desc")"
                 >
               </textarea>
-
-                <div class="field">
-                  <div class="control">
-
-                    <div class="dropdown column" v-bind:class="{ 'is-active' : isActiveTag}">
-
-                      <div class="field is-grouped is-grouped-multiline">
-
-                        <div class="control" v-for="tag in tagAdded">
-                          <div class="tags has-addons">
-                            <span class="tag is-success">{{tag.name}}</span>
-                            <a class="tag is-delete" @click="tagDeleted(tag.idtag)"></a>
-                          </div>
-                        </div>
-
-                      </div>
-
-                      <div class="dropdown-trigger">
-
-                      <div class="field has-addons">
-                        <div class="control" style="width: 100%;">
-
-                        <input v-model="tag" class="input" @keyup="tagSelect" type="text" placeholder="ใส่ชื่อตำแหน่งงาน อำเภอ ตำบลของบริษัท">
-
-                        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                          <div class="dropdown-content">
-                            <a class="dropdown-item" v-for="tag in tagFound" v-html="tag.text" @click="tagClicked(tag.id,tag.text)">
-                              {{tag.id}},{{tag.text}}
-                            </a>
-                          </div>
-                        </div>
-
-                        </div>
-
-                        <div class="control">
-                          <a class="button is-danger" @click="clearInput" v-bind:class="{ 'is-loading' : isLoading }">
-                            <i class="fa fa-times-circle"></i>
-                          </a>
-                        </div>
-
-                        <div class="control">
-                          <a class="button is-info" @click="tagClicked()">
-                            แท็ก&nbsp<i class="fa fa-tag"></i>
-                          </a>
-                        </div>
-
-                      </div>
-                      
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
+              <p class="help is-danger" v-bind:class="{ 'is-hidden': validateDesc }">This email is invalid</p>
+                
             </p>
           </div>
           <nav class="level">
@@ -229,13 +180,16 @@ Vue.component('writefeed',{
       mePost:[],
       autocomplateTags:[],
       tagFound:[],
-      tagAdded:[],
       isActiveTag: false,
       isLoading: false,
       isActivePostList: true,
       image: '',
       hashtag:[],
       showHashtag:'',
+      validateTitle:true,
+      validateDesc:true,
+      validateTitleInput:false,
+      validateDescInput:false,
       status:{
         options: [
           { text: 'เผยแพร่', value: 1 },
@@ -268,139 +222,43 @@ Vue.component('writefeed',{
 
   },
   methods:{
+    validate:function( type ){
+      if( type === "title" ){
+        this.validateTitleInput = true
+      }else if( type === "desc" ){
+        this.validateDescInput = true
+      }
+    },
+    validatePost:function(){
+      let desc  = ( this.desc != "" ) ? true : false
+      let title = ( this.title != "" ) ? true : false
+      return ( desc && title )
+    },
     post:function(){
 
-      let vm = this
-      axios.post('post', {
-        desc: this.desc,
-        title: this.title,
-        hashtag: this.hashtag
-      }).then(function (response) {
+      let status = this.validatePost()
+      if( status ){
+        let vm = this
+        axios.post('post', {
+          desc: this.desc,
+          title: this.title,
+          hashtag: this.hashtag
+        }).then(function (response) {
 
-        if( response.data.status ){
-          location.reload();
-        }else{
-          console.log( "Fail!" );
-        }
-
-      }).catch(function (error) {
-
-        console.log(error);
-
-      });
-
-    },
-    tagSelect:function(){
-
-      let tagInput = this.tag.replace(/\s/g, '');
-
-      if( tagInput != "" ){
-        this.isLoading = true;
-        let vm = this;
-        this.delay(function(){
-            vm.GetTags();
-        }, 800 );
-      }else{
-        this.isLoading   = false;
-        this.isActiveTag = false;
-      }
-
-    },
-    GetTags:function(){
-
-      let vm = this;
-      axios.post('tags', {
-        typ: "get",
-        tag: this.tag
-      }).then(function (response) {
-
-        vm.isLoading = false;//set button to times icon
-        let temp_Object = response.data.tags;
-            vm.autocomplateTags   = temp_Object;
-        
-        if( vm.autocomplateTags.length > 0 ){
-          //found exists
-          vm.SetTagList();
-        }else{
-          //not found exists
-        }
-
-      }).catch(function (error) {
-
-        console.log(error);
-
-      });
-
-    },
-    SetTagList:function(){
-
-      let autocomplateTags = this.autocomplateTags;
-      this.tagFound = [];//always clear data
-        for( var index in autocomplateTags ){
-
-          let Found = autocomplateTags[index].name.match(new RegExp(this.tag, "gi"));
-          if( Found != null ){//Found tag
-
-              let id   = autocomplateTags[index].idtag;
-              let text = autocomplateTags[index].name;
-              this.tagFound.push( {id:id,text:text.replace( Found,"<b>"+Found+"</b>" )} );//Push tag found
-
+          if( response.data.status ){
+            location.reload();
+          }else{
+            console.log( "Fail!" );
           }
 
-        }
+        }).catch(function (error) {
 
-      if( this.tagFound.length === 0 ){
+          console.log(error);
 
-        this.isActiveTag = false;//Hide Tag list
-
+        });
       }else{
-
-        this.isActiveTag = true;//Show Tag list
-
+        alert("Wrong!!")
       }
-
-    },
-    tagClicked:function( id,tag ){
-
-      console.log( "id: ",id," tag: ",tag );
-      
-      if( id !== undefined || tag !== undefined ){//tag in system
-
-        let tags      = this.autocomplateTags;//Tags from server
-        let tagsFound = tags.filter(function( ele ){
-           return ( ele.idtag === id )//if found will return
-        });
-      
-        this.tagAdded.push( tagsFound[0] );//Object stored tags selected
-
-      }else{//new tag
-
-        let tags    = this.tagAdded;
-
-        let ThisTag = this.tag;
-            ThisTag = ThisTag.replace(/ /g, "");
-        let tagsFound = tags.filter(function( ele ){
-           return ( ele.name === ThisTag )//if found will return
-        });
-
-        if( tagsFound.length === 0 && ThisTag ){
-
-          this.tagAdded.push( {"idtag":"-1","name":ThisTag} );//Object stored tags selected
-
-        }
-        
-        console.log( "Lenght: ",tagsFound.length );
-
-      }
-      
-    },
-    tagDeleted:function( idtag ){
-
-      let tags      = this.tagAdded;//Tags from server
-      let tagsFound = tags.filter(function( ele ){
-        return ele.idtag !== idtag;//if found will return
-      });
-      this.tagAdded  = tagsFound;
 
     },
     postList:function(){
@@ -627,33 +485,49 @@ var writefeed = new Vue({
 var feeds = new Vue({
   el:"#feeds",
   data:{
-    "feeds":{}
+    "feeds":{},
+    "type":"all",
+    "hashtag":""
   },
   created:function(){
-
-    let vm = this
-    axios.get('feeds/get', {
-      params: {}
-    }).then(function (response) {
-
-      console.log(response);
-      vm.feeds = response.data.feeds;
-
-    }).catch(function (error) {
-
-      console.log(error);
-
-    });
-
+    this.type = "all"
+    this.get()
   },
   filters: {
-
     moment: function (dateauto) {
-
       return moment(dateauto).lang("th").subtract(0, 'days').calendar();
+    }
+  },
+  methods: {
+    get: function(){
+      let vm = this
+      axios.post('feeds/get', {
+        data: {
+          type:vm.type,
+          hashtag:this.hashtag
+        }
+      }).then(function (response) {
+
+        console.log(response);
+        vm.feeds = response.data.feeds;
+
+      }).catch(function (error) {
+
+        console.log(error);
+
+      });
+    },
+    getByHashTag: function( hashtag ){
+      this.type = "hashtag"
+      this.hashtag = hashtag
+      this.get()
+    },
+    hastag: function ( desc ){
+
+      let descHasHastag = desc.replace( /(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<a href='#' onclick='feeds.getByHashTag(\"$2\")'>#$2</a>")
+      return descHasHastag
 
     }
-
   }
 });
 
@@ -855,101 +729,101 @@ var logout = new Vue({
 /*[START] SIGNIN*/
 /*##############################################################################*/
 /*##############################################################################*/
-Vue.component('signin',{
-  template: `<div id="modal" class="modal" v-bind:class="{ 'is-active': isActive }">
-              <div class="modal-background"></div>
-              <div class="modal-content">
-                <div class="box">
-                  <article class="media">
-                    <div class="media-content">
-                      <div class="content">
+// Vue.component('signin',{
+//   template: `<div id="modal" class="modal" v-bind:class="{ 'is-active': isActive }">
+//               <div class="modal-background"></div>
+//               <div class="modal-content">
+//                 <div class="box">
+//                   <article class="media">
+//                     <div class="media-content">
+//                       <div class="content">
                         
-                        <div class="field">
-                          <label class="label">ชื่อ-สกุล</label>
-                          <div class="control has-icons-left has-icons-right">
-                            <input class="input is-danger" type="email" placeholder="มานี มีนา">
-                            <span class="icon is-small is-left">
-                              <i class="fa fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                              <i class="fa fa-warning"></i>
-                            </span>
-                          </div>
-                          <p class="help is-danger">กรุณากรอกชื่อ</p>
-                        </div>
+//                         <div class="field">
+//                           <label class="label">ชื่อ-สกุล</label>
+//                           <div class="control has-icons-left has-icons-right">
+//                             <input class="input is-danger" type="email" placeholder="มานี มีนา">
+//                             <span class="icon is-small is-left">
+//                               <i class="fa fa-user"></i>
+//                             </span>
+//                             <span class="icon is-small is-right">
+//                               <i class="fa fa-warning"></i>
+//                             </span>
+//                           </div>
+//                           <p class="help is-danger">กรุณากรอกชื่อ</p>
+//                         </div>
 
-                        <div class="field">
-                          <label class="label">อีเมล</label>
-                          <div class="control has-icons-left has-icons-right">
-                            <input class="input is-danger" type="email" placeholder="example@example.com">
-                            <span class="icon is-small is-left">
-                              <i class="fa fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                              <i class="fa fa-warning"></i>
-                            </span>
-                          </div>
-                          <p class="help is-danger">This email is invalid</p>
-                        </div>
+//                         <div class="field">
+//                           <label class="label">อีเมล</label>
+//                           <div class="control has-icons-left has-icons-right">
+//                             <input class="input is-danger" type="email" placeholder="example@example.com">
+//                             <span class="icon is-small is-left">
+//                               <i class="fa fa-envelope"></i>
+//                             </span>
+//                             <span class="icon is-small is-right">
+//                               <i class="fa fa-warning"></i>
+//                             </span>
+//                           </div>
+//                           <p class="help is-danger">This email is invalid</p>
+//                         </div>
 
-                        <div class="field">
-                          <label class="label">ชื่อบริษัทห้างร้าน</label>
-                          <div class="control has-icons-left has-icons-right">
-                            <input class="input is-danger" type="email" placeholder="Mavel Hotel, ไพบูล การยาง, ร้านช่างสี">
-                            <span class="icon is-small is-left">
-                              <i class="fa fa-building" ></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                              <i class="fa fa-warning"></i>
-                            </span>
-                          </div>
-                          <p class="help is-danger">This email is invalid</p>
-                        </div>
+//                         <div class="field">
+//                           <label class="label">ชื่อบริษัทห้างร้าน</label>
+//                           <div class="control has-icons-left has-icons-right">
+//                             <input class="input is-danger" type="email" placeholder="Mavel Hotel, ไพบูล การยาง, ร้านช่างสี">
+//                             <span class="icon is-small is-left">
+//                               <i class="fa fa-building" ></i>
+//                             </span>
+//                             <span class="icon is-small is-right">
+//                               <i class="fa fa-warning"></i>
+//                             </span>
+//                           </div>
+//                           <p class="help is-danger">This email is invalid</p>
+//                         </div>
 
-                        <footer class="card-footer">
-                          <p class="card-footer-item" @click="close">
-                            <span>
-                              <a href="#">ยกเลิก</a>
-                            </span>
-                          </p>
-                          <p class="card-footer-item">
-                            <span>
-                              <a href="#">สมัครใช้งาน</a>
-                            </span>
-                          </p>
-                        </footer>
+//                         <footer class="card-footer">
+//                           <p class="card-footer-item" @click="close">
+//                             <span>
+//                               <a href="#">ยกเลิก</a>
+//                             </span>
+//                           </p>
+//                           <p class="card-footer-item">
+//                             <span>
+//                               <a href="#">สมัครใช้งาน</a>
+//                             </span>
+//                           </p>
+//                         </footer>
 
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              </div>
-              <button class="modal-close is-large"></button>
-            </div>`,
-  data: function () {
-    return {
-      isActive:true
-    }
-  },
-  methods:{
-    open: function () {
-      if(this.isActive){
-        this.isActive = false;
-      }else{
-        this.isActive = true;
-      }
-    },
-    close: function(){
+//                       </div>
+//                     </div>
+//                   </article>
+//                 </div>
+//               </div>
+//               <button class="modal-close is-large"></button>
+//             </div>`,
+//   data: function () {
+//     return {
+//       isActive:true
+//     }
+//   },
+//   methods:{
+//     open: function () {
+//       if(this.isActive){
+//         this.isActive = false;
+//       }else{
+//         this.isActive = true;
+//       }
+//     },
+//     close: function(){
 
-      this.isActive = false;
+//       this.isActive = false;
 
-    }
-  }
-});
+//     }
+//   }
+// });
 
-var signin = new Vue({
-  el:"#signin"
-});
+// var signin = new Vue({
+//   el:"#signin"
+// });
 
 /*##############################################################################*/
 /*##############################################################################*/

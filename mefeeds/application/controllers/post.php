@@ -16,13 +16,13 @@ class post extends CI_Controller {
 		$this->load->model( 'mepost' );
     $post = $this->mepost->insert( $data );
 
-    if ( $post["status"] ) {
+    if ( $post["status"] && $data["hashtag"] != "" ) {
 
       $statusInserted = $this->hashtag->insertForPost( $data["hashtag"], $post["insertedid"] );
-
+      echo "This: ".$statusInserted;
     }
     
-		// echo json_encode( array( "status"=>$insert_status ) );
+		echo json_encode( array( "status"=>$insert_status ) );
 	}
 
   public function update()
