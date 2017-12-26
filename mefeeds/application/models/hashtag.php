@@ -11,7 +11,7 @@ class hashtag extends CI_Model {
     }
 
     public function insertForPost( $params, $idpost ) {
-      print_r( ">>: ".$params );
+      
       $tempArr  = array();
       foreach ( $params as $hashtag ) {
 
@@ -30,9 +30,9 @@ class hashtag extends CI_Model {
       }
 
       $idtags = $this->insertTags_getIdInserted( $tempArr );//insert new tags and get id tags
-
-      $data = $this->getArray_insertPosttag( $idtags, $idpost );//set array for insert tags post
+      $data   = $this->getArray_insertPosttag( $idtags, $idpost );//set array for insert tags post
       $this->db->insert_batch( 'post_has_tag', $data );//insert tag for post
+      return ($this->db->affected_rows() > 0) ? true : false;
       
     }
 
@@ -61,21 +61,15 @@ class hashtag extends CI_Model {
         $query = $this->db->get( "tag" );
         $tag = $query->row();
         if ( $query->num_rows() < 1 ) {//not exist
-
-          echo "not exist <br>";
           $data = array(
            'name'   => $tagName ,
            'status' => 0
           );
-
           $this->db->insert('tag', $data);
           array_push( $valueArr, $this->db->insert_id() );
 
         }else if( $query->num_rows() > 0 ){//exist
-
-          echo "exist: ".$tag->idtag."<br>";
           array_push( $valueArr, $tag->idtag );
-
         }
 
       }

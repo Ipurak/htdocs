@@ -80,6 +80,27 @@ body
   margin-right: 5px;
 }
 
+.me-delete-img{
+  width: 20px;
+  height: 20px;
+  padding: 11px;
+}
+
+.me-upload-img{
+  background-color: #e9ebee;
+  margin-right: 2px;
+  border-radius: 18px;
+  padding: 1px 30px;
+  word-break: break-word;
+  margin-top: 5px;
+  border-color: #fff;
+  line-height: 31px;
+}
+
+.me-upload-img:hover{
+  background-color: #dddfe2;
+}
+
 .showHashtag{
   /*background-color: cornsilk;*/
   padding: 5px;

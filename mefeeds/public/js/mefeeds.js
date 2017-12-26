@@ -11,85 +11,88 @@ Vue.component('writefeed',{
       <article class="media">
         <div class="media-content">
           <div class="field">
+
             <p class="control">
-            <div class="field">
-              <div class="control has-icons-right">
-                <input v-model="title" class="input" v-bind:class="{'is-success': validateTitleInput}" @change="validate("title")" type="text" placeholder="หัวข้องาน">
-                <p class="help is-danger" v-bind:class="{'is-hidden': validateTitle}">This email is invalid</p>
-              </div>
-            </div>
-
-            <div class="field">
-              <div v-if="!image">
-                <div class="field">
-                  <div class="file is-small is-info has-name">
-                    <label class="file-label">
-                      <input class="file-input" type="file" @change="selectFile" name="resume">
-                      <span class="file-cta">
-                        <span class="file-icon">
-                          <i class="fa fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                          Upload
-                        </span>
-                      </span>
-                      <span class="file-name">
-                        อัพโหลดภาพประกอบ...
-                      </span>
-                    </label>
-                    &nbsp
-                    <div class="tags has-addons">
-                      <a class="tag icon is-warning">
-                        <i class="fa fa-question-circle"></i> 
-                      </a>
-                    </div>
-
-                  </div>
+              <div class="field">
+                <div class="control has-icons-right">
+                  <input 
+                    v-model="title" 
+                    class="input" 
+                    v-bind:class="{'is-success': validateTitleInputSuccess, 'is-danger': validateTitleInputfail}" 
+                    @change="validate('title')" 
+                    type="text" 
+                    placeholder="หัวข้องาน">
+                  <p class="help is-danger" v-bind:class="{'is-hidden': validateTitle}">กรุณากรอกหัวข้อโพสต์หรือตำแหน่งงาน</p>
                 </div>
-
               </div>
-              <div v-else>
-                <a class="button is-danger me-position-absolute me-z-index-9999" @click="removeImage">
-                  <i class="fa fa-times-circle"></i>
-                </a>
-                <img :src="image" class="image is-1280x960 me-border-radius-5" />
-              </div>
-              
-            </div>
 
               <div class="showHashtag" v-html="showHashtag"></div>
 
               <textarea
-
                 contenteditable="true"
                 id="postTextarea"
                 class="textarea"
-                v-bind:class="{'is-success': validateTitleInput}"
+                v-bind:class="{'is-success': validateDescInputSuccess, 'is-danger': validateDescInputfail}"
                 placeholder="โพสงานตรงนี้เลย..."
                 v-model="desc"
                 v-bind:rows="rows"
                 type="text"
                 style="overflow:hidden"
                 @keyup="textareaFn"
-                @change="validate("desc")"
+                @change="validate('desc')"
                 >
               </textarea>
-              <p class="help is-danger" v-bind:class="{ 'is-hidden': validateDesc }">This email is invalid</p>
-                
+              <p class="help is-danger" v-bind:class="{ 'is-hidden': validateDesc }">กรุณากรอกข้อมูลรายละเอียดของงาน</p>
+
+              
             </p>
+
           </div>
+
           <nav class="level">
             <div class="level-left">
-              <div class="level-item">
-                <a class="button is-info" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์ของฉัน&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
+
+              <div class="field">
+                <div v-if="!image">
+                  <div class="field">
+                    <div class="file is-small">
+                      <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
+                        <input class="file-input" type="file" @change="selectFile" name="resume">
+                        <span class="">
+                            <i class="fa fa-picture-o"></i>
+                            รูปภาพ
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div v-else>
+                  <a class="button is-danger me-position-absolute me-z-index-9999 me-delete-img" @click="removeImage">
+                    <i class="fa fa-times-circle"></i>
+                  </a>
+                  <img :src="image" class="image is-96x96 me-border-radius-5" />
+                </div>
               </div>
+
             </div>
+
             <div class="level-right">
+
               <div class="level-item">
-                <a class="button is-info" @click="post">โพสต์&nbsp<i class="fa fa-paper-plane-o"></i></a>
+                <a class="button is-info" v-bind:class="{ 'is-loading': postLoadedBtn }" @click="post"><b>โพสต์</b></a>
               </div>
+
             </div>
           </nav>
+
+            <footer class="card-footer">
+              <p class="card-footer-item">
+                <span>
+                  <a class="" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์ของฉัน&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
+                </span>
+              </p>
+            </footer>
+
         </div>
       </article>
       <div id="postList" v-bind:class="{'is-hidden':isActivePostList}">
@@ -175,7 +178,7 @@ Vue.component('writefeed',{
     return {
       desc:"",
       title:"",
-      rows:"5",
+      rows:"2",
       tag:"",
       mePost:[],
       autocomplateTags:[],
@@ -188,8 +191,11 @@ Vue.component('writefeed',{
       showHashtag:'',
       validateTitle:true,
       validateDesc:true,
-      validateTitleInput:false,
-      validateDescInput:false,
+      validateTitleInputSuccess:false,
+      validateTitleInputfail:false,
+      validateDescInputSuccess:false,
+      validateDescInputfail:false,
+      postLoadedBtn:false,
       status:{
         options: [
           { text: 'เผยแพร่', value: 1 },
@@ -224,20 +230,30 @@ Vue.component('writefeed',{
   methods:{
     validate:function( type ){
       if( type === "title" ){
-        this.validateTitleInput = true
+        ( this.title.length > 0 ) ? this.validateTitleInputSuccess = true : this.validateTitleInputSuccess = false
       }else if( type === "desc" ){
-        this.validateDescInput = true
+        ( this.desc.length > 0 ) ? this.validateDescInputSuccess = true : this.validateDescInputSuccess = false
       }
     },
-    validatePost:function(){
-      let desc  = ( this.desc != "" ) ? true : false
-      let title = ( this.title != "" ) ? true : false
+    validatePost:function(){//Check Before send post
+      let title = ( this.title != "" && this.title.length > 0 ) ? true : false
+      let desc  = ( this.desc != "" && this.desc.length > 0 ) ? true : false
+      
+      this.validateTitleInputSuccess = title  
+      this.validateTitleInputfail = !title
+      this.validateTitle = title 
+      
+      this.validateDescInputSuccess = desc
+      this.validateDescInputfail = !desc  
+      this.validateDesc = desc 
+
       return ( desc && title )
     },
     post:function(){
 
       let status = this.validatePost()
       if( status ){
+        this.postLoadedBtn = true
         let vm = this
         axios.post('post', {
           desc: this.desc,
@@ -257,7 +273,7 @@ Vue.component('writefeed',{
 
         });
       }else{
-        alert("Wrong!!")
+        alert("กรอกข้อมูลยังไม่ครบ")
       }
 
     },
@@ -355,20 +371,20 @@ Vue.component('writefeed',{
 
     },
     selectFile:function( e ){
-       var files = e.target.files || e.dataTransfer.files;
+       var files = e.target.files || e.dataTransfer.files
       if (!files.length)
-        return;
-      this.createImage(files[0]);
+        return
+        this.createImage(files[0])
     },
     createImage(file) {
-      var image  = new Image();
-      var reader = new FileReader();
-      var vm     = this;
+      var image  = new Image()
+      var reader = new FileReader()
+      var vm     = this
 
       reader.onload = (e) => {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
+        vm.image = e.target.result
+      }
+      reader.readAsDataURL(file)
     },
     removeImage: function (e) {
       this.image = '';
@@ -524,7 +540,7 @@ var feeds = new Vue({
     },
     hastag: function ( desc ){
 
-      let descHasHastag = desc.replace( /(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<a href='#' onclick='feeds.getByHashTag(\"$2\")'>#$2</a>")
+      let descHasHastag = desc.replace( /(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<a onclick='feeds.getByHashTag(\"$2\")'>#$2</a>")
       return descHasHastag
 
     }
@@ -665,7 +681,7 @@ Vue.component('logout',{
     <div class="dropdown-menu" id="logout" role="menu">
       <div class="dropdown-content">
         <a href="./editProfile" class="dropdown-item">
-          <i class="fa fa-user"></i> แก้ไขข้อมูลทั่วไป
+          <i class="fa fa-cog"></i> แก้ไขข้อมูลทั่วไป
         </a>
         <hr class="dropdown-divider">
         <a href="./logout" class="dropdown-item">
