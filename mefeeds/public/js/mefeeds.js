@@ -54,6 +54,7 @@ Vue.component('writefeed',{
 
               <div class="field">
                 <div v-if="!image">
+
                   <div class="field">
                     <div class="file is-small">
                       <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
@@ -70,7 +71,8 @@ Vue.component('writefeed',{
                   <a class="button is-danger me-position-absolute me-z-index-9999 me-delete-img" @click="removeImage">
                     <i class="fa fa-times-circle"></i>
                   </a>
-                  <img :src="image" class="image is-96x96 me-border-radius-5" />
+                  <img :src="image" id="image" ref="image" class="image is-96x96 me-border-radius-5" />
+                  <canvas :src="canvas" ref="canvas" id="canvas"></canvas>
                 </div>
               </div>
 
@@ -187,6 +189,7 @@ Vue.component('writefeed',{
       isLoading: false,
       isActivePostList: true,
       image: '',
+      canvas:'',
       hashtag:[],
       showHashtag:'',
       validateTitle:true,
@@ -212,11 +215,9 @@ Vue.component('writefeed',{
     }
   },
   mounted: function () {
-
     this.$nextTick(function () {
 
     })
-
   },
   filters: {
 
@@ -372,19 +373,47 @@ Vue.component('writefeed',{
     },
     selectFile:function( e ){
        var files = e.target.files || e.dataTransfer.files
-      if (!files.length)
-        return
-        this.createImage(files[0])
+       console.log("name: ", files[0].name)
+       console.log("type: ", files[0].type)
+       console.log("size: ", files[0].size)
+       console.log("file: ", files[0])
+       let name = files[0].name
+       let type = files[0].type
+       let size = files[0].size
+       if( (type === "image/png" || type === "image/jpeg" || type === "image/jpg") ){
+          if (!files.length)
+          return
+          this.createImage(files[0])  
+       }else{
+        alert("Wrung file!!")
+       }
+      
     },
-    createImage(file) {
+    createImage:function(file) {
       var image  = new Image()
       var reader = new FileReader()
       var vm     = this
 
       reader.onload = (e) => {
         vm.image = e.target.result
+        this.convertImageToCanvas()
       }
       reader.readAsDataURL(file)
+      
+    },
+    convertImageToCanvas:function() {
+      // parent.$refs
+      element = this.$refs
+      let imageElement
+      setTimeout(function(){
+
+        var canvas = element.canvas
+        var ctx = canvas.getContext('2d');
+
+      }, 500);
+      
+
+      
     },
     removeImage: function (e) {
       this.image = '';
