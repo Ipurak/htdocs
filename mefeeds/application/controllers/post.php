@@ -13,6 +13,13 @@ class post extends CI_Controller {
 	{
 		$str_JSON = file_get_contents( 'php://input' );
 		$data     = json_decode( $str_JSON, true );
+    
+    $image = $data["image"];
+    $imageName = "";
+    if( $image != "" ){//save image
+      $imageName = $this->saveImage( $image );
+    }
+
 		$this->load->model( 'mepost' );
     $post = $this->mepost->insert( $data );
     if ( $post["status"] && $data["hashtag"] != "" ) {
@@ -22,6 +29,16 @@ class post extends CI_Controller {
     }
 		echo json_encode( array( "status"=>$statusInserted ) );
 	}
+
+  public function saveImage( $image )
+  {
+    $base_to_php = explode(',', $image);
+    $data        = base64_decode($base_to_php[1]);
+    $newfilename = md5(time().'image');
+    $filepath = "./public/images/$newfilename.png";
+    file_put_contents($filepath,$data,FILE_APPEND);
+    return $newfilename;
+  }
 
   public function update()
   {

@@ -11,6 +11,33 @@ Vue.component('writefeed',{
       <article class="media">
         <div class="media-content">
           <div class="field">
+                <div v-if="!image">
+
+                  <div class="field">
+                    <div class="file is-small">
+                      <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
+                        <input class="file-input" type="file" @change="selectFile" name="resume">
+                        <span class="">
+                            <i class="fa fa-picture-o"></i>
+                            รูปภาพ
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div v-else>
+                  <a class="button is-danger me-position-absolute me-z-index-9999 me-delete-img" @click="removeImage">
+                    <i class="fa fa-times-circle"></i>
+                  </a>
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img :src="image" id="image" ref="image" class="image is-1280x960 me-border-radius-5" />
+                    </figure>
+                  </div>
+                  <canvas :src="canvas" ref="canvas" id="canvas"></canvas>
+                </div>
+              </div>
+          <div class="field">
 
             <p class="control">
               <div class="field">
@@ -50,33 +77,7 @@ Vue.component('writefeed',{
           </div>
 
           <nav class="level">
-            <div class="level-left">
-
-              <div class="field">
-                <div v-if="!image">
-
-                  <div class="field">
-                    <div class="file is-small">
-                      <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
-                        <input class="file-input" type="file" @change="selectFile" name="resume">
-                        <span class="">
-                            <i class="fa fa-picture-o"></i>
-                            รูปภาพ
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div v-else>
-                  <a class="button is-danger me-position-absolute me-z-index-9999 me-delete-img" @click="removeImage">
-                    <i class="fa fa-times-circle"></i>
-                  </a>
-                  <img :src="image" id="image" ref="image" class="image is-96x96 me-border-radius-5" />
-                  <canvas :src="canvas" ref="canvas" id="canvas"></canvas>
-                </div>
-              </div>
-
-            </div>
+            <div class="level-left"></div>
 
             <div class="level-right">
 
@@ -259,11 +260,12 @@ Vue.component('writefeed',{
         axios.post('post', {
           desc: this.desc,
           title: this.title,
-          hashtag: this.hashtag
+          hashtag: this.hashtag,
+          image: this.image
         }).then(function (response) {
 
           if( response.data.status ){
-            location.reload();
+            // location.reload();
           }else{
             console.log( "Fail!" );
           }
@@ -394,8 +396,9 @@ Vue.component('writefeed',{
       var reader = new FileReader()
       var vm     = this
 
-      reader.onload = (e) => {
+      imageLoaded = reader.onload = (e) => {
         vm.image = e.target.result
+        
         this.convertImageToCanvas()
       }
       reader.readAsDataURL(file)
@@ -404,12 +407,48 @@ Vue.component('writefeed',{
     convertImageToCanvas:function() {
       // parent.$refs
       element = this.$refs
-      let imageElement
+      vm = this
       setTimeout(function(){
-
-        var canvas = element.canvas
+        var canvas               = element.canvas
+            canvas.height        = 960;
+            canvas.width         = 1280;
+            canvas.style.display = "none"
         var ctx = canvas.getContext('2d');
+        var img = new Image();
+            img.src = element.image.src;
 
+        var cancan = ctx.canvas
+        var hRatio = cancan.width  / img.width    ;
+        var vRatio =  cancan.height / img.height  ;
+        var ratio  = Math.min ( hRatio, vRatio );
+
+        var centerShift_x = ( cancan.width - img.width*ratio ) / 2;
+        var centerShift_y = ( cancan.height - img.height*ratio ) / 2;  
+
+        console.log("centerShift_x: ",centerShift_x)
+        console.log("centerShift_y: ",centerShift_y)
+
+        ctx.clearRect(0,0,cancan.width, cancan.height);
+        ctx.drawImage(img, 0,0, img.width, img.height,centerShift_x,centerShift_y,img.width*ratio, img.height*ratio);
+
+        el = element.canvas.toDataURL()
+        vm.image = el
+
+        
+        // img.onload = function(){
+        //   console.log("W: ",this.width)
+        //   console.log("H: ",this.height)
+        //   var ptrn = ctx.createPattern(img,'no-repeat');
+        //       ctx.fillStyle = ptrn;
+        //       ctx.fillRect(0,0,canvas.width,canvas.height);
+
+        //       el = element.canvas.toDataURL()
+        //       vm.image = el
+        //       // console.log(el)
+
+
+
+        // }
       }, 500);
       
 
