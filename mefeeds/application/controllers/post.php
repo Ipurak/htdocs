@@ -21,7 +21,7 @@ class post extends CI_Controller {
     }
 
 		$this->load->model( 'mepost' );
-    $post = $this->mepost->insert( $data );
+    $post = $this->mepost->insert( $data,$imageName );
     if ( $post["status"] && $data["hashtag"] != "" ) {
       $statusInserted = $this->hashtag->insertForPost( $data["hashtag"], $post["insertedid"] );
     }else{

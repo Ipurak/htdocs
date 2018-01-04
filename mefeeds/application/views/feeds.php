@@ -152,9 +152,10 @@
                     </a>
                   </header>
 
-                  <div class="card-image">
+                  <div class="card-image" v-if="feed.image != null">
                     <figure class="image is-4by3">
-                      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+                      <!-- <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image"> -->
+                      <img v-bind:src="'./public/images/'+feed.image" alt="Image">
                     </figure>
                   </div>
                   <div class="card-content">

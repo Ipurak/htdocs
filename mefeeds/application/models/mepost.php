@@ -10,14 +10,15 @@ class mepost extends CI_Model {
       $this->load->library( 'session' );
     }
 
-    public function insert( $params ) {
+    public function insert( $params,$imageName ) {
 
       $sess = $this->session->all_userdata( 'logged_in' );
       $data = array(
         'title'       => $params["title"] ,
         'desc'        => $params["desc"] ,
         'user_iduser' => $sess["logged_in"]["id_user"],
-        'status'      => 0
+        'status'      => 0,
+        'image'       => $imageName
       );
       $this->db->set( 'datecreated', 'NOW()', FALSE );
       $this->db->set( 'datepush', 'NOW()', FALSE );

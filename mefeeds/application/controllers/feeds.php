@@ -23,6 +23,10 @@ class feeds extends CI_Controller {
 
 			$this->load->model('mepost');
 			$result = $this->mepost->get_all();
+
+			$result = $this->initialResults( $result );
+
+			// print_r($result);
 			$data   = array('feeds'=>$result);
 			echo json_encode( $data );
 
@@ -36,6 +40,16 @@ class feeds extends CI_Controller {
 		}
 
 		
+	}
+
+	public function initialResults( $result )
+	{
+		foreach ($result as $value) {
+			if( $value->image != "" ){
+				$value->image = $value->image.".png";
+			}
+		}
+		return $result;
 	}
 	
 }

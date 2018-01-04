@@ -30,11 +30,12 @@ Vue.component('writefeed',{
                     <i class="fa fa-times-circle"></i>
                   </a>
                   <div class="card-image">
-                    <figure class="image is-4by3">
+                    <figure class="image is-4by3 is-hidden">
                       <img :src="image" id="image" ref="image" class="image is-1280x960 me-border-radius-5" />
                     </figure>
                   </div>
                   <canvas :src="canvas" ref="canvas" id="canvas"></canvas>
+                  <button type="button" @click="rotageLeft">หมุนซ้าย</button><button type="button" @click="rotageRight">หมุนขวา</button>
                 </div>
               </div>
           <div class="field">
@@ -191,6 +192,9 @@ Vue.component('writefeed',{
       isActivePostList: true,
       image: '',
       canvas:'',
+      ctx:'',
+      refsForimage:'',
+      imageDegrees:0,
       hashtag:[],
       showHashtag:'',
       validateTitle:true,
@@ -265,7 +269,7 @@ Vue.component('writefeed',{
         }).then(function (response) {
 
           if( response.data.status ){
-            // location.reload();
+            location.reload();
           }else{
             console.log( "Fail!" );
           }
@@ -387,7 +391,7 @@ Vue.component('writefeed',{
           return
           this.createImage(files[0])  
        }else{
-        alert("Wrung file!!")
+        alert("Wrong file!!")
        }
       
     },
@@ -407,52 +411,105 @@ Vue.component('writefeed',{
     convertImageToCanvas:function() {
       // parent.$refs
       element = this.$refs
+      
       vm = this
       setTimeout(function(){
+        vm.refsForimage = element
+
+        var MAX_WIDTH = 400;
+        var MAX_HEIGHT = 400;
+        var width = element.image.width;
+        var height = element.image.height;
+         if (width > height) {
+                if (width > MAX_WIDTH) {
+                    height *= MAX_WIDTH / width;
+                    width = MAX_WIDTH;
+                }
+            } else {
+                if (height > MAX_HEIGHT) {
+                    width *= MAX_HEIGHT / height;
+                    height = MAX_HEIGHT;
+                }
+            }
+
         var canvas               = element.canvas
-            canvas.height        = 960;
-            canvas.width         = 1280;
-            canvas.style.display = "none"
-        var ctx = canvas.getContext('2d');
-        var img = new Image();
-            img.src = element.image.src;
+            canvas.height        = height
+            canvas.width         = width
+            // canvas.style.display = "none"
+            element.image.style.display = "none"
+        var ctx = canvas.getContext('2d')
+        var img = new Image()
+            img.src = element.image.src
 
         var cancan = ctx.canvas
-        var hRatio = cancan.width  / img.width    ;
-        var vRatio =  cancan.height / img.height  ;
-        var ratio  = Math.min ( hRatio, vRatio );
+        var hRatio = cancan.width  / img.width
+        var vRatio =  cancan.height / img.height
+        var ratio  = Math.min ( hRatio, vRatio )
 
-        var centerShift_x = ( cancan.width - img.width*ratio ) / 2;
-        var centerShift_y = ( cancan.height - img.height*ratio ) / 2;  
-
-        console.log("centerShift_x: ",centerShift_x)
-        console.log("centerShift_y: ",centerShift_y)
-
+        var centerShift_x = ( cancan.width - img.width*ratio ) / 2
+        var centerShift_y = ( cancan.height - img.height*ratio ) / 2
         ctx.clearRect(0,0,cancan.width, cancan.height);
         ctx.drawImage(img, 0,0, img.width, img.height,centerShift_x,centerShift_y,img.width*ratio, img.height*ratio);
 
         el = element.canvas.toDataURL()
         vm.image = el
+        vm.ctx = ctx
+        vm.canvas = canvas
 
-        
-        // img.onload = function(){
-        //   console.log("W: ",this.width)
-        //   console.log("H: ",this.height)
-        //   var ptrn = ctx.createPattern(img,'no-repeat');
-        //       ctx.fillStyle = ptrn;
-        //       ctx.fillRect(0,0,canvas.width,canvas.height);
-
-        //       el = element.canvas.toDataURL()
-        //       vm.image = el
-        //       // console.log(el)
-
-
-
-        // }
       }, 500);
       
 
       
+    },
+    rotageLeft:function(){
+      console.log("rotageLeft")
+      console.log("aa:",Math.PI/2)
+      var cancan        = this.refsForimage.canvas
+      var imgwidth      = this.refsForimage.image.width
+      var imgheight     = this.refsForimage.image.height
+          cancan.width  = imgwidth
+          cancan.height = imgheight
+          this.ctx.save()
+          this.ctx.translate(imgwidth/2, imgheight/2)
+          this.imageDegrees -= 90
+          this.ctx.rotate(this.imageDegrees*Math.PI/180)
+          this.ctx.drawImage(this.refsForimage.image, -(imgwidth/2), -(imgheight/2))
+          this.ctx.restore()
+
+          // el = cancan.toDataURL()
+          // this.image = el
+      // this.imageDegrees = this.imageDegrees-90
+      // this.drawRotated(this.imageDegrees)
+    },
+    rotageRight:function(){
+      console.log("rotageRight")
+      // this.imageDegrees = this.imageDegrees+90
+      // this.drawRotated(this.imageDegrees)
+    },
+    drawRotated:function(degrees){
+      console.log("this.$refs: ",this.$refs)
+      element = this.$refs
+      let canvas  = element.canvas
+      let elImage = element.image
+
+      var cancan = this.ctx.canvas
+      var hRatio = cancan.width  / elImage.width    ;
+      var vRatio =  cancan.height / elImage.height  ;
+      var ratio  = Math.min ( hRatio, vRatio );
+
+      var centerShift_x = ( cancan.width - elImage.width*ratio ) / 2;
+      var centerShift_y = ( cancan.height - elImage.height*ratio ) / 2;  
+
+      this.ctx.clearRect(0,0,cancan.width, cancan.height);
+      this.ctx.save();
+      this.ctx.translate(canvas.width/2,canvas.height/2);
+      this.ctx.rotate(degrees*Math.PI/180);
+      // this.ctx.drawImage(image,-image.width/2,-image.width/2);
+      this.ctx.drawImage(elImage, 0,0, elImage.width, elImage.height,centerShift_x,centerShift_y,elImage.width*ratio, elImage.height*ratio);
+      this.ctx.restore();
+
+      el = element.canvas.toDataURL()
+      vm.image = el
     },
     removeImage: function (e) {
       this.image = '';
