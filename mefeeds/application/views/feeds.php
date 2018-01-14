@@ -5,8 +5,10 @@
 <html>
 <head>
 <meta Content-type: "application/json"; charset="utf-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Me Feeds</title>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <link rel="stylesheet" href="<?=site_url("public/font-awesome-4.7.0/css/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?=site_url("public/animate/animate.css");?>" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?=site_url("public/bulma/css/bulma.css");?>" rel="stylesheet" type="text/css">
@@ -14,7 +16,6 @@
   <link rel="stylesheet" href="<?=site_url("public/sweetalert2/dist/sweetalert2.min.css");?>" rel="stylesheet" type="text/css">
 </head>
 <body>
-
   <nav class="navbar is-transparent main-menu">
 
     <div class="tabs is-fullwidth me-width-100-per">
@@ -39,7 +40,7 @@
       </ul>
     </div>
 
-  </nav>
+  </nav><!-- Menu -->
 
   <section class="hero is-primary is-medium" style="margin-bottom: 20px;" id="top-banner">
     <div class="hero-body">
@@ -65,41 +66,9 @@
   <!-- Section -->
 
   <div class="container">
-    <div class="tile is-ancestor">
-      <div class="tile is-3">
-
-        <div class="tile">
-
-          <!-- <div class="tile is-parent is-vertical">
-
-            <div class="tile is-child box">
-              <article class="tile is-child notification is-warning">
-                <p class="title">...tiles</p>
-                <p class="subtitle">Bottom tile</p>
-              </article>
-              <article class="tile is-child notification is-warning">
-                <p class="title">...tiles</p>
-                <p class="subtitle">Bottom tile</p>
-              </article>
-              <article class="tile is-child notification is-warning">
-                <p class="title">...tiles</p>
-                <p class="subtitle">Bottom tile</p>
-              </article>
-              <article class="tile is-child notification is-warning">
-                <p class="title">...tiles</p>
-                <p class="subtitle">Bottom tile</p>
-              </article>
-            </div>
-
-          </div> -->
-
-        </div>
-
-      </div>
-      <div class="tile is-5">
-        <div class="tile">
-          <div class="tile is-parent is-vertical">
-
+    <div class="columns is-centered">
+      <!-- <div class="column is-two-fifths"> -->
+      <div class="me-post-card">
             <div class="box">
 
               <div id="logout">
@@ -152,10 +121,10 @@
                     </a>
                   </header>
 
-                  <div class="card-image" v-if="feed.image != null">
-                    <figure class="image is-4by3">
+                  <div class="card-image" v-if="feed.image !== ''">
+                    <figure class="image">
                       <!-- <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image"> -->
-                      <img v-bind:src="'./public/images/'+feed.image" alt="Image">
+                      <img v-bind:src="'./public/images/'+feed.image" @click="openPostImage" alt="Image">
                     </figure>
                   </div>
                   <div class="card-content">
@@ -179,50 +148,41 @@
                       <small class="dateformat">{{ feed.postdateauto | moment }}</small>
                     </div>
                   </div>
-                <!-- </div> -->
-
               </div>
+
+              <!-- <div class="modal" v-bind:class="{'is-active': imageModalActive}"  @click="closePostImage">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                  <p class="image is-1by1">
+                    <img ref="image" src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+                  </p>
+                </div>
+                <button class="modal-close is-large" aria-label="close"></button>
+              </div> -->
+
+              <div class="modal me-z-index-9999" v-bind:class="{'is-active': imageModalActive}"  @click="closePostImage">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <div>
+                    <p class="image">
+                      <img ref="image" src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+                    </p>
+                  </div>
+                </di>
+              </div>
+
+
 
             </div><!-- Feeds -->
 
-          </div>
-        </div>
-      </div>
-      <div class="tile is-3">
-
-        <!-- <div class="tile is-parent is-vertical">
-
-          <div class="tile is-child box">
-            <article class="tile is-child notification is-info">
-              <p class="title">...tiles</p>
-              <p class="subtitle">Bottom tile</p>
-            </article>
-            <article class="tile is-child notification is-info">
-              <p class="title">...tiles</p>
-              <p class="subtitle">Bottom tile</p>
-            </article>
-            <article class="tile is-child notification is-info">
-              <p class="title">...tiles</p>
-              <p class="subtitle">Bottom tile</p>
-            </article>
-            <article class="tile is-child notification is-info">
-              <p class="title">...tiles</p>
-              <p class="subtitle">Bottom tile</p>
-            </article>
-            <article class="tile is-child notification is-info">
-              <p class="title">...tiles</p>
-              <p class="subtitle">Bottom tile</p>
-            </article>
-          </div>
-
-        </div> -->
-
+          <!-- </div> -->
       </div>
     </div>
- </div>
-
-
+  </div><!-- Main -->
 </body>
+<script>
+  
+</script>
 
 <script src="<?=site_url("public/jquery/dist/jquery.min.js");?>"></script>
 <script src="<?=site_url("public/vue/dist/vue.js");?>"></script>

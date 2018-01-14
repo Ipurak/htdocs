@@ -1,6 +1,13 @@
 body
 {
   background-color: whitesmoke;
+  position: relative
+}
+
+html, body
+{
+    width: 100%;
+    margin-top: 27px;
 }
 
 .main-menu
@@ -8,6 +15,7 @@ body
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  height: 50px;
   z-index: 999;
 }
 
@@ -101,6 +109,10 @@ body
   background-color: #dddfe2;
 }
 
+.me-z-index-9999{
+  z-index: 9999;
+}
+
 .showHashtag{
   /*background-color: cornsilk;*/
   padding: 5px;
@@ -128,3 +140,47 @@ body
    resize:none;
 }
 
+.mypostFixed {
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  /*top: 100px;*/
+  left: 0px;
+  -webkit-box-shadow: 0px 3px 3px -1px rgba(158,146,158,1);
+  -moz-box-shadow: 0px 3px 3px -1px rgba(158,146,158,1);
+  box-shadow: 0px 3px 3px -1px rgba(158,146,158,1);
+}
+
+.me-post-card {
+  width: 500px;
+}
+
+.columns.is-centered {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; 
+}
+
+@media only screen and (min-width: 767px) and (orientation: landscape) {
+    /* tablets and desktop */
+    .me-post-card {
+      width: 500px;
+    }
+
+    
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+    .me-post-card {
+      width: 90%;
+    }
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* portrait phones */
+    .me-post-card {
+      width: 90%;
+    }
+}

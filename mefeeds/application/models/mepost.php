@@ -121,6 +121,7 @@ class mepost extends CI_Model {
       $this->db->select('*,post.dateauto as postdateauto');
       $this->db->from('post');
       $this->db->join('user', 'post.user_iduser = user.iduser');
+      $this->db->order_by("post.datepush", "DESC");
       $query = $this->db->get();
       return $query->result();
     }

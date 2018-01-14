@@ -30,14 +30,17 @@ Vue.component('writefeed',{
                     <i class="fa fa-times-circle"></i>
                   </a>
                   <div class="card-image">
-                    <figure class="image is-4by3 is-hidden">
+                    <figure class="image is-4by3">
                       <img :src="image" id="image" ref="image" class="image is-1280x960 me-border-radius-5" />
                     </figure>
                   </div>
-                  <canvas :src="canvas" ref="canvas" id="canvas"></canvas>
+                  <div style="display:none">
+                    <canvas :src="canvas" ref="canvas" id="canvas"></canvas>
+                  </div>
                   <button type="button" @click="rotageLeft">หมุนซ้าย</button><button type="button" @click="rotageRight">หมุนขวา</button>
                 </div>
-              </div>
+          </div>
+
           <div class="field">
 
             <p class="control">
@@ -89,10 +92,10 @@ Vue.component('writefeed',{
             </div>
           </nav>
 
-            <footer class="card-footer">
+            <footer class="card-footer" v-bind:class="{ 'mypostFixed': mypostFixed }" ref="mypost">
               <p class="card-footer-item">
                 <span>
-                  <a class="" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์ของฉัน&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
+                  <a href="#myfeed" class="" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์ของฉัน&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
                 </span>
               </p>
             </footer>
@@ -123,13 +126,44 @@ Vue.component('writefeed',{
                   <span v-bind:class="{ 'me-hide' : mePost[index].readmore == 0 }">
                     ... <a @click="readmore( $event, index )">ดูเพิ่มเติม</a>
                   </span>
-
                 </p>
               </div>
 
               <div class="animated" v-bind:class="{ 'me-hide' : mePost[index].closed }">
 
                 <div class="content">
+
+                <div class="card-image" v-if="mePost[index].image != ''">
+                    <figure class="image">
+                      <!-- <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image"> -->
+                      <img v-bind:src="'./public/images/'+mePost[index].image+'.png'" valt="Image">
+                    </figure>
+                    <div class="field">
+                      <div class="file is-small">
+                        <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
+                          <input class="file-input" type="file" @change="selectFile" name="resume">
+                          <span class="">
+                              <i class="fa fa-picture-o"></i>
+                              ลบ
+                          </span>
+                        </label>
+                      </div>
+                    </div>    
+                </div>
+                <div v-else>
+                  <div class="field">
+                      <div class="file is-small">
+                        <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
+                          <input class="file-input" type="file" @change="selectFile" name="resume">
+                          <span class="">
+                              <i class="fa fa-picture-o"></i>
+                              เพิ่มรูปภาพ
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                </div>
+
                   <div class="field">
                     <div class="control">
                       <input class="input" type="text" placeholder="หัวข้องาน" v-model="mePost[index].title">
@@ -204,6 +238,7 @@ Vue.component('writefeed',{
       validateDescInputSuccess:false,
       validateDescInputfail:false,
       postLoadedBtn:false,
+      mypostFixed:false,
       status:{
         options: [
           { text: 'เผยแพร่', value: 1 },
@@ -219,8 +254,26 @@ Vue.component('writefeed',{
       })()
     }
   },
+  updated: function(){
+    
+  },
   mounted: function () {
     this.$nextTick(function () {
+
+      let mypost = this.$refs.mypost
+      let vm = this
+      let menuHeight = document.getElementsByClassName('main-menu')[0].clientHeight
+      window.addEventListener('scroll', function(e){
+        let scroll = window.scrollY
+        if (scroll >= window.innerHeight && vm.isActivePostList === false) {//fixed
+          vm.mypostFixed = true
+          mypost.style.top = (menuHeight-1)+"px"
+          console.log( vm.mypostFixed  ) 
+        }else {//cancel fixed
+          vm.mypostFixed = false
+          mypost.style = ""
+        }
+      })
 
     })
   },
@@ -293,6 +346,8 @@ Vue.component('writefeed',{
       } else {
 
         this.isActivePostList = true;
+        this.mypostFixed = false //when my post was closed then nomore fixed position
+        window.scrollTo(0,0)
 
       }
 
@@ -402,7 +457,7 @@ Vue.component('writefeed',{
 
       imageLoaded = reader.onload = (e) => {
         vm.image = e.target.result
-        
+        console.log( "HERE: ",EXIF.readFromBinaryFile(new BinaryFile(vm.image)) )
         this.convertImageToCanvas()
       }
       reader.readAsDataURL(file)
@@ -416,8 +471,8 @@ Vue.component('writefeed',{
       setTimeout(function(){
         vm.refsForimage = element
 
-        var MAX_WIDTH = 400;
-        var MAX_HEIGHT = 400;
+        var MAX_WIDTH = 1000;
+        var MAX_HEIGHT = 2000;
         var width = element.image.width;
         var height = element.image.height;
          if (width > height) {
@@ -436,7 +491,7 @@ Vue.component('writefeed',{
             canvas.height        = height
             canvas.width         = width
             // canvas.style.display = "none"
-            element.image.style.display = "none"
+            // element.image.style.display = "none"
         var ctx = canvas.getContext('2d')
         var img = new Image()
             img.src = element.image.src
@@ -628,7 +683,8 @@ var feeds = new Vue({
   data:{
     "feeds":{},
     "type":"all",
-    "hashtag":""
+    "hashtag":"",
+    "imageModalActive":false
   },
   created:function(){
     this.type = "all"
@@ -668,6 +724,23 @@ var feeds = new Vue({
       let descHasHastag = desc.replace( /(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<a onclick='feeds.getByHashTag(\"$2\")'>#$2</a>")
       return descHasHastag
 
+    },
+    openPostImage:function( e ){
+      this.imageModalActive = true
+      this.$refs.image.src = e.target.src
+
+      document.getElementsByClassName("main-menu")[0].style["position"] = "aa";
+      // menu = menu[0].style.position = ""
+      console.log("menu: ",document.getElementsByClassName("main-menu")[0])
+
+      console.log( "This: ",this.$refs.image.src )
+      console.log( "e: ",e.target.src )
+
+    },
+    closePostImage:function(){
+      this.imageModalActive = false
+      this.$refs.image.src = ""
+      // menu[0].style.position = "fixed"
     }
   }
 });
