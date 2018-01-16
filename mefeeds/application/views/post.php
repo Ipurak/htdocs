@@ -70,16 +70,23 @@
               <div class="tile is-child box" v-for="feed in feeds">
 
                 <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
-                    </figure>
-                  </div>
+                  
+                  <?php
+
+                    if( $post[0]->image != "" ){
+                      echo '<div class="card-image">'.
+                        '<figure class="image">'.
+                          '<img src="'.site_url("public/images/").$post[0]->image.'.png"  alt="Image">'.
+                        '</figure>'.
+                      '</div>';
+                    }
+                  ?>
+
                   <div class="card-content">
                     <div class="media">
                       <div class="media-left">
                         <figure class="image is-48x48">
-                          <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
+                          <img src="<?=$post[0]->company?>" alt="Image">
                         </figure>
                       </div>
                       <div class="media-content">

@@ -135,33 +135,27 @@ Vue.component('writefeed',{
 
                 <div class="card-image" v-if="mePost[index].image != ''">
                     <figure class="image">
-                      <!-- <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image"> -->
-                      <img v-bind:src="'./public/images/'+mePost[index].image+'.png'" valt="Image">
-                    </figure>
-                    <div class="field">
+                      <div class="field">
                       <div class="file is-small">
                         <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
                           <input class="file-input" type="file" @change="selectFile" name="resume">
-                          <span class="">
-                              <i class="fa fa-picture-o"></i>
-                              ลบ
-                          </span>
-                        </label>
-                      </div>
-                    </div>    
-                </div>
-                <div v-else>
-                  <div class="field">
-                      <div class="file is-small">
-                        <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
-                          <input class="file-input" type="file" @change="selectFile" name="resume">
-                          <span class="">
-                              <i class="fa fa-picture-o"></i>
-                              เพิ่มรูปภาพ
-                          </span>
+                          <span><i class="fa fa-times-circle"></i> เปลี่ยนรูป</span>
                         </label>
                       </div>
                     </div>
+                      <img v-bind:src="'./public/images/'+mePost[index].image+'.png'" valt="Image">
+                    </figure>  
+                </div>
+                <div class="field" v-else>
+                      <div class="file is-small">
+                        <label class="file-label button is-rounded me-upload-img" title="เลือกไฟล์ที่จะอัพโหลด">
+                          <input class="file-input" type="file" @change="selectFile" name="resume">
+                          <span class="">
+                              <i class="fa fa-picture-o"></i>
+                              รูปภาพ
+                          </span>
+                        </label>
+                      </div>
                 </div>
 
                   <div class="field">
@@ -457,7 +451,55 @@ Vue.component('writefeed',{
 
       imageLoaded = reader.onload = (e) => {
         vm.image = e.target.result
-        console.log( "HERE: ",EXIF.readFromBinaryFile(new BinaryFile(vm.image)) )
+        
+        EXIF.getData(file, function () {
+          alert(this.exifdata.Orientation);
+        })
+
+        var exif = EXIF.readFromBinaryFile(new BinaryFile(vm.image));
+
+        switch(exif.Orientation){
+
+        case 2:
+            // horizontal flip
+            ctx.translate(canvas.width, 0);
+            ctx.scale(-1, 1);
+            break;
+        case 3:
+            // 180° rotate left
+            ctx.translate(canvas.width, canvas.height);
+            ctx.rotate(Math.PI);
+            break;
+        case 4:
+            // vertical flip
+            ctx.translate(0, canvas.height);
+            ctx.scale(1, -1);
+            break;
+        case 5:
+            // vertical flip + 90 rotate right
+            ctx.rotate(0.5 * Math.PI);
+            ctx.scale(1, -1);
+            break;
+        case 6:
+            // 90° rotate right
+            ctx.rotate(0.5 * Math.PI);
+            ctx.translate(0, -canvas.height);
+            break;
+        case 7:
+            // horizontal flip + 90 rotate right
+            ctx.rotate(0.5 * Math.PI);
+            ctx.translate(canvas.width, -canvas.height);
+            ctx.scale(-1, 1);
+            break;
+        case 8:
+            // 90° rotate left
+            ctx.rotate(-0.5 * Math.PI);
+            ctx.translate(-canvas.width, 0);
+            break;
+
+
+    }
+
         this.convertImageToCanvas()
       }
       reader.readAsDataURL(file)
@@ -727,6 +769,7 @@ var feeds = new Vue({
     },
     openPostImage:function( e ){
       this.imageModalActive = true
+      document.getElementsByTagName('html')[0].style.overflow = "hidden"
       this.$refs.image.src = e.target.src
 
       document.getElementsByClassName("main-menu")[0].style["position"] = "aa";
@@ -740,6 +783,7 @@ var feeds = new Vue({
     closePostImage:function(){
       this.imageModalActive = false
       this.$refs.image.src = ""
+      document.getElementsByTagName('html')[0].style.overflow = "auto"
       // menu[0].style.position = "fixed"
     }
   }
@@ -759,31 +803,30 @@ var feeds = new Vue({
 
 Vue.component('login',{
   template: `
-    <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger">
-        <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-login" @click="active">
-          <span><i class="fa fa-bullhorn" aria-hidden="true"></i> ประกาศตำแหน่งงาน</span>
+    <div>
+        <a class="button is-info is-fullwidth" @click="showLoginFn">
+          <span><i class="fa fa-bullhorn"></i> ประกาศตำแหน่งงาน</span>
           <span class="icon is-small">
-            <i class="fa fa-angle-down" aria-hidden="true"></i>
+            <i class="fa fa-angle-down"></i>
           </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-login" role="menu">
-        <div class="dropdown-content">
-          <div class="dropdown-item">
+        </a>
 
+      <div class="modal me-z-index-9999" v-bind:class="{' is-active': showLogin}">
+        <div class="modal-background me-gray-background"></div>
+        <div class="modal-content">
+          <div class="box">
             <p>เข้าสู่ระบบ - มีบัญชีแล้ว</p>
-            <div class="field">
-              <p class="control has-icons-left has-icons-right">
-                <input class="input" type="email" placeholder="Email" v-model="email">
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
-                <span class="icon is-small is-right">
-                  <i class="fa fa-check"></i>
-                </span>
-              </p>
-            </div>
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="Email" v-model="email">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fa fa-check"></i>
+                  </span>
+                </p>
+              </div>
             <div class="field">
               <p class="control has-icons-left">
                 <input class="input" type="password" placeholder="Password" v-model="pass">
@@ -795,31 +838,31 @@ Vue.component('login',{
             <div class="field">
               <p class="control">
                 <button class="button is-primary" @click="login">
-                  เข้าสู่ระบบ
+                  <i class="fa fa-sign-in"></i>&nbspเข้าสู่ระบบ
+                </button>
+                <button class="button is-danger" @click="hideLoginFn">
+                  ยกเลิก
                 </button>
               </p>
             </div>
-
-          </div>
-          <hr class="dropdown-divider">
-          <div class="dropdown-item">
-
-            <p>สมัครสมาชิก - ยังไม่มีบัญชี</p>
-            <signin></signin>
-            <a class="button is-info">สร้างบัญชีใหม่</a>
-
-            
-            <signin ref="signin"></signin>
-
+            <hr class="dropdown-divider">
+            <div class="dropdown-item">
+              <p>สมัครสมาชิก - ยังไม่มีบัญชี</p>
+              <signin></signin>
+              <a class="button is-info"><i class="fa fa-user-plus"></i>&nbspสร้างบัญชีใหม่</a>
+              <signin ref="signin"></signin>
+            </div>
           </div>
         </div>
+        <button aria-label="close" class="modal-close is-large me-gray2-background" @click="hideLoginFn"></button>
       </div>
     </div>
   `,
   data: function () {
     return {
       email:"hihigolgol@hotmail.com",
-      pass:"1234"
+      pass:"1234",
+      showLogin: false
     }
   },
   methods:{
@@ -843,6 +886,12 @@ Vue.component('login',{
 
       });
 
+    },
+    showLoginFn: function(){
+      this.showLogin = true
+    },
+    hideLoginFn: function(){
+      this.showLogin = false
     }
   }
 });

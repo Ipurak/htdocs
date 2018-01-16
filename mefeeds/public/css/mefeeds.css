@@ -29,11 +29,6 @@ html, body
   margin-top: 0px;
 }
 
-#dropdown-login
-{
-  /*left: -100% !important;*/
-  width: 350px;
-}
 
 .me-post-content-public
 {
@@ -152,6 +147,43 @@ html, body
   box-shadow: 0px 3px 3px -1px rgba(158,146,158,1);
 }
 
+.me-gray-background{
+  background-color: rgba(245, 245, 245, 1) !important;
+}
+
+.me-gray2-background{
+  background-color: rgba(173, 173, 173, 1) !important;
+}
+
+.me-footerButtons {
+    bottom: 14px;
+    position: fixed;
+    right: 30px;
+    z-index: 660;
+}
+
+.me-footerButtons div {
+  font-size: 50px;
+  padding: 0px 14px 11px 14px !important;
+  color: rgba(173, 173, 173, 1) !important;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
+}
+
+.hero.me-section{
+  background-color: #209cee;
+}
+
+.hero.me-section .title, .subtitle {
+    color: #fff;
+}
+
+.hero-foot a{
+  color: #fff;
+}
+
+
 .me-post-card {
   width: 500px;
 }
@@ -176,11 +208,17 @@ html, body
     .me-post-card {
       width: 90%;
     }
+    body{
+      overflow-x: hidden;
+    }
 }
 
 @media only screen and (max-width: 767px) and (orientation: portrait) {
     /* portrait phones */
     .me-post-card {
       width: 90%;
+    }
+    body{
+      overflow-x: hidden;
     }
 }
