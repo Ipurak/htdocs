@@ -109,16 +109,7 @@
 
         <div class="column is-narrow">
           <div class="box">
-            <div class="field has-addons">
-              <div class="control">
-                <input class="input" type="text" placeholder="ค้นหาแท็กที่ท่านสนใจ">
-              </div>
-              <div class="control">
-                <a class="button is-info">
-                  <i class="fa fa-search"></i>
-                </a>
-              </div>
-            </div>
+            aaaaaaa
           </div>
         </div>
 
@@ -221,6 +212,18 @@
             </div>
 
             <div id="feeds">
+              
+              <div class="field has-addons search-post">
+                <div class="control">
+                  <input class="input" v-model="searchValue" type="text" placeholder="ค้นหาแท็กที่ท่านสนใจ">
+                </div>
+                <div class="control">
+                  <a class="button is-link" @click="search">
+                    <i class="fa fa-search"></i>
+                  </a>
+                </div>
+              </div>
+
               <div class="box" v-for="feed in feeds">
 
                 <!-- <div class="card">   -->

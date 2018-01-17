@@ -183,6 +183,15 @@ html, body
   color: #fff;
 }
 
+.search-post{
+  position: fixed;
+  z-index: 99999999;
+  top: 9px;
+}
+
+.search-post input{
+  width: 200px;
+}
 
 .me-post-card {
   width: 500px;

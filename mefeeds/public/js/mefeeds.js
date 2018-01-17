@@ -726,7 +726,8 @@ var feeds = new Vue({
     "feeds":{},
     "type":"all",
     "hashtag":"",
-    "imageModalActive":false
+    "imageModalActive":false,
+    "searchValue":""
   },
   created:function(){
     this.type = "all"
@@ -785,6 +786,19 @@ var feeds = new Vue({
       this.$refs.image.src = ""
       document.getElementsByTagName('html')[0].style.overflow = "auto"
       // menu[0].style.position = "fixed"
+    },
+    search: function () {
+     
+      if (this.hashtag != ""){
+        this.type = "hashtag"
+        this.hashtag = this.searchValue
+        this.get()
+      }else{
+        this.type = "all"
+        this.hashtag = ""
+        this.get()
+      }
+      
     }
   }
 });
@@ -984,112 +998,5 @@ var logout = new Vue({
 /*##############################################################################*/
 /*##############################################################################*/
 /*[END] LOGOUT*/
-/*##############################################################################*/
-/*##############################################################################*/
-
-/*##############################################################################*/
-/*##############################################################################*/
-/*[START] SIGNIN*/
-/*##############################################################################*/
-/*##############################################################################*/
-// Vue.component('signin',{
-//   template: `<div id="modal" class="modal" v-bind:class="{ 'is-active': isActive }">
-//               <div class="modal-background"></div>
-//               <div class="modal-content">
-//                 <div class="box">
-//                   <article class="media">
-//                     <div class="media-content">
-//                       <div class="content">
-                        
-//                         <div class="field">
-//                           <label class="label">ชื่อ-สกุล</label>
-//                           <div class="control has-icons-left has-icons-right">
-//                             <input class="input is-danger" type="email" placeholder="มานี มีนา">
-//                             <span class="icon is-small is-left">
-//                               <i class="fa fa-user"></i>
-//                             </span>
-//                             <span class="icon is-small is-right">
-//                               <i class="fa fa-warning"></i>
-//                             </span>
-//                           </div>
-//                           <p class="help is-danger">กรุณากรอกชื่อ</p>
-//                         </div>
-
-//                         <div class="field">
-//                           <label class="label">อีเมล</label>
-//                           <div class="control has-icons-left has-icons-right">
-//                             <input class="input is-danger" type="email" placeholder="example@example.com">
-//                             <span class="icon is-small is-left">
-//                               <i class="fa fa-envelope"></i>
-//                             </span>
-//                             <span class="icon is-small is-right">
-//                               <i class="fa fa-warning"></i>
-//                             </span>
-//                           </div>
-//                           <p class="help is-danger">This email is invalid</p>
-//                         </div>
-
-//                         <div class="field">
-//                           <label class="label">ชื่อบริษัทห้างร้าน</label>
-//                           <div class="control has-icons-left has-icons-right">
-//                             <input class="input is-danger" type="email" placeholder="Mavel Hotel, ไพบูล การยาง, ร้านช่างสี">
-//                             <span class="icon is-small is-left">
-//                               <i class="fa fa-building" ></i>
-//                             </span>
-//                             <span class="icon is-small is-right">
-//                               <i class="fa fa-warning"></i>
-//                             </span>
-//                           </div>
-//                           <p class="help is-danger">This email is invalid</p>
-//                         </div>
-
-//                         <footer class="card-footer">
-//                           <p class="card-footer-item" @click="close">
-//                             <span>
-//                               <a href="#">ยกเลิก</a>
-//                             </span>
-//                           </p>
-//                           <p class="card-footer-item">
-//                             <span>
-//                               <a href="#">สมัครใช้งาน</a>
-//                             </span>
-//                           </p>
-//                         </footer>
-
-//                       </div>
-//                     </div>
-//                   </article>
-//                 </div>
-//               </div>
-//               <button class="modal-close is-large"></button>
-//             </div>`,
-//   data: function () {
-//     return {
-//       isActive:true
-//     }
-//   },
-//   methods:{
-//     open: function () {
-//       if(this.isActive){
-//         this.isActive = false;
-//       }else{
-//         this.isActive = true;
-//       }
-//     },
-//     close: function(){
-
-//       this.isActive = false;
-
-//     }
-//   }
-// });
-
-// var signin = new Vue({
-//   el:"#signin"
-// });
-
-/*##############################################################################*/
-/*##############################################################################*/
-/*[END] SIGNIN*/
 /*##############################################################################*/
 /*##############################################################################*/
