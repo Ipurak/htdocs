@@ -140,7 +140,6 @@ html, body
   position: fixed;
   z-index: 999;
   width: 100%;
-  /*top: 100px;*/
   left: 0px;
   -webkit-box-shadow: 0px 3px 3px -1px rgba(158,146,158,1);
   -moz-box-shadow: 0px 3px 3px -1px rgba(158,146,158,1);
@@ -187,6 +186,7 @@ html, body
   position: fixed;
   z-index: 99999999;
   top: 9px;
+  right: 1%;
 }
 
 .search-post input{
@@ -219,6 +219,16 @@ html, body
     }
     body{
       overflow-x: hidden;
+    }
+    .search-post{
+      top: 54px;
+      left: 0;
+      padding: 2px;
+      background-color: #209cee;
+      width: 100%;
+    }
+    .search-post input{
+      width: 100%;
     }
 }
 

@@ -261,8 +261,7 @@ Vue.component('writefeed',{
         let scroll = window.scrollY
         if (scroll >= window.innerHeight && vm.isActivePostList === false) {//fixed
           vm.mypostFixed = true
-          mypost.style.top = (menuHeight-1)+"px"
-          console.log( vm.mypostFixed  ) 
+          mypost.style.top = (menuHeight+menuHeight-20)+"px"
         }else {//cancel fixed
           vm.mypostFixed = false
           mypost.style = ""
