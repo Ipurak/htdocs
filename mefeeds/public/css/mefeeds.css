@@ -184,7 +184,7 @@ html, body
 
 .search-post{
   position: fixed;
-  z-index: 99999999;
+  z-index: 1000;
   top: 9px;
   right: 1%;
 }
@@ -230,6 +230,11 @@ html, body
     .search-post input{
       width: 100%;
     }
+    #navMenu {
+      top: 90px;
+      position: absolute;
+      width: 100%;
+    } 
 }
 
 @media only screen and (max-width: 767px) and (orientation: portrait) {
