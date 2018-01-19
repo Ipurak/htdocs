@@ -167,8 +167,15 @@ Vue.component('writefeed',{
 
 
                 <div class="field">
+                  <div ref="mepostDesc"></div>
                   <div class="control">
-                    <textarea class="textarea" @click="resizePostEdit( $event, index )" placeholder="รายละเอียดของงาน" v-model="mePost[index].desc" ></textarea>
+                    <textarea 
+                      class="textarea" 
+                      @click="resizePostEdit( $event, index )" 
+                      placeholder="รายละเอียดของงาน" 
+                      v-model="mePost[index].desc" 
+                      @keyup="EditDescPost(index)"
+                      ></textarea>
                   </div>
                 </div>
 
@@ -417,6 +424,27 @@ Vue.component('writefeed',{
         }
 
       }
+
+    },
+    EditDescPost: function( index ){
+      console.log(this.$refs.mepostDesc[index] )
+      // alert(this.mePost[index].desc)
+      // this.hashtagFiltersForEditPost(index)
+    },
+    hashtagFiltersForEditPost: function (index) {
+
+      let hastag = this.mePost[index].desc.match(/(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<span class='hash_tag'>$2</span>")
+      console.log( "hastag: ",hastag )
+      // if (this.hashtag != null) {
+
+      //   let arr = this.hashtag
+      //   for (var i = 0; i < arr.length; i++) {
+
+      //     this.showHashtag = this.showHashtag + '<a href="#">' + this.hashtag[i] + '</a>'
+
+      //   }
+
+      // }
 
     },
     clearInput:function(){
