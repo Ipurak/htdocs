@@ -160,6 +160,8 @@
                 <?php
                   if ( $logged ){
                     echo '<div id="logout"><logout></logout></div>';
+                  }else{
+                    echo '<div id="logout"></div>';
                   }
                   // $this->session->sess_destroy();
                 ?>
@@ -170,6 +172,8 @@
                 <?php
                   if ( $logged ){
                     echo '<div class="field" id="writefeed"><writefeed></writefeed></div>';
+                  }else{
+                    echo '<div id="writefeed"></div>';
                   }
                 ?>
                 <!-- Write Feed -->
@@ -177,8 +181,10 @@
 
               
                 <?php
-                  if ( $logged != 1 ){
+                  if ( !$logged ){
                     echo '<div id="login"><login></login></div>';
+                  }else{
+                    echo '<div id="login"></div>';
                   }
                  ?>
                 <!-- Login -->
