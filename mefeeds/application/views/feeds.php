@@ -75,16 +75,42 @@
         <div class="columns is-vcentered">
         <div class="column">
           <p class="title">
-            #MeJobPhuket 
+            MeJobPhuket
           </p>
           <p class="subtitle">
-            มีงานภูเก็ต
+            <div class="tags">
+              <div class="tag is-info">สถานที่:</div>&nbsp
+              <a class="tag is-primary">#เมืองภูเก็ต</a>
+              <a class="tag is-primary">#กระทู้</a>
+              <a class="tag is-primary">#ถลาง</a>
+              <div class="tag is-info">แท็กยอดนิยม:</div>&nbsp
+              <a class="tag">#โปรแกรมเมอร์</a>
+              <a class="tag is-white">#ช่างเชื่อม</a>
+              <a class="tag is-white">#ถลาง</a>
+              <a class="tag is-white">#พนักงานขับรถ</a>
+              <a class="tag is-white">#แคชเชียร์</a>
+              <a class="tag is-white">#ถลาง</a>
+              <a class="tag is-white">#แม่บ้าน</a>
+              <a class="tag is-white">#โปรแกรมเมอร์</a>
+              <a class="tag is-white">#ช่างเสริมสวย</a>
+            </div>
           </p>
         </div>
 
         <div class="column is-narrow">
           <div class="box">
-            aaaaaaa
+            <div id="carbonads">
+              <span>
+                <span class="carbon-wrap">
+                  <a href="http://footballtabl.es/" class="carbon-img" target="_blank" rel="noopener">
+                    <img src="//fallbacks.carbonads.com/nosvn/fallbacks/ee60df160da9698be82293f861214209.png" alt="" border="0" height="100" width="130" style="max-width: 130px;">
+                  </a>
+                  <a href="http://footballtabl.es/" class="carbon-text" target="_blank" rel="noopener">
+                    <!-- footballtabl.es is your free and mobile-friendly home for all football tables ⚽️ -->
+                  </a>
+                </span>
+              </span>
+            </div>
           </div>
         </div>
 

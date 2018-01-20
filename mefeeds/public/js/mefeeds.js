@@ -95,7 +95,7 @@ Vue.component('writefeed',{
             <footer class="card-footer" v-bind:class="{ 'mypostFixed': mypostFixed }" ref="mypost">
               <p class="card-footer-item">
                 <span>
-                  <a href="#myfeed" class="" @click="postList"> <i class="fa fa-th-list" aria-hidden="true"></i>&nbspโพสต์ของฉัน&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
+                  <a href="#myfeed" class="" @click="postList"> โพสต์ของฉัน&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
                 </span>
               </p>
             </footer>
@@ -167,7 +167,7 @@ Vue.component('writefeed',{
 
 
                 <div class="field">
-                  <div ref="mepostDesc"></div>
+                  <div class="showHashtag" ref="mepostDesc"></div>
                   <div class="control">
                     <textarea 
                       class="textarea" 
@@ -191,20 +191,9 @@ Vue.component('writefeed',{
               </div>
               
               <footer class="card-footer">
-
                 <a v-if="mePost[index].datepush.status === 1" class="card-footer-item button is-primary" @click="pumppost( index )"><i class="fa fa-hand-o-up"></i> &nbspดันโพสต์</a>
-
                 <a v-else class="card-footer-item"><i class="fa fa-circle-o-notch fa-spin"></i> &nbspดันได้อีก{{ mePost[index].datepush.nexttime | moment }}</a>
-
-                <div class="control">
-                  <div class="select">
-                    <select v-model="mePost[index].status" @change="updateStatus( index )">
-                      <option v-for="option in status.options" v-bind:value="option.value">
-                        {{ option.text }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
+                <a class="button is-danger" @click="closepost( index )">ปิดรับสมัคร</a>
               </footer>
             </div>
           </article>
@@ -240,12 +229,7 @@ Vue.component('writefeed',{
       validateDescInputfail:false,
       postLoadedBtn:false,
       mypostFixed:false,
-      status:{
-        options: [
-          { text: 'เผยแพร่', value: 1 },
-          { text: 'ปิดรับสมัคร', value: 0 },
-        ]
-      },
+      editPostHashtag:[],
       delay: (function(){
         var timer = 0;
         return function(callback, ms){
@@ -268,7 +252,13 @@ Vue.component('writefeed',{
         let scroll = window.scrollY
         if (scroll >= window.innerHeight && vm.isActivePostList === false) {//fixed
           vm.mypostFixed = true
-          mypost.style.top = (menuHeight+menuHeight-20)+"px"
+          if( mypost.offsetWidth < 751 ){//mobile view
+            mypost.style.top = (menuHeight+menuHeight-20)+"px"
+          }else{//destop view
+            mypost.style.top = menuHeight+"px"  
+          }
+
+          console.log( mypost.offsetWidth )
         }else {//cancel fixed
           vm.mypostFixed = false
           mypost.style = ""
@@ -287,6 +277,9 @@ Vue.component('writefeed',{
 
   },
   methods:{
+    closepost:function(){
+      alert("Close this post")
+    },
     validate:function( type ){
       if( type === "title" ){
         ( this.title.length > 0 ) ? this.validateTitleInputSuccess = true : this.validateTitleInputSuccess = false
@@ -427,24 +420,24 @@ Vue.component('writefeed',{
 
     },
     EditDescPost: function( index ){
-      console.log(this.$refs.mepostDesc[index] )
-      // alert(this.mePost[index].desc)
-      // this.hashtagFiltersForEditPost(index)
+      this.hashtagFiltersForEditPost(index)
     },
     hashtagFiltersForEditPost: function (index) {
 
-      let hastag = this.mePost[index].desc.match(/(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<span class='hash_tag'>$2</span>")
-      console.log( "hastag: ",hastag )
-      // if (this.hashtag != null) {
+      let hashtag  = []
+          hashtag = this.mePost[index].desc.match(/(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<span class='hash_tag'>$2</span>")
+          this.mePost[index].hashtag = hashtag
+      if (hashtag.length != 0) {
 
-      //   let arr = this.hashtag
-      //   for (var i = 0; i < arr.length; i++) {
+        let element = ""
+        for (var i = 0; i < hashtag.length; i++) {
 
-      //     this.showHashtag = this.showHashtag + '<a href="#">' + this.hashtag[i] + '</a>'
+          element = element + '<a href="#">' + hashtag[i] + '</a>'
 
-      //   }
+        }
+        this.$refs.mepostDesc[index].innerHTML = element 
 
-      // }
+      }
 
     },
     clearInput:function(){
@@ -649,7 +642,8 @@ Vue.component('writefeed',{
       axios.post('post/update', {
 
         typ:"update",
-        data:vm.mePost[index]
+        data:vm.mePost[index],
+        hashtag:vm.mePost[index].hashtag
 
       }).then( function ( response ) {
         if( response.status === 200 ){
@@ -667,6 +661,7 @@ Vue.component('writefeed',{
       let post = this.mePost[index];
       ( post.opened == 1 ) ? post.opened = false : post.opened = true;
       ( post.closed == 1 ) ? post.closed = false : post.closed = true;
+      this.EditDescPost( index )
 
     },
     updateStatus:function ( index ){
@@ -968,6 +963,9 @@ Vue.component('logout',{
     </div>
     <div class="dropdown-menu" id="logout" role="menu">
       <div class="dropdown-content">
+        <a href="./editProfile" class="dropdown-item">
+          <i class="fa fa-history"></i> โพสต์ที่ปิดประกาสแล้ว
+        </a>
         <a href="./editProfile" class="dropdown-item">
           <i class="fa fa-cog"></i> แก้ไขข้อมูลทั่วไป
         </a>

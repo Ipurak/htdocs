@@ -33,13 +33,15 @@ html, body
 .me-post-content-public
 {
   /*background-color: rgba(10, 10, 10, 0.1);*/
-  background-color: #e0ffe8;
+  background-color: #f6fef9;
+  border: solid #23d160 1px;
 }
 
 .me-post-content-closed
 {
   /*background-color: rgba(10, 10, 10, 0.1);*/
-  background-color: #ffe0e0;
+  background-color: #fff5f7;
+  border: solid #ff3860 1px;
 }
 
 .me-border-radius-5
