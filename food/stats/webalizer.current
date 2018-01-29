@@ -1,0 +1,1890 @@
+# Webalizer V2.21-02 Incremental Data - 01/27/2018 00:10:12
+2018 1 27 0 10 12
+79451 67787 145 380 255 34 150961521 63447 113 0
+1 262 6337 24 27
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+28807 19886 52259126 14 17451 26
+11263 11149 16464001 97 10355 48
+39119 36490 82057126 42 35379 39
+262 262 181268 1 262 1
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+262 262 181268 262
+0 0 0 0
+17 12 242518 14
+0 0 0 0
+14 13 12736 14
+1241 1240 501390 1241
+2059 2058 840892 2059
+2254 2252 1009993 2254
+2059 2058 844326 2058
+1775 1760 1585965 1666
+540 538 1412820 469
+942 928 2923461 756
+965 919 6853196 463
+4241 3731 10432833 3565
+7906 5839 24051834 4783
+8846 4180 13280389 4635
+4873 3592 3806425 4722
+6732 5739 12281483 4801
+4468 3856 15717085 3018
+10171 8860 27847239 7734
+8515 8483 9398125 8227
+4711 4638 10363179 4147
+3758 3742 3884297 3617
+3102 3087 3490067 2942
+0
+0
+0
+67787
+0
+0
+0
+0
+0
+24
+0
+1
+8129
+0
+612
+0
+0
+0
+0
+0
+0
+486
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+2412
+0
+0
+0
+0
+0
+# -urls- 
+/assets/vendor/font-awesome/fonts/fontawesome-webfont.ttf
+0 2 0 97974 0 0
+/admin/dishes/Do/Add/id/1
+0 1 0 6067 0 0
+/assets/vendor/iCheck/skins/all.css
+0 100 0 105530 0 0
+/merchant/size
+0 6 0 37749 0 0
+/assets/vendor/raty/jquery.raty.js
+0 74 0 388497 0 0
+/ajaxmerchant/LoadArea
+0 8 1 6333 0 0
+/assets/vendor/fancybox/source/fancybox_loading@2x.gif
+0 4 0 89307 0 0
+/
+0 186 0 1644315 59 9
+/merchant/sms-broadcast
+0 2 0 11538 0 0
+/merchant/settings
+0 19 0 272812 0 0
+/assets/vendor/jquery.appear.js
+0 75 0 154039 0 0
+/upload/1516778938-logo1dest.png
+0 2 0 33996 0 0
+/upload/1516793274-marker-map.png
+0 13 0 17741 0 0
+/assets/vendor/jqplot/excanvas.min.js
+0 29 0 239250 0 0
+/assets/vendor/uikit/css/addons/uikit.addons.min.css
+0 54 0 179783 0 0
+/checkout/
+0 8 0 62814 0 0
+/upload/1516953531-19114053_1538414212857320_8559044473882372125_n.jpg
+0 20 1 367667 0 0
+/admin/emailsettings
+0 2 0 13531 0 0
+/ajax/LoadPostCodeByArea
+0 6 0 3987 0 0
+/admin/order-status
+0 3 0 18048 0 0
+/admin
+0 21 0 140424 5 0
+/admin/ManageCurrency//id/0
+0 3 0 17351 0 0
+/admin/cronjobs
+0 2 0 12266 0 0
+/assets/vendor/jqplot/jquery.jqplot.min.css
+0 29 0 41760 0 0
+/merchant/CategoryList/Do/Add
+0 9 0 57447 0 0
+/assets/vendor/jqplot/jquery.jqplot.min.js
+0 29 0 1241867 0 0
+/admin/customPage/Do/Add
+0 1 0 6046 0 0
+/admin/invoice
+0 1 1 6217 0 0
+/assets/images/b-4.jpg
+0 1 1 263316 0 0
+/merchant/payserasettings
+0 2 1 12409 0 0
+/assets/vendor/imagesloaded.pkgd.js
+0 75 0 566375 0 0
+/assets/vendor/markercluster.js
+0 75 0 632750 0 0
+/admin/sms-package
+0 2 0 11684 0 0
+/admin/braintree
+0 1 0 5862 0 0
+/merchant/cooking-ref
+0 4 0 25417 0 0
+/merchant/user/Do/Add
+0 1 101 7154 0 0
+/assets/vendor/bootstrap/css/bootstrap.min.css.map
+0 6 0 120246 0 0
+/ajaxadmin/loadCountryDetails
+0 30 0 32699 0 2
+/merchant/tablebooking
+0 7 0 46963 0 0
+/admin/smsPackage/Do/Add
+0 1 0 5931 0 0
+/menu-test
+0 9 0 84319 0 0
+/assets/images/your-order.png
+0 17 0 45370 0 0
+/contact
+0 6 0 75787 1 0
+/upload/1516779033-logo1dest.png
+0 3 0 66736 0 0
+/assets/vendor/jquery.ui.timepicker-0.0.8.js
+0 114 0 1278112 0 0
+/merchant/FoodItem/Do/Add
+0 3 0 22869 0 0
+/merchant/sales-report
+0 1 1 6411 0 0
+/ajax/SetLocationFee
+0 2 0 2462 0 0
+/assets/vendor/nprogress/nprogress.css
+0 72 0 87464 0 0
+/assets/images/byname.png
+0 2 0 1275 0 0
+/webmail/skins/larry/images/filetypes.png
+0 1 0 4960 0 0
+/webmail/program/js/app.min.js
+0 1 0 43827 0 0
+/webmail/skins/larry/images/messages_dark.png
+0 1 0 1804 0 0
+/ajaxmerchant/LoadCityList
+0 10 0 7923 0 0
+/assets/vendor/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css
+0 54 0 144845 0 0
+/assets/images/flags/th.png
+0 30 0 25071 0 0
+/merchant/AddOnItem/Do/Add
+0 4 0 25734 0 0
+/merchant/mollie
+0 5 0 29358 0 0
+/assets/images/store-logo4.png
+0 8 0 7680 0 0
+/admin/commisionsettings
+0 2 0 13333 0 0
+/merchant/review
+0 2 0 11801 0 0
+/assets/images/divider.png
+0 73 0 96672 0 0
+/admin/login/logout/true
+0 5 0 20521 0 0
+/store/merchantSignup/Do/step3/token/8996f53e28c22bfc666dcf463250a2a4
+0 3 0 20341 0 0
+/assets/css/install.css
+0 8 0 3928 0 0
+/admin/managelocation
+0 24 0 140490 0 0
+/assets/images/byfood.png
+0 2 0 1501 0 0
+/merchant/sisowsettings
+0 2 1 12313 0 0
+/upload/1516779156-logo1dest.png
+0 22 0 107201 0 0
+/upload/1516968774-euTUTzi.jpg
+0 2 0 145790 0 0
+/assets/images/b-2.jpg
+0 15 0 2954188 0 0
+/assets/vendor/jquery-1.10.2.min.js
+0 98 0 3293424 0 0
+/webmail/skins/larry/images/quota.png
+0 2 0 10602 0 0
+/merchant/bookingreport
+0 1 1 6289 0 0
+/assets/images/banner.jpg
+0 14 0 940543 0 0
+/assets/vendor/jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js
+0 54 0 359873 0 0
+/assets/vendor/bootstrap/js/bootstrap.min.js
+0 80 0 840565 0 0
+/assets/vendor/animate.min.css
+0 72 0 406347 0 0
+/admin/bankdeposit
+0 1 0 5770 0 0
+/webmail/skins/larry/images/ajaxloader_dark.gif
+0 2 0 4364 0 0
+/assets/images/banner-5.jpg
+0 14 0 7701861 0 0
+/upload/1516779689-marker-map.png
+0 5 0 3928 0 0
+/ajax/LoadArea
+0 6 0 4962 0 0
+/admin/dishes/Do/Add
+0 1 0 5969 0 0
+/admin/sponsoredMerchantList/Do/Add
+0 1 0 6247 0 0
+/merchant/add-on-item
+0 6 0 37957 0 0
+/signup
+0 11 0 111052 0 0
+/merchant/food-item
+0 11 0 69999 0 0
+/admin/paymentgatewaysettings
+0 7 0 41588 0 0
+/admin/stripe-settings
+0 1 0 5846 0 0
+/assets/vendor/fancybox/source/jquery.fancybox.css
+0 124 0 255435 0 0
+/upload/1516953531-26229645_10155393596807705_8323567228759816242_n-(1).jpg
+0 20 0 888227 0 0
+/ajax/AreaList
+0 34 1 20996 0 0
+/paymentoption
+0 5 0 40509 0 0
+/cuisine
+0 30 0 465079 0 0
+/assets/vendor/chosen/chosen.css
+0 99 0 329705 0 0
+/merchant/AddOnItem/Do/Add/id/1
+0 1 0 6683 0 0
+/confirmorder
+0 3 0 21034 0 0
+/admin/seo
+0 4 0 24301 0 0
+/assets/images/delivery-option.png
+0 14 0 35734 0 0
+/admin/ajax
+0 58715 0 32705466 34 10
+/merchant/login
+0 1 0 4260 0 0
+/assets/vendor/intel/build/img/flags.png
+0 14 0 868215 0 0
+/merchant/gallerysettings
+0 2 0 11661 0 0
+/assets/vendor/ionicons-2.0.1/fonts/ionicons.ttf
+0 73 0 8135640 0 0
+/assets/images/bystreet.png
+0 2 0 2179 0 0
+/assets/vendor/bootstrap/css/bootstrap.min.css
+0 77 0 1678382 0 0
+/admin/merchant
+0 20 0 123832 0 0
+/assets/vendor/jqplot/plugins/jqplot.pointLabels.min.js
+0 29 0 60697 0 0
+/webmail/skins/larry/images/splitter.png
+0 2 0 934 0 0
+/merchant/codsettings
+0 2 0 12005 0 0
+/admin/payumonenysettings
+0 1 0 5775 0 0
+/assets/css/store-v2.css
+0 72 0 751012 0 0
+/webmail/skins/larry/images/messages.png
+0 2 0 3588 0 0
+/assets/vendor/raty/jquery.raty.css
+0 72 0 71916 0 0
+/assets/vendor/jquery.geocomplete.min.js
+0 75 0 239225 0 0
+/admin/Cuisine
+0 25 0 144975 0 0
+/cron/processsms
+0 7 0 2919 2 0
+/assets/images/byaddress.png
+0 2 0 1351 0 0
+/assets/images/star.png
+0 12 0 16390 0 0
+/admin/packagesAdd/id/1
+0 3 0 18387 0 0
+/admin/customerlist
+0 1 0 6303 0 0
+/assets/vendor/intel/build/css/intlTelInput.css
+0 93 0 340265 0 0
+/admin/cuisine
+0 10 0 60014 0 0
+/ajaxadmin/SortArea
+0 1 0 664 0 0
+/assets/vendor/fancybox/source/fancybox_overlay.png
+0 19 0 18435 0 0
+/assets/vendor/raty/images/star-on.png
+0 13 2 11605 0 0
+/assets/vendor/fancybox/source/fancybox_sprite@2x.png
+0 4 0 21336 0 0
+/webmail/skins/larry/images/linen.jpg
+0 1 0 14493 0 0
+/webmail/skins/larry/images/login_shadow.png
+0 1 0 1121 0 0
+/merchant
+0 15 0 94716 0 0
+/merchant/dash-board
+0 12 0 77558 0 0
+/assets/vendor/uikit/css/addons/uikit.gradient.addons.min.css
+0 54 0 203003 0 0
+/assets/vendor/JQV/form-validator/jquery.form-validator.min.js
+0 113 0 1202045 0 0
+/merchantsignup/
+0 2 0 12545 0 0
+/assets/images/step4.png
+0 60 0 112585 0 0
+/assets/vendor/iCheck/skins/minimal/minimal.png
+0 52 0 66228 0 0
+/ajaxadmin/addCity/
+0 5 0 8650 0 0
+/webmail/plugins/jqueryui/themes/larry/jquery-ui-1.10.4.custom.css
+0 1 0 8270 0 0
+/assets/images/grey-bg.png
+0 75 0 92300 0 0
+/upload/1516950979-19114053_1538414212857320_8559044473882372125_n.jpg
+0 1 0 36455 0 0
+/admin/sisowsettings
+0 1 0 5808 0 0
+/assets/images/banner-2.jpg
+0 5 0 1478758 0 0
+/ajax/SetLocationSearch
+0 17 1 20135 0 0
+/admin/sponsored-merchant-list
+0 7 0 42716 0 0
+/webmail/skins/larry/images/linen_header.jpg
+0 1 0 913 0 0
+/merchant/social-settings
+0 3 0 17147 0 0
+/assets/vendor/EasyAutocomplete/easy-autocomplete.min.css
+0 72 0 159015 0 0
+/merchant/offers/Do/Add
+0 1 1 6275 0 0
+/assets/vendor/justified-gallery/js/jquery.justifiedGallery.min.js
+0 74 0 410919 0 0
+/assets/vendor/font-awesome/fonts/fontawesome-webfont.woff2
+0 28 0 1846421 0 0
+/merchant/mercadopago-settings
+0 1 0 6132 0 0
+/webmail/skins/larry/watermark.html
+0 1 0 588 0 0
+/assets/css/store.css
+0 77 0 785675 0 0
+/webmail/skins/larry/images/selector.png
+0 2 0 1024 0 0
+/assets/images/bg-transparent.png
+0 1 0 589 0 0
+/assets/vendor/DataTables/fnReloadAjax.js
+0 114 0 145550 0 0
+/searcharea
+0 21 0 157514 0 0
+/merchant/shippingrate
+0 39 0 239769 0 0
+/merchant/offers
+0 4 0 23350 0 0
+/webmail/
+0 234 0 205454 0 0
+/assets/images/banner-2-mobile.jpg
+0 6 0 637932 0 0
+/assets/vendor/iCheck/skins/polaris/polaris.css
+0 119 0 123214 0 0
+/webmail/program/resources/blocked.gif
+0 1 0 449 0 0
+/webmail/skins/larry/images/favicon.ico
+0 1 0 13385 0 0
+/assets/sound/notify.mp3
+0 43 0 362784 0 0
+/assets/images/step3.png
+0 60 0 122358 0 0
+/merchant/tablebooking/Do/Add
+0 1 1 6474 0 0
+/cart
+0 2 0 12860 0 0
+/assets/images/banner-5-mobile.jpg
+0 17 0 5207891 0 0
+/ajax/loadAllMerchantMap
+0 4 0 2988 0 0
+/merchant/user
+0 2 1 12362 0 0
+/store/browse/
+0 10 0 61750 0 0
+/admin/manage-currency
+0 3 0 17351 0 0
+/assets/images/bycuisine.png
+0 2 0 2502 0 0
+/assets/vendor/jquery-cookie.js
+0 74 0 97401 0 0
+/assets/vendor/iCheck/skins/flat/_all.css
+0 119 0 196252 0 0
+/webmail/skins/larry/styles.min.css
+0 1 0 10503 0 0
+/webmail/skins/larry/images/contactpic_48px.png
+0 1 0 685 0 0
+/webmail/skins/larry/ui.min.js
+0 1 0 8990 0 0
+/ajax/CityList
+0 135 0 94453 4 6
+/assets/vendor/waypoints/jquery.waypoints.min.js
+0 74 0 255075 0 0
+/assets/vendor/colorpick/css/colpick.css
+0 105 0 297151 0 0
+/assets/vendor/rupee/rupyaINR.css
+0 104 0 79398 0 0
+/webmail/skins/larry/images/addcontact.png
+0 1 0 603 0 0
+/merchant/CookingRef/Do/Add
+0 1 0 5572 0 0
+/merchant/payumoneysettings
+0 1 0 6126 0 0
+/cron/processemail
+0 8 0 3336 3 4
+/upload/1516779318-logo1mobile.png
+0 22 0 75112 0 0
+/assets/vendor/ionicons-2.0.1/fonts/ionicons.woff
+0 3 0 169956 0 0
+/assets/vendor/uikit/js/uikit.js
+0 55 0 950744 0 0
+/favicon.ico
+0 107 0 171920 0 0
+/assets/vendor/uikit/js/addons/sortable.min.js
+0 54 0 155429 0 0
+/ajaxadmin/AddState/
+0 9 0 9507 0 0
+/assets/js/admin.js
+0 65 0 1071611 0 0
+/merchant/sales-summary-report
+0 1 1 6388 0 0
+/merchant/login/logout/true
+0 1 0 4164 0 0
+/admin/dishes
+0 8 0 48184 0 0
+/upload/1516793061-logo1mobile.png
+0 56 0 1063254 0 0
+/assets/vendor/nprogress/nprogress.js
+0 74 0 319381 0 0
+/admin/payserasettings
+0 1 0 5856 0 0
+/assets/js/uploader.js
+0 115 0 237165 0 0
+/assets/vendor/iCheck/skins/futurico/futurico.css
+0 119 0 122143 0 0
+/admin/ManageCurrency/Do/Add
+0 3 0 17432 0 0
+/assets/images/step2.png
+0 60 0 117805 0 0
+/webmail/program/js/list.min.js
+0 1 0 7820 0 0
+/webmail/program/js/jquery.min.js
+0 1 0 30717 0 0
+/assets/images/logo-desktop.png
+0 12 0 14055 0 0
+/assets/vendor/jqplot/plugins/jqplot.canvasTextRenderer.min.js
+0 29 0 123598 0 0
+/assets/js/fblogin.js
+0 8 0 14777 0 0
+/assets/vendor/jqplot/plugins/jqplot.barRenderer.min.js
+0 29 0 115043 0 0
+/admin/custom-page
+0 1 0 5817 0 0
+/merchant/MerchantStatus/
+0 4 0 23879 0 0
+/webmail/program/js/common.min.js
+0 1 0 5382 0 0
+/assets/vendor/jquery.printelement.js
+0 114 0 379827 0 0
+/ajax/saveAvatar
+0 1 0 772 0 0
+/assets/vendor/jqplot/plugins/jqplot.categoryAxisRenderer.min.js
+0 29 0 88102 0 0
+/assets/images/flags/us.png
+0 24 0 25200 0 0
+/upload/1516953531-23435043_1880007258682109_9156359013097461260_n.jpg
+0 20 193 441377 0 0
+/assets/vendor/uikit/js/addons/notify.min.js
+0 55 0 83992 0 0
+/admin/merchantAdd/id/1
+0 5 0 54173 0 0
+/admin/merchantAdd/id/2
+0 1 0 11181 0 0
+/assets/vendor/jQuery-TE_v.1.4.0/jquery-te.png
+0 9 0 21665 0 0
+/assets/vendor/intel/build/img/flags@2x.png
+0 3 0 396138 0 0
+/assets/vendor/justified-gallery/css/justifiedGallery.min.css
+0 72 0 96850 0 0
+/ajaxadmin/AddArea/
+0 6 1 7216 0 0
+/assets/vendor/EasyAutocomplete/jquery.easy-autocomplete.min.js
+0 74 0 414397 0 0
+/logo.png
+0 1 0 8825 0 0
+/assets/images/section1-bg.png
+0 60 0 38807 0 0
+/assets/vendor/chosen/chosen-sprite.png
+0 16 0 13589 0 0
+/item/
+0 2 0 12137 0 0
+/assets/images/step1.png
+0 60 0 96316 0 0
+/merchant/FoodItem
+0 3 0 20094 0 0
+/admin/settings
+0 17 0 350696 0 0
+/upload/1516968168-banan-pie-01.jpg
+0 18 0 848055 0 0
+/upload/1516968552-euTUTzi.jpg
+0 2 0 145790 0 0
+/webmail/skins/larry/images/linen_login.jpg
+0 1 0 10699 0 0
+/assets/images/default.svg
+0 41 0 49780 0 0
+/assets/vendor/iCheck/skins/minimal/_all.css
+0 119 0 209671 0 0
+/assets/images/logo-mobile.png
+0 8 0 23740 0 0
+/webmail/plugins/jqueryui/js/jquery-ui-1.10.4.custom.min.js
+0 1 0 63809 0 0
+/admin/razor
+0 2 0 11656 0 0
+/assets/vendor/ionicons-2.0.1/css/ionicons.min.css
+0 72 0 692074 0 0
+/admin/obdsettings
+0 1 0 5678 0 0
+/merchant/AddOnCategory/Do/Add
+0 4 0 24706 0 0
+/upload/1516951205-19114053_1538414212857320_8559044473882372125_n.jpg
+0 29 0 551216 0 0
+/assets/vendor/iCheck/skins/flat/flat@2x.png
+0 2 0 7346 0 0
+/assets/css/responsive.css
+0 71 0 228271 0 0
+/admin/login
+0 15 0 68135 2 1
+/merchant/Size/Do/Add/id/3
+0 1 0 5563 0 0
+/assets/vendor/noty-2.3.7/js/noty/packaged/jquery.noty.packaged.min.js
+0 74 0 422241 0 0
+/admin/emailogs
+0 1 0 5702 0 0
+/admin/Cuisine/Do/Add/
+0 13 0 74540 0 0
+/assets/js/store.js
+0 74 0 1784931 0 0
+/webmail/skins/larry/images/roundcube_logo.png
+0 1 0 4125 0 0
+/admin/packagesAdd
+0 3 0 18621 0 0
+/assets/images/avatar.jpg
+0 1 0 12633 0 0
+/assets/vendor/theia-sticky-sidebar.js
+0 74 0 281789 0 0
+/admin/Cuisine/Do/Add/id/21
+0 1 0 5788 0 0
+/admin/Cuisine/Do/Add/id/22
+0 1 0 5749 0 0
+/admin/Cuisine/Do/Add/id/23
+0 1 0 5758 0 0
+/admin/Cuisine/Do/Add/id/24
+0 1 0 5743 0 0
+/admin/Cuisine/Do/Add/id/25
+0 1 0 5743 0 0
+/assets/vendor/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js
+0 29 0 45675 0 0
+/admin/Cuisine/Do/Add/id/26
+0 1 0 5755 0 0
+/admin/Cuisine/Do/Add/id/27
+0 1 0 5738 0 0
+/admin/Cuisine/Do/Add/id/28
+0 1 0 5756 0 0
+/ajaxmerchant/LoadTableRates
+0 40 0 32241 0 1
+/admin/Cuisine/Do/Add/id/29
+0 1 0 5758 0 0
+/assets/vendor/font-awesome/fonts/fontawesome-webfont.woff
+0 2 0 116696 0 0
+/webmail/skins/larry/mail.min.css
+0 1 0 5195 0 0
+/webmail/skins/larry/images/ajaxloader.gif
+0 2 0 3534 0 0
+/upload/1516781107-1464711629-spicy.png
+0 3 0 16964 0 0
+/merchant/print
+0 1 0 2476 0 0
+/ajaxmerchant/SaveRate
+0 1 0 675 0 0
+/admin/Cuisine/Do/Add/id/30
+0 1 0 5749 0 0
+/admin/Cuisine/Do/Add/id/31
+0 1 0 5739 0 0
+/admin/Cuisine/Do/Add/id/32
+0 1 0 5761 0 0
+/admin/Cuisine/Do/Add/id/33
+0 1 0 5762 0 0
+/admin/packages
+0 12 0 72275 0 0
+/admin/Cuisine/Do/Add/id/34
+0 1 0 5765 0 0
+/admin/themesettings
+0 3 0 21782 0 0
+/admin/Cuisine/Do/Add/id/35
+0 1 0 5778 0 0
+/admin/Cuisine/Do/Add/id/36
+0 1 0 5746 0 0
+/admin/Cuisine/Do/Add/id/37
+0 1 0 5742 0 0
+/admin/Cuisine/Do/Add/id/38
+0 1 0 5733 0 0
+/admin/mercadopago-settings
+0 1 0 5790 0 0
+/merchant/FoodItem/Do/Add/id/1
+0 6 0 45669 0 0
+/merchant/ingredients
+0 5 0 30924 0 0
+/merchant/voucher/Do/Add
+0 1 49 6366 0 0
+/menu-my-shop
+0 39 1 400316 0 0
+/ajax/ShowLocationFee/
+0 15 0 13494 0 0
+/admin/withdrawalsettings
+0 3 0 20211 0 0
+/assets/vendor/font-awesome/css/font-awesome.min.css
+0 78 0 568275 0 0
+/assets/vendor/iCheck/skins/line/_all.css
+0 119 0 268394 0 0
+/admin/Cuisine/Do/Add
+0 19 0 108889 0 0
+/merchant/tablebooking/Do/settings
+0 1 1 6499 0 0
+/assets/vendor/uikit/js/addons/sticky.min.js
+0 55 0 74587 0 0
+/merchant/merchant
+0 16 0 121710 0 0
+/assets/vendor/uikit/css/uikit.almost-flat.min.css
+0 54 0 845263 0 0
+/assets/js/store-v3.js
+0 74 0 754417 0 0
+/assets/vendor/intel/build/js/intlTelInput.js
+0 98 0 2062519 0 0
+/webmail/program/resources/blank.tif
+0 1 0 637 0 0
+/webmail/program/js/treelist.min.js
+0 1 0 5533 0 0
+/ajax/viewReceipt/
+0 1 0 2862 0 0
+/assets/vendor/jQuery.jPlayer.2.6.0/jquery.jplayer.min.js
+0 54 0 740827 0 0
+/assets/vendor/parallax.js/parallax.min.js
+0 74 0 210675 0 0
+/admin/sponsoredMerchantList
+0 1 0 6254 0 0
+/store
+0 17 0 120149 0 0
+/assets/images/cuisine.png
+0 59 0 136579 0 0
+/receipt/
+0 3 0 20249 0 0
+/upload/1516952811-banan-pie-01.jpg
+0 21 1 1375381 0 0
+/admin/paypal-settings
+0 2 0 12426 0 0
+/merchant/sms-settings
+0 1 0 5250 0 0
+/webmail/skins/larry/images/buttons.png
+0 2 0 31812 0 0
+/webmail/program/js/jstz.min.js
+0 1 0 3012 0 0
+/upload/1516950998-banan-pie-01.jpg
+0 1 1 105608 0 0
+/assets/vendor/iCheck/skins/minimal/minimal@2x.png
+0 2 0 3674 0 0
+/webmail/skins/larry/images/listicons.png
+0 2 0 27554 0 0
+/assets/vendor/typehead/bootstrap3-typeahead.min.js
+0 74 0 268765 0 0
+/assets/vendor/iCheck/skins/square/_all.css
+0 119 0 208271 0 0
+/merchant/stripe-settings
+0 2 1 12381 0 0
+/ajaxmerchant/addNewRates/
+0 13 0 51600 0 0
+/assets/vendor/raty/images/star-off.png
+0 27 0 21431 0 0
+/profile
+0 6 1 47621 0 0
+/admin/merchantcommission
+0 4 0 26027 0 0
+/upload/1516947710-19114053_1538414212857320_8559044473882372125_n.jpg
+0 1 0 36455 0 0
+/assets/vendor/ajaxupload/fileuploader.js
+0 114 0 1204163 0 0
+/admin/merchantAdd
+0 5 0 53103 0 0
+/assets/vendor/magnific-popup/jquery.magnific-popup.js
+0 75 0 1106293 0 0
+/assets/vendor/iCheck/icheck.js
+0 114 0 507393 0 0
+/ajax/CheckLocationData
+0 46 0 30669 0 0
+/assets/vendor/jqplot/plugins/jqplot.dateAxisRenderer.min.js
+0 29 0 96773 0 0
+/merchantsignup
+0 13 0 102283 0 0
+/assets/vendor/fancybox/source/jquery.fancybox.js
+0 129 0 1884575 0 0
+/assets/images/default-image-merchant.png
+0 27 0 169644 0 0
+/admin/merchantAddBulk
+0 1 1 6186 0 0
+/assets/vendor/uikit/fonts/fontawesome-webfont.woff
+0 86 0 6754668 0 0
+/merchant/add-on-category
+0 6 0 36368 0 0
+/assets/vendor/DataTables/jquery.dataTables.min.js
+0 114 0 2547846 0 0
+/admin/social-settings
+0 2 0 12710 0 0
+/merchant/category-list
+0 9 0 55687 0 0
+/assets/css/admin.css
+0 56 0 270142 0 0
+/assets/vendor/jqplot/plugins/jqplot.json2.min.js
+0 29 0 56086 0 0
+/assets/vendor/gmaps.js
+0 74 0 1013047 0 0
+/admin/cardpaymentsettings
+0 2 0 11365 0 0
+/ajax/LoadCityList
+0 7 0 5508 0 0
+/ajaxadmin/SaveArea
+0 5 1 3375 0 0
+/upload/1516793051-logo1dest.png
+0 60 0 1238856 0 0
+/assets/vendor/iCheck/skins/flat/flat.png
+0 22 0 28872 0 0
+/assets/vendor/chosen/chosen.jquery.min.js
+0 114 0 795394 0 0
+/admin/manage-language
+0 6 0 35978 0 0
+/admin/faxsettings
+0 2 0 11755 0 0
+/assets/images/b-2-mobile.jpg
+0 16 0 632454 0 0
+/assets/vendor/readmore.min.js
+0 74 0 177987 0 0
+/assets/vendor/fancybox/source/fancybox_loading.gif
+0 15 0 183213 0 0
+/admin/sms-settings
+0 4 0 28891 0 0
+/admin/incomingwithdrawal
+0 2 0 12850 0 0
+/guestcheckout
+0 12 0 113013 0 0
+/merchant/CategoryList/Do/Add/id/1
+0 1 0 6579 0 0
+/webmail/skins/larry/images/watermark.jpg
+0 2 0 10670 0 0
+/assets/vendor/magnific-popup/magnific-popup.css
+0 71 0 194437 0 0
+/upload/1516953913-22815572_10210715851353091_4318735855225859711_n.jpg
+0 8 0 549367 0 0
+/merchant/order-status
+0 9 0 60842 0 0
+/browse
+0 18 0 146039 1 0
+/upload/1516953531-00000001.png
+0 20 4 2191467 0 0
+/ajaxadmin/SaveState
+0 8 0 4121 0 0
+/merchant/alert-settings
+0 1 2 6170 0 0
+/merchant/voucher
+0 1 1 6182 0 0
+/assets/vendor/waypoints/shortcuts/infinite.min.js
+0 74 0 98363 0 0
+/upload/1516953531-23435212_1512008702185779_9006199868404127724_n.jpg
+0 20 1 330187 0 0
+/assets/images/b6.jpg
+0 47 0 8553105 0 0
+/merchant/AddOnCategory/Do/Add/id/1
+0 1 0 6244 0 0
+/assets/vendor/intel/lib/libphonenumber/build/utils.js
+0 15 0 711829 0 0
+/admin/ajax/
+0 95 0 91298 0 0
+/admin/dashboard
+0 7 0 43623 0 0
+/admin/definelocation
+0 25 0 146368 1 0
+/assets/vendor/uikit/fonts/fontawesome-webfont.ttf
+0 22 0 1712655 0 0
+/ajaxadmin/SaveCity
+0 2 0 1347 0 0
+/admin/incomingorders
+0 4 0 23764 0 0
+# End Of Table - urls
+# -sites- (monthly)
+66.249.83.143
+0 1 0 422 1 1516998558
+/
+66.249.83.148
+0 5 5 33114 0 0
+-
+66.249.83.150
+0 8 8 390250 1 1516998573
+/ajax/CityList
+66.249.83.151
+0 8 8 75218 1 1516998578
+/
+211.115.79.122
+0 44 43 881107 1 1516881990
+/signup
+202.105.116.213
+0 1 0 430 1 1516847106
+/
+66.249.71.159
+0 1 0 241 0 0
+-
+45.35.167.68
+0 1 0 478 0 0
+-
+184.82.141.249
+0 27199 18303 46080473 10 1516836762
+/admin/ajax
+45.35.167.73
+0 2 1 16502 0 0
+-
+45.35.167.75
+0 1 0 524 0 0
+-
+45.35.167.81
+0 1 0 510 0 0
+-
+45.35.167.85
+0 1 1 35974 0 0
+-
+122.72.108.53
+0 1 0 185 1 1516887135
+/
+45.35.167.91
+0 1 1 17006 0 0
+-
+212.129.21.148
+0 1 0 241 1 1516826610
+-
+45.35.167.96
+0 1 0 510 0 0
+-
+45.35.167.97
+0 1 0 496 0 0
+-
+45.35.167.98
+0 2 2 26414 0 0
+-
+45.35.167.99
+0 1 0 484 0 0
+-
+199.217.115.151
+0 1 0 422 1 1517002859
+/
+184.22.57.24
+0 104 101 1156354 1 1516922029
+/ajax/CityList
+144.76.219.43
+0 1 0 189 1 1516942138
+/
+199.30.228.146
+0 2 1 8901 1 1516986890
+/
+66.249.83.21
+0 1 0 422 1 1516998556
+/
+66.249.83.22
+0 10 10 212038 0 0
+-
+66.249.83.24
+0 9 9 70972 0 0
+-
+66.249.83.26
+0 7 7 39197 0 0
+-
+182.232.115.165
+0 1 1 8370 1 1516901185
+/browse
+167.114.158.57
+0 16 12 242088 1 1516933625
+/
+110.88.45.169
+0 4 2 53460 2 1516920293
+/
+27.254.85.195
+0 15 15 6255 5 1517003293
+/cron/processemail
+66.249.71.66
+0 2 0 482 0 0
+-
+184.22.58.134
+0 1 1 585 1 1516852833
+/admin/ajax
+184.22.58.135
+0 8316 8016 22913891 1 1516990073
+/admin/ajax
+216.55.138.168
+0 2 1 26792 1 1516998450
+/
+184.22.59.187
+0 1 1 585 1 1516852928
+/admin/ajax
+184.22.59.17
+0 1 1 585 1 1516852879
+/admin/ajax
+182.232.202.52
+0 121 117 1215952 1 1516817487
+/admin/ajax
+66.249.71.91
+0 1 0 241 0 0
+-
+182.232.75.9
+0 77 76 1281490 1 1516833179
+/ajax/loadAllMerchantMap
+184.22.57.123
+0 1 1 585 1 1516852900
+/admin/ajax
+184.22.59.33
+0 1 1 585 1 1516852921
+/admin/ajax
+76.164.212.230
+0 1 0 430 1 1516816266
+/
+184.22.58.170
+0 1050 1048 2153657 2 1516826401
+/admin/ajax
+184.22.59.43
+0 2857 2813 12308803 1 1516997014
+/admin/ajax
+218.241.108.76
+0 2 1 26166 1 1516960615
+/
+184.22.58.180
+0 1 1 585 1 1516852840
+/admin/ajax
+184.22.58.193
+0 1 1 585 1 1516852886
+/admin/ajax
+184.22.57.162
+0 1 1 585 1 1516852872
+/admin/ajax
+184.22.57.164
+0 1 1 3056 1 1516852909
+/admin/ajax
+111.231.204.21
+0 50 49 717047 1 1516888167
+/
+204.44.65.210
+0 3 0 1290 2 1516814560
+/
+184.22.59.73
+0 1 1 585 1 1516852914
+/admin/ajax
+45.35.109.197
+0 1 0 488 0 0
+-
+45.35.109.199
+0 1 1 12942 0 0
+-
+206.225.80.193
+0 3 0 796 1 1516998459
+/
+184.22.57.176
+0 1 1 585 1 1516852826
+/admin/ajax
+158.69.64.72
+0 1 0 430 1 1516819227
+/
+148.62.14.156
+0 6 4 31704 2 1516922804
+/contact
+182.232.192.212
+0 5 5 5201 1 1516830306
+/admin/ajax
+184.22.56.165
+0 193 193 125260 1 1516865492
+/admin/ajax
+66.249.83.206
+0 10 10 142107 1 1516998559
+/
+66.249.83.208
+0 8 8 90348 0 0
+-
+184.22.56.186
+0 2444 2439 5344499 1 1516975685
+/admin/ajax
+66.249.83.210
+0 9 9 57366 1 1516998557
+/
+35.153.202.36
+0 2 1 26667 1 1516833316
+/
+184.82.143.113
+0 32688 30476 35007057 7 1517011812
+/admin/ajax
+158.69.229.134
+0 2 1 26901 1 1516951935
+/
+184.22.58.4
+0 1 1 585 1 1516852893
+/admin/ajax
+138.201.60.47
+0 2 1 26687 1 1516920229
+/
+45.35.63.209
+0 2 2 22458 1 1516885317
+/
+45.35.63.212
+0 1 1 7905 0 0
+-
+45.35.63.218
+0 1 1 8011 0 0
+-
+45.35.63.222
+0 1 0 528 0 0
+-
+45.35.63.227
+0 1 0 472 0 0
+-
+45.35.63.229
+0 1 1 9859 0 0
+-
+45.35.63.230
+0 1 1 6621 0 0
+-
+45.35.63.231
+0 1 1 12848 0 0
+-
+45.35.63.232
+0 1 1 7858 0 0
+-
+54.186.190.224
+0 2 1 9864 1 1516860706
+/
+45.35.63.236
+0 1 0 490 0 0
+-
+45.35.63.239
+0 3 2 11912 0 0
+-
+45.35.63.242
+0 1 1 12503 0 0
+-
+45.35.63.245
+0 1 1 5937 0 0
+-
+45.35.63.246
+0 1 0 502 0 0
+-
+45.35.63.247
+0 1 0 516 0 0
+-
+184.22.56.29
+0 257 257 165171 1 1516838326
+/admin/ajax
+70.42.131.170
+0 73 72 917603 1 1516969428
+/ajax/CityList
+184.22.59.230
+0 1 1 3056 1 1516852819
+/admin/ajax
+45.35.63.252
+0 1 0 512 0 0
+-
+182.232.202.124
+0 83 83 1289308 1 1516828545
+/admin/ajax
+45.35.109.201
+0 1 0 554 0 0
+-
+45.35.109.208
+0 1 0 430 1 1516885315
+/
+184.22.56.65
+0 527 525 1413634 1 1516969404
+/ajax/CityList
+45.35.109.213
+0 1 1 6113 0 0
+-
+45.35.109.214
+0 1 0 536 0 0
+-
+45.35.109.215
+0 1 1 3646 0 0
+-
+45.35.109.217
+0 1 1 26432 0 0
+-
+45.35.109.218
+0 2 0 1076 0 0
+-
+45.35.109.224
+0 2 1 8123 0 0
+-
+45.35.109.225
+0 1 1 5497 0 0
+-
+45.35.109.226
+0 1 1 6805 0 0
+-
+45.35.109.228
+0 1 0 490 0 0
+-
+45.35.109.229
+0 1 1 4411 0 0
+-
+66.249.88.149
+0 1 0 422 1 1516998477
+/
+45.35.109.231
+0 2 0 1058 0 0
+-
+45.35.109.232
+0 1 1 3615 0 0
+-
+45.35.109.236
+0 1 0 552 0 0
+-
+66.249.88.150
+0 28 28 198503 0 0
+-
+45.35.109.237
+0 1 1 13569 0 0
+-
+66.249.88.151
+0 22 22 552839 1 1516998487
+/ajax/CityList
+66.249.88.152
+0 22 22 340382 1 1516998478
+/
+104.238.248.15
+0 3 2 37148 2 1516818160
+/contact
+45.35.109.241
+0 1 0 490 0 0
+-
+45.35.109.243
+0 2 2 29884 0 0
+-
+45.35.109.247
+0 1 0 512 0 0
+-
+45.35.109.248
+0 2 0 1000 0 0
+-
+45.35.109.249
+0 1 1 3628 0 0
+-
+45.35.109.253
+0 2 0 1046 0 0
+-
+58.10.6.100
+0 1465 1449 4176728 2 1516891162
+/admin/ajax
+184.22.58.66
+0 850 848 1397978 1 1517001142
+/admin/ajax
+66.102.8.54
+0 18 18 255713 1 1516877958
+/
+66.102.8.55
+0 1 0 422 1 1516877957
+/
+51.15.217.185
+0 2 1 26804 1 1516866950
+/
+66.102.8.56
+0 25 25 261705 0 0
+-
+66.102.8.58
+0 29 29 574124 1 1516877964
+/ajax/CityList
+45.35.167.107
+0 1 1 10744 0 0
+-
+45.35.167.112
+0 1 0 528 0 0
+-
+45.35.167.118
+0 1 0 508 0 0
+-
+182.232.173.187
+0 208 185 2773536 1 1517003292
+/receipt/
+45.35.167.121
+0 1 0 490 0 0
+-
+45.35.167.124
+0 1 1 4355 0 0
+-
+45.35.167.125
+0 2 2 28102 0 0
+-
+66.102.6.133
+0 2 0 844 2 1517008453
+/
+66.102.6.135
+0 1 0 422 1 1516878046
+/
+198.186.192.103
+0 1 0 430 1 1516942954
+/
+66.102.6.137
+0 2 0 844 2 1516955459
+/
+182.232.111.232
+0 293 247 3104694 1 1517003132
+/admin/ajax
+66.102.6.148
+0 1 1 6764 1 1516876311
+/admin/login
+66.102.6.150
+0 2 1 6950 1 1516876310
+/admin
+66.102.6.155
+0 49 48 475000 3 1516966377
+/admin
+66.102.6.156
+0 57 57 1325059 0 0
+-
+66.102.6.157
+0 50 50 458594 5 1517008454
+/
+52.34.24.33
+0 1 0 422 1 1516975210
+/
+# End Of Table - sites (monthly)
+# -sites- (daily)
+184.82.143.113
+0 262 262 181268 1 1517011812
+/admin/ajax
+# End Of Table - sites (daily)
+# -referrers- 
+http://pattayafooddelivery.com/assets/vendor/uikit/css/uikit.almost-flat.min.css
+0 8
+https://pattayafooddelivery.com/assets/vendor/fancybox/source/jquery.fancybox.css
+0 28
+https://pattayafooddelivery.com/admin/themesettings
+0 3
+https://pattayafooddelivery.com/merchant/sales-report
+0 5
+- (Direct Request)
+0 327
+http://pattayafooddelivery.com/merchant/Size/Do/Add/id/3
+0 44
+https://pattayafooddelivery.com/receipt/
+0 4
+https://pattayafooddelivery.com/assets/vendor/font-awesome/css/font-awesome.min.css
+0 26
+http://pattayafooddelivery.com/merchant
+0 118
+http://pattayafooddelivery.com/merchantsignup
+0 117
+https://pattayafooddelivery.com/merchant/gallerysettings
+0 33
+http://pattayafooddelivery.com/merchant/offers
+0 90
+https://pattayafooddelivery.com/contact
+0 2
+http://pattayafooddelivery.com/admin/ManageCurrency/Do/Add
+0 64
+https://pattayafooddelivery.com/signup
+0 28
+https://pattayafooddelivery.com/admin/managelocation
+0 101
+http://pattayafooddelivery.com/webmail/skins/larry/watermark.html
+0 1
+https://pattayafooddelivery.com/merchant/user
+0 11
+https://pattayafooddelivery.com/store/browse/
+0 11
+https://pattayafooddelivery.com/merchant/tablebooking/Do/Add
+0 30
+http://pattayafooddelivery.com/contact
+0 1
+http://pattayafooddelivery.com/admin/sponsored-merchant-list
+0 69
+https://pattayafooddelivery.com/assets/images/default-image-merchant.png
+0 11
+https://pattayafooddelivery.com/store
+0 313
+https://www.pattayafooddelivery.com/item/
+0 3
+http://pattayafooddelivery.com/assets/vendor/chosen/chosen.css
+0 5
+http://pattayafooddelivery.com/webmail/skins/larry/styles.min.css
+0 12
+http://pattayafooddelivery.com/webmail/
+0 262
+https://pattayafooddelivery.com/merchant/add-on-item
+0 25
+http://pattayafooddelivery.com/admin/merchantAdd/id/1
+0 193
+http://pattayafooddelivery.com/admin/withdrawalsettings
+0 40
+http://pattayafooddelivery.com/merchant/food-item
+0 105
+https://pattayafooddelivery.com/merchant/voucher/Do/Add
+0 6
+https://www.pattayafooddelivery.com/checkout/
+0 6
+https://pattayafooddelivery.com/admin/dashboard
+0 15
+https://pattayafooddelivery.com/searcharea
+0 42
+https://pattayafooddelivery.com/merchant/AddOnItem/Do/Add
+0 25
+https://www.pattayafooddelivery.com/store/browse/
+0 2
+http://pattayafooddelivery.com/admin/dishes/Do/Add
+0 67
+https://pattayafooddelivery.com/merchant/CategoryList/Do/Add/id/1
+0 5
+http://www.google.com/search
+0 1
+http://pattayafooddelivery.com/store/merchantSignup/Do/step3/token/8996f53e28c22bfc666dcf463250a2a4
+0 65
+https://pattayafooddelivery.com/admin/settings
+0 1087
+https://www.pattayafooddelivery.com/searcharea
+0 6
+http://pattayafooddelivery.com/merchant/CategoryList/Do/Add
+0 8672
+http://pattayafooddelivery.com/merchant/tablebooking
+0 45
+https://pattayafooddelivery.com/merchant/social-settings
+0 4
+https://pattayafooddelivery.com/merchant/category-list
+0 32
+https://pattayafooddelivery.com/admin/sponsoredMerchantList/Do/Add
+0 3
+https://pattayafooddelivery.com/merchant/codsettings
+0 532
+https://pattayafooddelivery.com/cuisine
+0 26
+https://www.pattayafooddelivery.com/browse
+0 2
+https://www.pattayafooddelivery.com/confirmorder
+0 3
+http://pattayafooddelivery.com/admin/merchantcommission
+0 73
+http://pattayafooddelivery.com/admin/cardpaymentsettings
+0 63
+https://pattayafooddelivery.com/merchant/print
+0 1
+http://pattayafooddelivery.com/admin/cronjobs
+0 31
+https://pattayafooddelivery.com/admin/packages
+0 16
+https://www.pattayafooddelivery.com/receipt/
+0 1
+http://pattayafooddelivery.com/merchant/add-on-category
+0 45
+http://pattayafooddelivery.com/merchant/dash-board
+0 93
+http://pattayafooddelivery.com/admin/custom-page
+0 32
+http://pattayafooddelivery.com/admin/customPage/Do/Add
+0 32
+https://pattayafooddelivery.com/merchant/MerchantStatus/
+0 7
+https://pattayafooddelivery.com/admin/sponsoredMerchantList
+0 5
+http://pattayafooddelivery.com/
+0 450
+http://pattayafooddelivery.com/merchant/AddOnCategory/Do/Add
+0 44
+https://pattayafooddelivery.com/merchant/shippingrate
+0 7559
+http://pattayafooddelivery.com/admin/ManageCurrency//id/0
+0 55
+https://pattayafooddelivery.com/setlanguage
+0 1
+http://www.bing.com/search
+0 2
+https://pattayafooddelivery.com/assets/css/store.css
+0 1
+http://pattayafooddelivery.com/admin/incomingwithdrawal
+0 52
+http://pattayafooddelivery.com/admin/stripe-settings
+0 31
+http://pattayafooddelivery.com/admin/sisowsettings
+0 31
+http://pattayafooddelivery.com/index.php/install
+0 25
+https://pattayafooddelivery.com/merchant/FoodItem
+0 155
+http://pattayafooddelivery.com/admin/smsPackage/Do/Add
+0 35
+https://pattayafooddelivery.com/merchant/mollie
+0 67
+https://pattayafooddelivery.com/merchant/AddOnItem/Do/Add/id/1
+0 7
+https://pattayafooddelivery.com/admin/emailsettings
+0 4
+https://pattayafooddelivery.com/merchant/review
+0 5
+http://pattayafooddelivery.com/admin/paymentgatewaysettings
+0 144
+https://pattayafooddelivery.com/assets/vendor/ionicons-2.0.1/css/ionicons.min.css
+0 60
+https://pattayafooddelivery.com/merchant/alert-settings
+0 6
+http://pattayafooddelivery.com/admin/obdsettings
+0 31
+http://pattayafooddelivery.com/assets/vendor/iCheck/skins/minimal/_all.css
+0 6
+http://pattayafooddelivery.com/admin/commisionsettings
+0 34
+http://pattayafooddelivery.com/admin/login/logout/true
+0 84
+https://pattayafooddelivery.com/confirmorder
+0 6
+https://pattayafooddelivery.com/admin/packagesAdd
+0 3
+http://pattayafooddelivery.com/admin/seo
+0 312
+https://pattayafooddelivery.com/merchantsignup
+0 21
+http://pattayafooddelivery.com/admin/dishes/Do/Add/id/1
+0 59
+https://pattayafooddelivery.com/admin
+0 1437
+http://pattayafooddelivery.com/admin/packagesAdd
+0 91
+http://pattayafooddelivery.com/merchant/ingredients
+0 124
+http://pattayafooddelivery.com/merchant/category-list
+0 155
+http://pattayafooddelivery.com/merchant/size
+0 53
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add
+0 631
+https://pattayafooddelivery.com/assets/vendor/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css
+0 8
+https://pattayafooddelivery.com/merchant/merchant
+0 1008
+https://pattayafooddelivery.com/assets/vendor/uikit/css/uikit.almost-flat.min.css
+0 97
+http://pattayafooddelivery.com/webmail/skins/larry/mail.min.css
+0 1
+http://pattayafooddelivery.com/merchant/merchant
+0 313
+http://pattayafooddelivery.com/admin/merchant
+0 287
+https://pattayafooddelivery.com/admin/order-status
+0 7
+http://pattayafooddelivery.com/assets/vendor/fancybox/source/jquery.fancybox.css
+0 2
+https://pattayafooddelivery.com/merchant/sisowsettings
+0 8
+http://pattayafooddelivery.com/merchant/shippingrate
+0 54
+https://pattayafooddelivery.com/guestcheckout
+0 106
+https://pattayafooddelivery.com/
+0 3339
+https://pattayafooddelivery.com/merchant/bookingreport
+0 5
+https://pattayafooddelivery.com/checkout/
+0 18
+https://pattayafooddelivery.com/admin/sponsored-merchant-list
+0 17
+http://pattayafooddelivery.com/assets/css/store-v2.css
+0 25
+https://www.pattayafooddelivery.com/cart
+0 5
+http://pattayafooddelivery.com/merchant/AddOnItem/Do/Add
+0 46
+http://pattayafooddelivery.com/admin/manage-currency
+0 108
+https://pattayafooddelivery.com/merchant/mercadopago-settings
+0 4
+http://pattayafooddelivery.com/admin/dashboard
+0 105
+https://pattayafooddelivery.com/store/merchantSignup/Do/step3/token/8996f53e28c22bfc666dcf463250a2a4
+0 4
+http://pattayafooddelivery.com/assets/vendor/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css
+0 1
+https://pattayafooddelivery.com/admin/merchantAdd
+0 4
+https://pattayafooddelivery.com/merchant/stripe-settings
+0 8
+https://pattayafooddelivery.com/merchantsignup/
+0 4
+https://pattayafooddelivery.com/admin/merchantcommission
+0 4
+http://pattayafooddelivery.com/admin/merchantAdd
+0 163
+https://pattayafooddelivery.com/merchant/ingredients
+0 15
+http://pattayafooddelivery.com/admin/payserasettings
+0 31
+http://pattayafooddelivery.com/merchant/sms-broadcast
+0 116
+http://pattayafooddelivery.com/assets/css/admin.css
+0 1
+https://pattayafooddelivery.com/admin/commisionsettings
+0 2
+https://pattayafooddelivery.com/menu-test
+0 63
+http://pattayafooddelivery.com/admin/themesettings
+0 87
+https://pattayafooddelivery.com/admin/login/logout/true
+0 2
+https://pattayafooddelivery.com/merchant/add-on-category
+0 29
+https://pattayafooddelivery.com/merchant/size
+0 50
+https://pattayafooddelivery.com/merchant
+0 1857
+https://pattayafooddelivery.com/admin/paypal-settings
+0 3
+https://pattayafooddelivery.com/merchant/offers
+0 10
+https://pattayafooddelivery.com/merchant/sales-summary-report
+0 5
+https://pattayafooddelivery.com/admin/cronjobs
+0 3
+https://www.pattayafooddelivery.com/
+0 146
+http://pattayafooddelivery.com/admin/faxsettings
+0 61
+https://www.pattayafooddelivery.com/menu-my-shop
+0 95
+http://pattayafooddelivery.com/assets/vendor/iCheck/skins/flat/_all.css
+0 6
+https://pattayafooddelivery.com/admin/dishes
+0 220
+https://pattayafooddelivery.com/assets/vendor/iCheck/skins/minimal/_all.css
+0 46
+https://pattayafooddelivery.com/admin/incomingwithdrawal
+0 3
+https://pattayafooddelivery.com/merchant/dash-board
+0 3385
+https://pattayafooddelivery.com/admin/login
+0 84
+https://pattayafooddelivery.com/admin/invoice
+0 3
+http://pattayafooddelivery.com/admin/braintree
+0 32
+https://pattayafooddelivery.com/merchant/food-item
+0 66
+https://pattayafooddelivery.com/merchant/CategoryList/Do/Add
+0 31
+https://pattayafooddelivery.com/merchant/payumoneysettings
+0 4
+http://pattayafooddelivery.com/merchant/gallerysettings
+0 44
+http://pattayafooddelivery.com/admin/definelocation
+0 1103
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/
+0 461
+https://pattayafooddelivery.com/admin/merchantAddBulk
+0 2
+http://pattayafooddelivery.com/admin/incomingorders
+0 66
+http://pattayafooddelivery.com/admin/payumonenysettings
+0 31
+https://pattayafooddelivery.com/admin/social-settings
+0 2
+https://pattayafooddelivery.com/merchant/AddOnCategory/Do/Add
+0 19
+https://pattayafooddelivery.com/assets/css/store-v2.css
+0 185
+https://pattayafooddelivery.com/assets/vendor/iCheck/skins/flat/_all.css
+0 16
+https://pattayafooddelivery.com/profile
+0 82
+http://www.siteindexed.com/myurl
+0 1
+https://pattayafooddelivery.com/browse
+0 96
+https://pattayafooddelivery.com/assets/css/admin.css
+0 5
+http://pattayafooddelivery.com/browse
+0 62
+https://pattayafooddelivery.com/merchant/offers/Do/Add
+0 20
+http://pattayafooddelivery.com/index.php/install/finish
+0 23
+https://pattayafooddelivery.com/admin/manage-language
+0 1758
+http://pattayafooddelivery.com/admin/Cuisine
+0 877
+http://pattayafooddelivery.com/merchant/mollie
+0 2670
+https://pattayafooddelivery.com/merchant/settings
+0 7188
+http://pattayafooddelivery.com/merchant/CookingRef/Do/Add
+0 50
+http://pattayafooddelivery.com/merchant/review
+0 45
+https://pattayafooddelivery.com/admin/seo
+0 382
+https://pattayafooddelivery.com/admin/customerlist
+0 6
+http://pattayafooddelivery.com/admin/cuisine
+0 263
+http://pattayafooddelivery.com/merchant/settings
+0 180
+http://pattayafooddelivery.com/merchant/login/logout/true
+0 18
+https://pattayafooddelivery.com/merchant/order-status
+0 3699
+http://pattayafooddelivery.com/admin/sms-settings
+0 232
+http://pattayafooddelivery.com/admin/settings
+0 2144
+https://pattayafooddelivery.com/merchant/FoodItem/Do/Add/id/1
+0 163
+http://pattayafooddelivery.com/merchant/cooking-ref
+0 45
+http://pattayafooddelivery.com/admin/paypal-settings
+0 33
+http://pattayafooddelivery.com/merchant/sms-settings
+0 46
+http://pattayafooddelivery.com/merchant/social-settings
+0 156
+http://pattayafooddelivery.com/admin/emailogs
+0 32
+https://pattayafooddelivery.com/merchant/payserasettings
+0 21
+https://pattayafooddelivery.com/menu-my-shop
+0 658
+http://pattayafooddelivery.com/admin/sms-package
+0 64
+https://pattayafooddelivery.com/cart
+0 5
+https://pattayafooddelivery.com/merchant/login
+0 6
+https://pattayafooddelivery.com/admin/definelocation
+0 297
+https://pattayafooddelivery.com/admin/merchant
+0 5790
+http://pattayafooddelivery.com/admin
+0 180
+http://pattayafooddelivery.com/assets/vendor/ionicons-2.0.1/css/ionicons.min.css
+0 8
+https://pattayafooddelivery.com/admin/incomingorders
+0 10
+http://pattayafooddelivery.com/admin/dishes
+0 80
+https://pattayafooddelivery.com/admin/merchantAdd/id/1
+0 3
+https://pattayafooddelivery.com/admin/merchantAdd/id/2
+0 5
+https://pattayafooddelivery.com/paymentoption
+0 154
+https://pattayafooddelivery.com/admin/paymentgatewaysettings
+0 29
+http://pattayafooddelivery.com/admin/packages
+0 199
+https://pattayafooddelivery.com/merchant/FoodItem/Do/Add
+0 187
+https://pattayafooddelivery.com/merchant/AddOnCategory/Do/Add/id/1
+0 4
+http://pattayafooddelivery.com/admin/packagesAdd/id/1
+0 102
+https://pattayafooddelivery.com/assets/vendor/intel/build/css/intlTelInput.css
+0 14
+http://pattayafooddelivery.com/admin/razor
+0 68
+http://pattayafooddelivery.com/admin/managelocation
+0 5408
+http://pattayafooddelivery.com/admin/login
+0 90
+http://pattayafooddelivery.com/admin/social-settings
+0 33
+https://www.pattayafooddelivery.com/paymentoption
+0 13
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/21
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/22
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/23
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/24
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/25
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/26
+0 31
+http://pattayafooddelivery.com/admin/order-status
+0 4
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/27
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/28
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/29
+0 31
+https://pattayafooddelivery.com/item/
+0 3
+https://pattayafooddelivery.com/admin/cuisine
+0 1432
+https://pattayafooddelivery.com/merchant/voucher
+0 5
+https://pattayafooddelivery.com/assets/vendor/chosen/chosen.css
+0 11
+https://pattayafooddelivery.com/assets/vendor/iCheck/skins/all.css
+0 6
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/30
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/31
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/32
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/33
+0 31
+http://pattayafooddelivery.com/merchant/MerchantStatus/
+0 49
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/34
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/35
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/36
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/37
+0 31
+http://pattayafooddelivery.com/admin/Cuisine/Do/Add/id/38
+0 31
+http://pattayafooddelivery.com/admin/mercadopago-settings
+0 31
+http://pattayafooddelivery.com/admin/emailsettings
+0 31
+http://pattayafooddelivery.com/index.php/install/step2
+0 17
+http://pattayafooddelivery.com/admin/manage-language
+0 4402
+http://pattayafooddelivery.com/index.php/install/step3
+0 10
+https://pattayafooddelivery.com/merchant/tablebooking/Do/settings
+0 4
+https://pattayafooddelivery.com/merchant/tablebooking
+0 25
+http://pattayafooddelivery.com/merchant/add-on-item
+0 45
+https://pattayafooddelivery.com/merchant/cooking-ref
+0 15
+https://pattayafooddelivery.com/merchant/user/Do/Add
+0 10
+http://pattayafooddelivery.com/admin/bankdeposit
+0 35
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Sa
+0 2
+Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.4.7 (KHTML, like Gecko) Version/11.0 Mobile/15C202 S
+0 285
+Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CL
+0 73
+Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.9.0.1) Gecko/2008070208
+0 2
+Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:57.0) Gecko/20100101 Firefox/57.0
+0 103
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:14.0) Gecko/20100101 Firefox/14.0.1
+0 2
+Mozilla/5.0 (Linux; Android 5.1.1; SM-G925F Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.94 Mobile S
+0 1
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+0 2
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko; Google Page Speed Insights) Chrome/41.0.2272.118 Safar
+0 146
+Mozilla/5.0 (compatible; Dataprovider.com;)
+0 15
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+0 68
+Mozilla/5.0 (Macintosh; PPC Mac OS X 10.12; rv:51.0) Gecko/20100101 Firefox/51.0
+0 2
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/63.0.3239.132 Safari/537.36
+0 50
+Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+0 4
+Magic Browser
+0 1
+Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:51.0) Gecko/20100101 Firefox/51.0
+0 1
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko; Google Web Preview) Chrome/41.0.2272.118 Safari/537.36
+0 71
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1
+0 4
+bot-pge.chlooe.com/1.0.0 (+http://www.chlooe.com/)
+0 1
+Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 GTB7.1
+0 2
+python-requests/2.18.1
+0 1
+Mozilla/7.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36
+0 1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.71 Safari/534.24
+0 6
+Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile S
+0 44
+Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)
+0 7
+Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/1
+0 503
+Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5 Build/MRA58N) AppleWebKit/537.36(KHTML, like Gecko) Chrome/61.0.3116.0 Mobile Safa
+0 152
+Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.34 Safari/537.36
+0 2
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+0 59722
+Mozilla/5.0 (Windows NT 6.2; Win64; x64; en-US; rv:1.7.5) Gecko/20041107 Firefox/1.0
+0 2
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36
+0 18140
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon
+0 17
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)Chrome/37.0.2062.124 Safari/537.36
+0 1
+Mozilla/4.0 (compatible; Synapse)
+0 1
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames
