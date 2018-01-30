@@ -147,5 +147,13 @@ class mepost extends CI_Model {
       return $query->result();
     }
 
+    public function get_by_autoSearch( $hashtag ){
+      $this->db->select('name');
+      $this->db->from('tag');
+      $this->db->like('name', $hashtag, 'both');
+      $query = $this->db->get();
+      return $query->result();
+    }
+
 }
 ?>

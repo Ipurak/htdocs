@@ -749,7 +749,17 @@ var feeds = new Vue({
     "type":"all",
     "hashtag":"",
     "imageModalActive":false,
-    "searchValue":""
+    "searchValue":"",
+    "cancelActive":false,
+    "autoSearchList":[],
+    "autoHastagActive":false,
+    delay: (function(){
+      var timer = 0;
+      return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+      };
+    })()
   },
   created:function(){
     this.type = "all"
@@ -772,6 +782,24 @@ var feeds = new Vue({
 
         console.log(response);
         vm.feeds = response.data.feeds;
+
+      }).catch(function (error) {
+
+        console.log(error);
+
+      });
+    },
+    getAutoSearch: function(){
+      let vm = this
+      axios.post('feeds/get', {
+        data: {
+          type:vm.type,
+          hashtag:this.hashtag
+        }
+      }).then(function (response) {
+
+        vm.autoHastagActive = true
+        vm.autoSearchList = response.data.tags
 
       }).catch(function (error) {
 
@@ -809,18 +837,58 @@ var feeds = new Vue({
       document.getElementsByTagName('html')[0].style.overflow = "auto"
       // menu[0].style.position = "fixed"
     },
-    search: function () {
-     
-      if (this.hashtag != ""){
+    search: function (value) {
+      
+      this.autoHastagActive = false
+      if(value !="" && typeof value === "string"){//slelect autocomplate
+        
         this.type = "hashtag"
-        this.hashtag = this.searchValue
+        this.hashtag = value
         this.get()
-      }else{
-        this.type = "all"
-        this.hashtag = ""
-        this.get()
+
+      }else{//search
+
+        if (this.hashtag != ""){
+          
+          this.type = "hashtag"
+          this.hashtag = this.searchValue
+          this.get()
+        }else{
+          this.type = "all"
+          this.hashtag = ""
+          this.get()
+        }
+
       }
       
+    },
+    autoHastag:function(){
+      
+      this.autoHastagActive = false
+
+      if(this.searchValue != ""){
+
+        this.cancelActive = true
+        if(this.searchValue.length > 2){//call when text more then 3 digits
+          let vm = this
+          this.delay(function(){
+            vm.type = "search"
+            vm.hashtag = vm.searchValue
+            vm.getAutoSearch()
+          },600)
+        }
+
+      }else{
+        this.cancelActive = false
+      }
+
+    },
+    clearSearch:function(){
+
+      this.autoHastagActive = false
+      this.searchValue = ""
+      this.cancelActive = false
+
     }
   }
 });
