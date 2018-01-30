@@ -37,6 +37,13 @@ class feeds extends CI_Controller {
 			$data   = array('feeds'=>$result);
 			echo json_encode( $data );
 
+		}elseif( $type === "search" ){
+
+			$this->load->model('mepost');
+			$result = $this->mepost->get_by_autoSearch( $hashtag );
+			$data   = array('tags'=>$result);
+			echo json_encode( $data );
+
 		}
 
 		

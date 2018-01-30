@@ -29,6 +29,13 @@ html, body
   margin-top: 0px;
 }
 
+.me-color-success{
+  color:red;
+}
+
+.me-pointer-events-all{
+  pointer-events:all;/*enable element events*/
+}
 
 .me-post-content-public
 {
