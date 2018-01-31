@@ -227,6 +227,9 @@
                     
                     <div class="dropdown-menu" v-bind:class="{'me-show':autoHastagActive}" role="menu">
                       <div class="dropdown-content">
+                        <a class="dropdown-item" v-if="Object.keys(autoSearchList).length === 0">
+                          <i class="fa fa-meh-o"></i> ยังไม่มีแท็กนี้ในระบบ
+                        </a>
                         <a class="dropdown-item" v-for="tag in autoSearchList"  @click="search(tag.name)">
                           {{ tag.name }}
                         </a>

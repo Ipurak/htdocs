@@ -841,6 +841,7 @@ var feeds = new Vue({
       
       this.autoHastagActive = false
       if(value !="" && typeof value === "string"){//slelect autocomplate
+        
         this.searchValue = value
         this.type = "hashtag"
         this.hashtag = value
