@@ -841,7 +841,7 @@ var feeds = new Vue({
       
       this.autoHastagActive = false
       if(value !="" && typeof value === "string"){//slelect autocomplate
-        
+        this.searchValue = value
         this.type = "hashtag"
         this.hashtag = value
         this.get()
@@ -869,14 +869,14 @@ var feeds = new Vue({
       if(this.searchValue != ""){
 
         this.cancelActive = true
-        if(this.searchValue.length > 2){//call when text more then 3 digits
+        // if(this.searchValue.length > 2){//call when text more then 3 digits
           let vm = this
           this.delay(function(){
             vm.type = "search"
             vm.hashtag = vm.searchValue
             vm.getAutoSearch()
           },600)
-        }
+        // }
 
       }else{
         this.cancelActive = false

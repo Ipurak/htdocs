@@ -225,9 +225,9 @@
                   <div class="control has-icons-right">
                     <input class="input" v-model="searchValue" @keyup.enter="search" @keyup="autoHastag" type="text" placeholder="ค้นหาแท็กที่ท่านสนใจ">
                     
-                    <div class="dropdown-menu" v-bind:class="{'me-show':autoHastagActive}" v-for="tag in autoSearchList" role="menu">
+                    <div class="dropdown-menu" v-bind:class="{'me-show':autoHastagActive}" role="menu">
                       <div class="dropdown-content">
-                        <a class="dropdown-item" @click="search(tag.name)">
+                        <a class="dropdown-item" v-for="tag in autoSearchList"  @click="search(tag.name)">
                           {{ tag.name }}
                         </a>
                       </div>
