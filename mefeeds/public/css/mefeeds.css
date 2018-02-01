@@ -212,6 +212,10 @@ html, body
   display: flex; 
 }
 
+.autoHastag {
+  
+}
+
 @media only screen and (min-width: 767px) and (orientation: landscape) {
     /* tablets and desktop */
     .me-post-card {
