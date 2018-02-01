@@ -22,7 +22,7 @@ class post extends CI_Controller {
 
 		$this->load->model( 'mepost' );
     $post = $this->mepost->insert( $data,$imageName );
-    if ( $post["status"] && $data["hashtag"] != "" ) {
+    if ( $post["status"] && $data["hashtag"] != "" ) {//Insert Post with hashtag
       $statusInserted = $this->hashtag->insertForPost( $data["hashtag"], $post["insertedid"] );
     }else{
       $statusInserted = true;//Insert Post Success without any hashtag

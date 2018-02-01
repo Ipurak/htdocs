@@ -213,7 +213,10 @@ html, body
 }
 
 .autoHastag {
-  
+  max-height: 560px;
+  min-height: 200px;
+  overflow: auto;
+  width: 100%;
 }
 
 @media only screen and (min-width: 767px) and (orientation: landscape) {

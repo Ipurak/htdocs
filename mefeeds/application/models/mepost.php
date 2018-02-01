@@ -33,6 +33,7 @@ class mepost extends CI_Model {
     public function update() {
 
       $data = $this->melibs->MeData();
+      print_r($data);
       $value = $data['data'];
       $data  = array(
         'title'  => $value['title'],
