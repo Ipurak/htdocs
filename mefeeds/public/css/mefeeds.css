@@ -213,10 +213,15 @@ html, body
 }
 
 .autoHastag {
-  max-height: 560px;
+  max-height: 467px;
   min-height: 200px;
   overflow: auto;
   width: 100%;
+  padding-top: 0px !important ;
+}
+
+.managePostFooterBtn{
+  margin: 5px 0px 5px 5px;
 }
 
 @media only screen and (min-width: 767px) and (orientation: landscape) {

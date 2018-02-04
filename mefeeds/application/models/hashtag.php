@@ -9,7 +9,9 @@ class hashtag extends CI_Model {
       $this->load->library( 'mepost' );
       $this->load->library( 'session' );
     }
-
+    /*############################*/
+    /*##########[INSERT]##########*/
+    /*############################*/
     public function insertForPost( $params, $idpost ) {
       
       $tempArr  = array();
@@ -23,7 +25,7 @@ class hashtag extends CI_Model {
             )//Replace # by empty
           );//Convert to lowercase
 
-        if( !in_array ( $tagName, $tempArr ) ) {//if does'not exist
+        if( !in_array ( $tagName, $tempArr ) ) {//if does'not exist in the same post
           array_push( $tempArr, $tagName );//add put in tempArr
         }
 
@@ -77,6 +79,18 @@ class hashtag extends CI_Model {
       return $valueArr;
 
     }
+
+  /*############################*/
+  /*##########[UPDATE]##########*/
+  /*############################*/
+
+  public function updateForPost ( $hashtags, $idpost ) 
+  {
+
+    //compare to delete
+      //get number tags are same in this post
+
+  }
 
 }
 ?>

@@ -224,18 +224,6 @@
                 <div class="me-width-100-per">
                   <div class="control has-icons-right">
                     <input class="input" v-model="searchValue" @keyup.enter="search" @keyup="autoHastag" type="text" placeholder="ค้นหาแท็กที่ท่านสนใจ">
-                    
-                    <div class="dropdown-menu autoHastag" v-bind:class="{'me-show':autoHastagActive}" role="menu">
-                      <div class="dropdown-content">
-                        <a class="dropdown-item" v-if="Object.keys(autoSearchList).length === 0">
-                          <i class="fa fa-meh-o"></i> ยังไม่มีแท็กนี้ในระบบ
-                        </a>
-                        <a class="dropdown-item" v-for="tag in autoSearchList"  @click="search(tag.name)">
-                          {{ tag.name }}
-                        </a>
-                      </div>
-                    </div>
-
                     <span class="icon is-small is-right"  @click="clearSearch">
                       <i class="fa fa-times-circle-o me-pointer-events-all" v-bind:class="{' me-color-success': cancelActive}"></i>
                     </span>
@@ -246,6 +234,18 @@
                     <i class="fa fa-search"></i>
                   </a>
                 </div>
+
+                <div class="dropdown-menu autoHastag" v-bind:class="{'me-show':autoHastagActive}" role="menu">
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" v-if="Object.keys(autoSearchList).length === 0">
+                      <i class="fa fa-meh-o"></i> ยังไม่มีแท็กนี้ในระบบ
+                    </a>
+                    <a class="dropdown-item" v-for="tag in autoSearchList"  @click="search(tag.name)">
+                      #{{ tag.name }}
+                    </a>
+                  </div>
+                </div>
+
               </div>
 
               <div class="box" v-for="feed in feeds">

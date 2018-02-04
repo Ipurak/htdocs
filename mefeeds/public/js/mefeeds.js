@@ -181,19 +181,19 @@ Vue.component('writefeed',{
 
                 <div class="field is-grouped is-grouped-right">
                   <div class="control">
-                    <button type="button" @click="openEditPost( index )" class="button is-text">ยกเลิก</button>
+                    <button type="button" @click="openEditPost( index )" class="button is-text managePostFooterBtn">ยกเลิก</button>
                   </div>
                   <div class="control">
-                    <button type="button" class="button is-link" @click="editPost( index )"><i class="fa fa-check-circle"></i>&nbspยืนยันการแก้ไข</button>
+                    <button type="button" class="button is-link" @click="editPost( $event, index )"><i class="fa fa-check-circle managePostFooterBtn"></i>&nbspยืนยันการแก้ไข</button>
                   </div>
                 </div>
 
               </div>
               
               <footer class="card-footer">
-                <a v-if="mePost[index].datepush.status === 1" class="card-footer-item button is-primary" @click="pumppost( index )"><i class="fa fa-hand-o-up"></i> &nbspดันโพสต์</a>
+                <a v-if="mePost[index].datepush.status === 1" class="card-footer-item button is-primary managePostFooterBtn" @click="pumppost( index )"><i class="fa fa-hand-o-up"></i> &nbspดันโพสต์</a>
                 <a v-else class="card-footer-item"><i class="fa fa-circle-o-notch fa-spin"></i> &nbspดันได้อีก{{ mePost[index].datepush.nexttime | moment }}</a>
-                <a class="button is-danger" @click="closepost( index )">ปิดรับสมัคร</a>
+                <a class="card-footer-item button is-danger managePostFooterBtn" @click="closepost( index )">ปิดรับสมัคร</a>
               </footer>
             </div>
           </article>
@@ -315,6 +315,7 @@ Vue.component('writefeed',{
         }).then(function (response) {
 
           if( response.data.status ){
+            alert("stop")
             location.reload();
           }else{
             console.log( "Fail!" );
@@ -631,12 +632,15 @@ Vue.component('writefeed',{
     removeImage: function (e) {
       this.image = '';
     },
-    editPost: function ( stage ) {
+    editPost: function ( event, stage ) {
       
-      this.updatePost( stage );
+      this.updatePost( event, stage );
       
     },
-    updatePost:function ( index ){
+    updatePost:function ( event ,index ){
+
+      let element = event.target
+          element.classList.add("is-loading")
 
       let vm = this
       axios.post('post/update', {
@@ -647,10 +651,12 @@ Vue.component('writefeed',{
 
       }).then( function ( response ) {
         if( response.status === 200 ){
-          // vm.mePost = response.data;  
+          // vm.mePost = response.data;
+          element.classList.remove("is-loading")  
         }
       }).catch( function ( error ) {
 
+        element.classList.remove("is-loading")
         console.log( error );
 
       });

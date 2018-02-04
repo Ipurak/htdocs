@@ -44,9 +44,9 @@ class mepost extends CI_Model {
       $this->db->where('idpost', $value['idpost']);
       $this->db->update('post', $data);
       if($this->db->affected_rows() > 0) {
-        return $this->melibs->MeSucc200( "updated" );
+        return $value['idpost'];
       }else{ 
-        return $this->melibs->MeErr400( "update failed" );
+        return false;
       }
 
     }
