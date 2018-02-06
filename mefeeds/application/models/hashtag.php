@@ -87,6 +87,24 @@ class hashtag extends CI_Model {
   public function updateForPost ( $hashtags, $idpost ) 
   {
 
+    //get all hashtags of this post
+    $this->db->select( 'name' );
+    $this->db->join('tag', 'tag.idtag = post_has_tag.tag_idtag');
+    $this->db->where( 'post_idpost', $idpost );
+    $query = $this->db->get( 'post_has_tag' );
+    $tags = $query->result();
+    print_r( $tags );
+
+    foreach ($query->result() as $row)
+    {
+        if(  ){//insert
+
+        }
+        //delete
+    }
+
+    //kick tag not change out
+
     //compare to delete
       //get number tags are same in this post
 

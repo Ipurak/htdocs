@@ -33,7 +33,7 @@ class mepost extends CI_Model {
     public function update() {
 
       $data = $this->melibs->MeData();
-      print_r($data);
+      // print_r($data);
       $value = $data['data'];
       $data  = array(
         'title'  => $value['title'],
@@ -43,11 +43,10 @@ class mepost extends CI_Model {
 
       $this->db->where('idpost', $value['idpost']);
       $this->db->update('post', $data);
-      if($this->db->affected_rows() > 0) {
-        return $value['idpost'];
-      }else{ 
-        return false;
-      }
+      return array(
+        'status' => ( $this->db->affected_rows() > 0 ) ? true : false,
+        'updatedid' => $value['idpost']
+      );
 
     }
 
