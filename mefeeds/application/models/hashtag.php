@@ -14,8 +14,21 @@ class hashtag extends CI_Model {
     /*############################*/
     public function insertForPost( $params, $idpost ) {
       
+
+      
+      $hashtags = $this->kickSameHashTagsOut( $params );
+      $idtags = $this->insertTags_getIdInserted( $hashtags );//insert new tags and get id tags
+      $data   = $this->getArray_insertPosttag( $idtags, $idpost );//set array for insert tags post
+      $this->db->insert_batch( 'post_has_tag', $data );//insert tag for post
+      return ($this->db->affected_rows() > 0) ? true : false;
+      
+    }
+
+    public function kickSameHashTagsOut ( $hashtags )
+    {
+
       $tempArr  = array();
-      foreach ( $params as $hashtag ) {
+      foreach ( $hashtags as $hashtag ) {
 
         $tagName =   strtolower(
             preg_replace( 
@@ -30,12 +43,8 @@ class hashtag extends CI_Model {
         }
 
       }
+      return $tempArr;
 
-      $idtags = $this->insertTags_getIdInserted( $tempArr );//insert new tags and get id tags
-      $data   = $this->getArray_insertPosttag( $idtags, $idpost );//set array for insert tags post
-      $this->db->insert_batch( 'post_has_tag', $data );//insert tag for post
-      return ($this->db->affected_rows() > 0) ? true : false;
-      
     }
 
     public function getArray_insertPosttag ( $idtags, $idpost )
@@ -97,9 +106,9 @@ class hashtag extends CI_Model {
 
     foreach ($query->result() as $row)
     {
-        if(  ){//insert
+        // if(  ){//insert
 
-        }
+        // }
         //delete
     }
 
