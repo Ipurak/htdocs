@@ -101,23 +101,37 @@ class hashtag extends CI_Model {
     $this->db->join('tag', 'tag.idtag = post_has_tag.tag_idtag');
     $this->db->where( 'post_idpost', $idpost );
     $query = $this->db->get( 'post_has_tag' );
-    $tags = $query->result();
+    $tags = $query->result_array();//tags from database
+
+    $tags = $this->query_result_to_array_1D($tags, "name");
+
     print_r( $tags );
 
-    foreach ($query->result() as $row)
-    {
-        // if(  ){//insert
+    $hashtags = $this->kickSameHashTagsOut( $hashtags );//tags from textarea
+    print_r($hashtags);
 
-        // }
-        //delete
-    }
-
+    $result = array_diff_assoc($hashtags, $tags);
+    print_r($result);
     //kick tag not change out
 
     //compare to delete
       //get number tags are same in this post
 
   }
+
+  public function query_result_to_array_1D( $queryResult, $key )
+  {
+    $temp_box = array();
+
+    foreach( $queryResult as $array )
+    {       
+      array_push($temp_box, $array[$key] );
+    }
+
+    return $temp_box;
+
+  }
+
 
 }
 ?>
