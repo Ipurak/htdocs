@@ -110,8 +110,29 @@ class hashtag extends CI_Model {
     $hashtags = $this->kickSameHashTagsOut( $hashtags );//tags from textarea
     print_r($hashtags);
 
-    $result = array_diff_assoc($hashtags, $tags);
-    print_r($result);
+    $hashtagsToInsert = array_diff_assoc($hashtags, $tags);//hashtag have to insert
+    $hashtagsToDelete = array_intersect_assoc($hashtags, $tags);//hashtag have to delete
+    
+    if( !empty($hashtagsToInsert) ){
+
+      echo "There are hashtags to insert.";
+      print_r($hashtagsToInsert);
+      
+      $idtags = $this->insertTags_getIdInserted( $hashtagsToInsert );//insert new tags and get id tags
+      $data   = $this->getArray_insertPosttag( $idtags, $idpost );//set array for insert tags post
+      $this->db->insert_batch( 'post_has_tag', $data );//insert tag for post
+
+      echo "affected: ".$this->db->affected_rows();
+      // return ($this->db->affected_rows() > 0) ? true : false;
+
+    }
+
+    if( !empty($hashtagsToDelete) ){
+
+      echo "To delete";
+      print_r($hashtagsToDelete);
+
+    }
     //kick tag not change out
 
     //compare to delete
