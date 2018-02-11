@@ -277,8 +277,47 @@ Vue.component('writefeed',{
 
   },
   methods:{
-    closepost:function(){
-      alert("Close this post")
+    closepost:function( index ){
+      
+      let vm = this
+      swal({
+        title: "จะปิดโพสต์นี้ใช่หรือไม่?",
+        text: "ยืนยันการปิดรับสมัครโพสต์นี้",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+
+        if (willDelete) {
+          
+          axios.post('post/closePost', {
+          typ:"closepost",
+          id:index
+          }).then( function ( response ) {
+
+            if( response.status === 200 ){
+
+              // vm.mePost = response.data;
+              swal("ปิดโพสต์สำเร็จ!", {
+                icon: "success",
+              });
+
+            }
+
+          }).catch( function ( error ) {
+
+            console.log( error );
+            swal("มีบางอย่างผิดพลาด การปิดโพสต์ไม่สมบูรณ์", {
+                icon: "error",
+            });
+
+          });
+
+          }
+
+        });
+
     },
     validate:function( type ){
       if( type === "title" ){
@@ -428,7 +467,11 @@ Vue.component('writefeed',{
       let hashtag  = []
           hashtag = this.mePost[index].desc.match(/(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<span class='hash_tag'>$2</span>")
           this.mePost[index].hashtag = hashtag
-      if (hashtag.length != 0) {
+      if ( hashtag === null || hashtag === "" ) {
+
+        this.$refs.mepostDesc[index].innerHTML = "" 
+
+      }else if( hashtag.length != 0 ){
 
         let element = ""
         for (var i = 0; i < hashtag.length; i++) {

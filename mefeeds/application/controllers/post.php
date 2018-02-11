@@ -44,22 +44,20 @@ class post extends CI_Controller {
   { 
     $data = $this->melibs->MeData();
     $post = $this->mepost->update();
-    // print_r($post);
-    if ( $post["status"] && $data["hashtag"] != "" ) {//Insert hashtag
 
-      // echo "have hashtag";
-      $statusInserted = $this->hashtag->updateForPost( $data["hashtag"], $post["updatedid"] );
+    $statusInserted = $this->hashtag->updateForPost( $data["hashtag"], $post["updatedid"] );
 
-    }elseif( $post["status"] && $data["hashtag"] == "" ){//Post Have not any hashtags
-
+    if ( $post["status"] ) {//Insert hashtag
       $this->melibs->MeSucc200( "update success" );
-
     }else{
-
       $this->melibs->MeErr400( "update failed" );
-
     }
-    // echo json_encode( array( "status"=>$statusInserted ) );
+    
+  }
+
+  public function closePost()
+  {
+    echo "close post";
   }
 
   public function status()

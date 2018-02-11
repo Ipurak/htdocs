@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="<?=site_url("public/animate/animate.css");?>" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?=site_url("public/bulma/css/bulma.css");?>" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="<?=site_url("public/css/mefeeds.css");?>" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="<?=site_url("public/sweetalert2/dist/sweetalert2.min.css");?>" rel="stylesheet" type="text/css">
 </head>
 <body>
   <nav class="navbar is-info main-menu">
@@ -345,7 +344,6 @@
 <script src="<?=site_url("public/axios/dist/axios.min.js");?>"></script>
 <script src="<?=site_url("public/moment/moment-with-locales.js");?>"></script>
 <script src="<?=site_url("public/js/mefeeds.js");?>"></script>
-<script src="<?=site_url("public/sweetalert2/dist/sweetalert2.min.js");?>"></script>
 <script src="<?=site_url("public/dropzone/dropzone.js");?>"></script>
 <script src="<?=site_url("public/exif/exif.js");?>"></script>
 
@@ -353,6 +351,8 @@
 <script src="<?=site_url("public/JavaScript-Load-Image-master/js/load-image-orientation.js");?>"></script>
 <script src="<?=site_url("public/JavaScript-Load-Image-master/js/load-image-meta.js");?>"></script>
 <script src="<?=site_url("public/JavaScript-Load-Image-master/js/load-image-exif.js");?>"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript">
   var gotop = document.getElementById("gotop")

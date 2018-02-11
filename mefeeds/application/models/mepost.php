@@ -141,8 +141,9 @@ class mepost extends CI_Model {
       $sess = $this->session->all_userdata('logged_in');
       $this->db->select('*, CAST(1 AS BINARY) AS opened, CAST(1 AS BINARY) AS closed, CAST(1 AS BINARY) AS readmore ');
       $this->db->from('post');
-      $this->db->join('post_has_tag', 'post.idpost = post_has_tag.post_idpost');
+      // $this->db->join('post_has_tag', 'post.idpost = post_has_tag.post_idpost');
       $this->db->where('user_iduser', $sess["logged_in"]["id_user"]);
+      $this->db->order_by("post.datecreated", "desc");
       $query = $this->db->get();
       return $query->result();
     }

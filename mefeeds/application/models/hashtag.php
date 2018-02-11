@@ -102,21 +102,30 @@ class hashtag extends CI_Model {
     $this->db->where( 'post_idpost', $idpost );
     $query = $this->db->get( 'post_has_tag' );
     $tags = $query->result_array();//tags from database
+    // echo "DBTAGs";
+    // print_r($tags);
 
     $tags = $this->query_result_to_array_1D($tags, "name");
-
-    print_r( $tags );
+    // echo "from DB";
+    // print_r( $tags );
 
     $hashtags = $this->kickSameHashTagsOut( $hashtags );//tags from textarea
-    print_r($hashtags);
+    // echo "from Textarea";
+    // print_r($hashtags);
 
-    $hashtagsToInsert = array_diff_assoc($hashtags, $tags);//hashtag have to insert
-    $hashtagsToDelete = array_intersect_assoc($hashtags, $tags);//hashtag have to delete
-    
-    if( !empty($hashtagsToInsert) ){
+    $hashtagsToInsert = array_diff($hashtags, $tags);//hashtag have to insert
+    // echo "To Insert";
+    // print_r($hashtagsToInsert);
 
-      echo "There are hashtags to insert.";
-      print_r($hashtagsToInsert);
+    $hashtagsToInsert_temp = array_merge(array_diff($hashtags, $tags), array_diff($tags, $hashtags));
+    $hashtagsToDelete = array_diff($hashtagsToInsert_temp, $hashtags);//hashtag have to delete
+    // echo "To Delete";
+    // print_r($hashtagsToDelete);
+
+    if( !empty($hashtagsToInsert) ){//insert new tags to post
+
+      // echo "There are hashtags to insert.";
+      // print_r($hashtagsToInsert);
       
       $idtags = $this->insertTags_getIdInserted( $hashtagsToInsert );//insert new tags and get id tags
       $data   = $this->getArray_insertPosttag( $idtags, $idpost );//set array for insert tags post
@@ -127,16 +136,23 @@ class hashtag extends CI_Model {
 
     }
 
-    if( !empty($hashtagsToDelete) ){
+    if( !empty($hashtagsToDelete) ){//delete tags from post
 
-      echo "To delete";
-      print_r($hashtagsToDelete);
+      $this->db->select( 'idtag' );
+      $this->db->where_in('name', $hashtagsToDelete);
+      $query = $this->db->get('tag');
+      $Gettags = $query->result_array();//tags from database
+      $Gettags = $this->query_result_to_array_1D($Gettags, "idtag");
+      // echo "Gettags";
+      // print_r($Gettags);
+
+      $this->db->where_in('tag_idtag', $Gettags);
+      $this->db->where('post_idpost', $idpost);
+      $this->db->delete('post_has_tag');
+      $affected = $this->db->affected_rows();
+      print_r($affected);
 
     }
-    //kick tag not change out
-
-    //compare to delete
-      //get number tags are same in this post
 
   }
 
