@@ -281,7 +281,7 @@ Vue.component('writefeed',{
       
       let vm = this
       swal({
-        title: "จะปิดโพสต์นี้ใช่หรือไม่?",
+        title: "โพสต์นี้จะถูกปิดใช่หรือไม่?",
         text: "ยืนยันการปิดรับสมัครโพสต์นี้",
         icon: "warning",
         buttons: true,
@@ -291,9 +291,9 @@ Vue.component('writefeed',{
 
         if (willDelete) {
           
-          axios.post('post/closePost', {
-          typ:"closepost",
-          id:index
+          axios.post('post/close', {
+          type:"close",
+          id:vm.mePost[index].idpost
           }).then( function ( response ) {
 
             if( response.status === 200 ){

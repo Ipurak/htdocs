@@ -7,6 +7,7 @@ class post extends CI_Controller {
     parent::__construct();
     $this->load->model( "mepost" );
     $this->load->model( "hashtag" );
+    define("CLOSE", "close");
 	}
 
 	public function index()
@@ -55,9 +56,14 @@ class post extends CI_Controller {
     
   }
 
-  public function closePost()
+  public function close()
   {
-    echo "close post";
+    $json = $this->melibs->MeData();
+    // print_r($json);
+    if( $json["type"] === CLOSE ){
+      $data = $this->mepost->closePost();
+      echo json_encode( $data );
+    }
   }
 
   public function status()

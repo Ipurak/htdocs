@@ -156,5 +156,18 @@ class mepost extends CI_Model {
       return $query->result();
     }
 
+    public function closePost(){
+
+      $req = $this->melibs->MeData();
+      $params = array("status" => -1);
+      $this->db->where('idpost',$req['id']);
+      $this->db->update('post',$params);
+      if( $this->db->affected_rows() > 0 ){
+        return $this->melibs->MeSucc200("success");
+      }else{
+        return $this->melibs->MeErr400("failed");
+      }
+    }
+
 }
 ?>
