@@ -105,7 +105,7 @@ Vue.component('writefeed',{
       <div id="postList" v-bind:class="{'is-hidden':isActivePostList}">
       <div v-for="(post, index) in mePost">
         <hr />
-        <div class="box" v-bind:class="{ 'me-post-content-public' : mePost[index].status == 1, 'me-post-content-closed' : mePost[index].status == 0 }" >
+        <div class="box" v-bind:class="{ 'me-post-content-public' : mePost[index].status == 0, 'me-post-content-closed' : mePost[index].status == -1 }" >
           <article class="media">
             <div class="media-content">
             <span class="tag is-light">{{ index+1 }}</span>
