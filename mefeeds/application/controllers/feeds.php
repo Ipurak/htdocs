@@ -21,13 +21,13 @@ class feeds extends CI_Controller {
 		
 		if( $type === "all" ){
 
-			$this->load->model('mepost');
-			$result = $this->mepost->get_all();
+			$offset = $data["data"]["offset"];
 
+			$this->load->model('mepost');
+			$result = $this->mepost->get_all( $offset );
 			$result = $this->initialResults( $result );
 
-			// print_r($result);
-			$data   = array('feeds'=>$result);
+			$data = array('feeds'=>$result);
 			echo json_encode( $data );
 
 		}elseif( $type === "hashtag" ){
@@ -50,13 +50,27 @@ class feeds extends CI_Controller {
 	}
 
 	public function initialResults( $result )
-	{
+	{	$dateNow = date('Y-m-d H:i:s');
 		foreach ($result as $value) {
 			if( $value->image != "" ){
 				$value->image = $value->image.".png";
-			}
+			}			
+			$diff_days    = $this->diff_days( $dateNow, $value->datecreated );
+			$isNew        = ( $diff_days <= 7) ? true : false;
+			$value->isNew = $isNew;
 		}
+
 		return $result;
 	}
+
+	public function diff_days( $d1, $d2 )
+	{//data format need Y-m-d H:i:s
+		$ts1 = strtotime( $d1 );
+		$ts2 = strtotime( $d2 );
+		$seconds_diff = $ts1 - $ts2;
+		return intval(intval($seconds_diff) / (3600*24));//Convert sec to days
+
+	}
+
 	
 }

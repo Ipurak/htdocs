@@ -224,6 +224,47 @@ html, body
   margin: 5px 0px 5px 5px;
 }
 
+.me-text-center{
+  text-align: center;
+}
+
+.me-opacity-0-2{
+  opacity: 0.2;
+}
+
+.me-opacity-0-2:before{
+  opacity: 1 !important;
+}
+
+.me-post-status{
+  color: #fff;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+
+.me-post-closed{
+  background-color: #544d4d;
+}
+
+.me-post-urgent{
+  background-color: #e65858;
+}
+
+.me-post-new{
+  background-color: #41bf31;
+  z-index: 99;
+  width: 105px;
+  position: absolute;
+}
+
+.me-post-new-with-other{
+  background-color: #41bf31;
+  z-index: 99;
+  width: 105px;
+  position: absolute; 
+}
+
 @media only screen and (min-width: 767px) and (orientation: landscape) {
     /* tablets and desktop */
     .me-post-card {

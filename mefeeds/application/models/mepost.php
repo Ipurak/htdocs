@@ -116,12 +116,14 @@ class mepost extends CI_Model {
 
     }
 
-    public function get_all() {
+    public function get_all( $offset ) {
       // $query = $this->db->get('post');
-      $this->db->select('*,post.dateauto as postdateauto');
+      $columns = ' user.company, post.dateauto, post.datecreated, post.datepush, post.desc, post.idpost, post.image, post.status, post.title ';
+      $this->db->select($columns.', post.dateauto as postdateauto ');
       $this->db->from('post');
       $this->db->join('user', 'post.user_iduser = user.iduser');
       $this->db->order_by("post.datepush", "DESC");
+      $this->db->limit(5,$offset);
       $query = $this->db->get();
       return $query->result();
     }
@@ -142,7 +144,8 @@ class mepost extends CI_Model {
       $this->db->select('*, CAST(1 AS BINARY) AS opened, CAST(1 AS BINARY) AS closed, CAST(1 AS BINARY) AS readmore ');
       $this->db->from('post');
       // $this->db->join('post_has_tag', 'post.idpost = post_has_tag.post_idpost');
-      $this->db->where('user_iduser', $sess["logged_in"]["id_user"]);
+      $this->db->where('user_iduser = '.$sess["logged_in"]["id_user"]);
+      $this->db->where('status <> -1');
       $this->db->order_by("post.datecreated", "desc");
       $query = $this->db->get();
       return $query->result();

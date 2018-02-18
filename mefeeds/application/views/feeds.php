@@ -249,7 +249,22 @@
 
               <div class="box" v-for="feed in feeds">
 
-                <!-- <div class="card">   -->
+                <div class="me-post-status"
+                     v-bind:class="{'is-hidden': feed.isNew = 0, 'me-post-new-with-other': feed.status != 0, '': feed.status == 0}">
+                  <b><i class="fa fa-bullhorn"></i> มาใหม่</b>
+                </div>
+
+                <div class="me-post-status me-post-urgent"
+                     v-bind:class="{'is-hidden': feed.status != 1}">
+                  <b><i class="fa fa-bell-o"></i> ด่วนมาก!</b>
+                </div>
+
+                <div class="me-post-status me-post-closed"
+                     v-bind:class="{'is-hidden': feed.status != -1}">
+                  <b>ปิดรับสมัคร</b>
+                </div>
+                
+                <div> 
 
                   <header class="card-header">
                     <p class="card-header-title">
@@ -266,13 +281,13 @@
                     </a>
                   </header>
 
-                  <div class="card-image" v-if="feed.image !== ''&& feed.image !== null">
+                  <div class="card-image" v-bind:class="{'me-opacity-0-2': feed.status == -1 }" v-if="feed.image !== ''&& feed.image !== null">
                     <figure class="image">
                       <!-- <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image"> -->
                       <img v-bind:src="'./public/images/'+feed.image" @click="openPostImage" alt="Image">
                     </figure>
                   </div>
-                  <div class="card-content">
+                  <div class="card-content" v-bind:class="{'me-opacity-0-2': feed.status == -1 }">
                     <div class="media">
                       <div class="media-left">
                         <figure class="image is-48x48">
@@ -293,6 +308,12 @@
                       <small class="dateformat">{{ feed.postdateauto | moment }}</small>
                     </div>
                   </div>
+
+                </div>  
+              </div>
+
+              <div class="me-text-center" v-bind:class="{'is-active':isFeedLoading,'is-hidden':!isFeedLoading}">
+                <i class="fa fa-circle-o-notch fa-spin fa-2x"></i>
               </div>
 
               <!-- <div class="modal" v-bind:class="{'is-active': imageModalActive}"  @click="closePostImage">

@@ -94,15 +94,25 @@ Vue.component('writefeed',{
 
             <footer class="card-footer" v-bind:class="{ 'mypostFixed': mypostFixed }" ref="mypost">
               <p class="card-footer-item">
-                <span>
-                  <a href="#myfeed" class="" @click="postList"> โพสต์ของฉัน&nbsp<i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}" aria-hidden="true"></i></a>
-                </span>
+                <a class="button is-info" @click="postList"> 
+                  จัดการโพสต์&nbsp
+                  <i class="fa fa-angle-up" v-bind:class="{'fa-angle-down':isActivePostList}"></i>
+                </a>
               </p>
             </footer>
 
         </div>
       </article>
       <div id="postList" v-bind:class="{'is-hidden':isActivePostList}">
+
+      <div v-bind:class="{'is-active':ispostListEmpty}">
+        <article class="message is-info">
+          <div class="message-body">
+            <strong><i class="fa fa-meh-o"></i>  คุณยังไม่มีโพสต์เลย โพสต์ได้เลยนะเราช่วยคุณได้</strong>
+          </div>
+        </article>
+      </div>
+
       <div v-for="(post, index) in mePost">
         <hr />
         <div class="box" v-bind:class="{ 'me-post-content-public' : mePost[index].status == 0, 'me-post-content-closed' : mePost[index].status == -1 }" >
@@ -230,6 +240,7 @@ Vue.component('writefeed',{
       postLoadedBtn:false,
       mypostFixed:false,
       editPostHashtag:[],
+      ispostListEmpty:false,
       delay: (function(){
         var timer = 0;
         return function(callback, ms){
@@ -365,8 +376,6 @@ Vue.component('writefeed',{
           console.log(error);
 
         });
-      }else{
-        alert("กรอกข้อมูลยังไม่ครบ")
       }
 
     },
@@ -393,7 +402,9 @@ Vue.component('writefeed',{
 
         if( response.status === 200 ){
 
-          vm.mePost = response.data;
+          if( response.data.length > 0 ) {vm.mePost = response.data }
+          if( response.data.length === 0 ){ vm.ispostListEmpty = true }
+
 
         }
 
@@ -794,7 +805,7 @@ var writefeed = new Vue({
 var feeds = new Vue({
   el:"#feeds",
   data:{
-    "feeds":{},
+    "feeds":[],
     "type":"all",
     "hashtag":"",
     "imageModalActive":false,
@@ -802,6 +813,8 @@ var feeds = new Vue({
     "cancelActive":false,
     "autoSearchList":[],
     "autoHastagActive":false,
+    "offset":0,
+    "isFeedLoading":false,
     delay: (function(){
       var timer = 0;
       return function(callback, ms){
@@ -809,6 +822,22 @@ var feeds = new Vue({
         timer = setTimeout(callback, ms);
       };
     })()
+  },
+  mounted:function(){
+    let vm = this
+    window.addEventListener('scroll', function(e) {
+      
+      console.log( window.innerHeight + window.scrollY )
+      console.log( document.body.offsetHeight )
+      if (((window.innerHeight + window.scrollY) - 66 ) == document.body.offsetHeight) {
+        vm.delay(function(){
+          vm.type = "all"
+          vm.get()
+          console.log("bottom");   
+        },800)
+      }
+  
+    })
   },
   created:function(){
     this.type = "all"
@@ -821,24 +850,33 @@ var feeds = new Vue({
   },
   methods: {
     get: function(){
+      this.isFeedLoading = true
       let vm = this
       axios.post('feeds/get', {
         data: {
           type:vm.type,
-          hashtag:this.hashtag
+          hashtag:vm.hashtag,
+          offset:vm.offset
         }
       }).then(function (response) {
 
-        console.log(response);
-        vm.feeds = response.data.feeds;
+        // vm.feeds = response.data.feeds
+        let feeds = vm.feeds
+        response.data.feeds.forEach(function(object){
+          feeds.push(object)
+        })
+        vm.offset = vm.offset + 5
+        vm.isFeedLoading = false
 
       }).catch(function (error) {
 
-        console.log(error);
+        console.log(error)
+        vm.isFeedLoading = false
 
       });
     },
     getAutoSearch: function(){
+      
       let vm = this
       axios.post('feeds/get', {
         data: {
@@ -848,7 +886,7 @@ var feeds = new Vue({
       }).then(function (response) {
 
         vm.autoHastagActive = true
-        vm.autoSearchList = response.data.tags
+        vm.autoSearchList   = response.data.tags
 
       }).catch(function (error) {
 
