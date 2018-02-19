@@ -104,8 +104,8 @@ Vue.component('writefeed',{
         </div>
       </article>
       <div id="postList" v-bind:class="{'is-hidden':isActivePostList}">
-
-      <div v-bind:class="{'is-active':ispostListEmpty}">
+      {{ispostListEmpty}}
+      <div v-bind:class="{'is-active':ispostListEmpty, 'is-hidden':!ispostListEmpty}">
         <article class="message is-info">
           <div class="message-body">
             <strong><i class="fa fa-meh-o"></i>  คุณยังไม่มีโพสต์เลย โพสต์ได้เลยนะเราช่วยคุณได้</strong>
@@ -121,7 +121,7 @@ Vue.component('writefeed',{
               <div class="media-content">
             
             <header class="card-header">
-              <a class="card-footer-item button is-danger managePostFooterBtn" @click="closepost( index )"><i class="fa fa-bullhorn"></i>&nbspติดป้ายรับสมัครด่วน</a>
+              <a class="card-footer-item button is-danger managePostFooterBtn" @click="urgentpost( index )"><i class="fa fa-bullhorn"></i>&nbspติดป้ายรับสมัครด่วน</a>
               <a class="card-footer-item button is-dark managePostFooterBtn" @click="closepost( index )">ปิดรับสมัคร</a>
             </header>
 
@@ -248,7 +248,7 @@ Vue.component('writefeed',{
       postLoadedBtn:false,
       mypostFixed:false,
       editPostHashtag:[],
-      ispostListEmpty:false,
+      ispostListEmpty:true,
       delay: (function(){
         var timer = 0;
         return function(callback, ms){
@@ -296,6 +296,9 @@ Vue.component('writefeed',{
 
   },
   methods:{
+    urgentpost:function( index ){
+      alert("post")
+    },
     closepost:function( index ){
       
       let vm = this
@@ -410,9 +413,11 @@ Vue.component('writefeed',{
 
         if( response.status === 200 ){
 
-          if( response.data.length > 0 ) {vm.mePost = response.data }
-          if( response.data.length === 0 ){ vm.ispostListEmpty = true }
-
+          if( response.data.length > 0 ) {
+            vm.mePost = response.data
+            vm.ispostListEmpty = false
+          }
+          console.log("aa: ",vm.ispostListEmpty)
 
         }
 
