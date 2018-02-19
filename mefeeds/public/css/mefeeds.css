@@ -254,8 +254,8 @@ html, body
 .me-post-new{
   background-color: #41bf31;
   z-index: 99;
-  width: 105px;
-  position: absolute;
+  width: 100%;
+  /*position: absolute;*/
 }
 
 .me-post-new-with-other{

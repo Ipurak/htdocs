@@ -248,9 +248,8 @@
               </div>
 
               <div class="box" v-for="feed in feeds">
-
                 <div class="me-post-status"
-                     v-bind:class="{'is-hidden': feed.isNew = 0, 'me-post-new-with-other': feed.status != 0, '': feed.status == 0}">
+                     v-bind:class="{'is-hidden': feed.isNew == 0, 'is-active me-post-new': feed.isNew == 1, 'me-post-new-with-other':feed.status != 0 }">
                   <b><i class="fa fa-bullhorn"></i> มาใหม่</b>
                 </div>
 

@@ -114,11 +114,18 @@ Vue.component('writefeed',{
       </div>
 
       <div v-for="(post, index) in mePost">
-        <hr />
-        <div class="box" v-bind:class="{ 'me-post-content-public' : mePost[index].status == 0, 'me-post-content-closed' : mePost[index].status == -1 }" >
-          <article class="media">
-            <div class="media-content">
-            <span class="tag is-light">{{ index+1 }}</span>
+        <div v-if="mePost[index].status != -1">
+          <hr />
+          <div class="box me-post-content-public">
+            <article class="media">
+              <div class="media-content">
+            
+            <header class="card-header">
+              <a class="card-footer-item button is-danger managePostFooterBtn" @click="closepost( index )"><i class="fa fa-bullhorn"></i>&nbspติดป้ายรับสมัครด่วน</a>
+              <a class="card-footer-item button is-dark managePostFooterBtn" @click="closepost( index )">ปิดรับสมัคร</a>
+            </header>
+
+
             <footer class="card-footer">
               <a class="card-footer-item" @click="openEditPost( index )"><i class="fa fa-pencil" aria-hidden="true"></i> &nbspแก้ไข</a>
               <a v-bind:href="'viewpost/post/' + mePost[index].idpost" target="_blank" class="card-footer-item"><i class="fa fa-eye" aria-hidden="true"></i> &nbspมุมมอง</a>
@@ -203,10 +210,11 @@ Vue.component('writefeed',{
               <footer class="card-footer">
                 <a v-if="mePost[index].datepush.status === 1" class="card-footer-item button is-primary managePostFooterBtn" @click="pumppost( index )"><i class="fa fa-hand-o-up"></i> &nbspดันโพสต์</a>
                 <a v-else class="card-footer-item"><i class="fa fa-circle-o-notch fa-spin"></i> &nbspดันได้อีก{{ mePost[index].datepush.nexttime | moment }}</a>
-                <a class="card-footer-item button is-danger managePostFooterBtn" @click="closepost( index )">ปิดรับสมัคร</a>
+                
               </footer>
             </div>
           </article>
+        </div>
         </div>
       </div>
       </div>
