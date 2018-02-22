@@ -26,7 +26,7 @@ Vue.component('writefeed',{
                   </div>
                 </div>
                 <div v-else>
-                  <a class="button is-danger me-position-absolute me-z-index-9999 me-delete-img" @click="removeImage">
+                  <a class="button is-danger me-position-absolute me-z-index-1 me-delete-img" @click="removeImage">
                     <i class="fa fa-times-circle"></i>
                   </a>
                   <div class="card-image">
@@ -121,7 +121,7 @@ Vue.component('writefeed',{
               <div class="media-content">
             
             <header class="card-header">
-              <a class="card-footer-item button is-danger managePostFooterBtn" @click="urgentpost( index )"><i class="fa fa-bullhorn"></i>&nbspติดป้ายรับสมัครด่วน</a>
+              <a class="card-footer-item button is-danger managePostFooterBtn" @click="urgentpost( index )"><i class="fa fa-bullhorn"></i>&nbspติดป้ายด่วน</a>
               <a class="card-footer-item button is-dark managePostFooterBtn" @click="closepost( index )">ปิดรับสมัคร</a>
             </header>
 

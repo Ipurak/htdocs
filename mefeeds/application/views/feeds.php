@@ -267,10 +267,22 @@
 
                   <header class="card-header">
                     <p class="card-header-title">
-                        <span class="tag is-danger">
+
+                        <span class="tag is-success" v-bind:class="{'is-hidden': feed.isNew == 0, 'is-active': feed.isNew == 1}">
+                          <span class="icon"><i class="fa fa-bell-o"></i></span>
+                          มาใหม่
+                        </span>
+
+                        <span class="tag is-danger" v-bind:class="{'is-hidden': feed.status != 1}">
                           <span class="icon"><i class="fa fa-bell-o"></i></span>
                           ด่วนมาก
                         </span>
+
+                        <span class="tag is-info" v-bind:class="{'is-hidden': feed.status != -1}">
+                          <span class="icon"><i class="fa fa-bell-o"></i></span>
+                          ปิดรับสมัคร
+                        </span>
+
                     </p>
                     <a class="button card-header-icon me-margin-top-5px me-margin-right-5px">
                       รายงาน
