@@ -248,20 +248,6 @@
               </div>
 
               <div class="box" v-for="feed in feeds">
-                <div class="me-post-status"
-                     v-bind:class="{'is-hidden': feed.isNew == 0, 'is-active me-post-new': feed.isNew == 1, 'me-post-new-with-other':feed.status != 0 }">
-                  <b><i class="fa fa-bullhorn"></i> มาใหม่</b>
-                </div>
-
-                <div class="me-post-status me-post-urgent"
-                     v-bind:class="{'is-hidden': feed.status != 1}">
-                  <b><i class="fa fa-bell-o"></i> ด่วนมาก!</b>
-                </div>
-
-                <div class="me-post-status me-post-closed"
-                     v-bind:class="{'is-hidden': feed.status != -1}">
-                  <b>ปิดรับสมัคร</b>
-                </div>
                 
                 <div> 
 
@@ -301,7 +287,7 @@
                   <div class="card-content" v-bind:class="{'me-opacity-0-2': feed.status == -1 }">
                     <div class="media">
                       <div class="media-left">
-                        <figure class="image is-48x48">
+                        <figure class="image is-64x64">
                           <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
                         </figure>
                       </div>

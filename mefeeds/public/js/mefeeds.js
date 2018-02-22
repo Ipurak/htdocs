@@ -844,7 +844,7 @@ var feeds = new Vue({
       console.log( document.body.offsetHeight )
       if (((window.innerHeight + window.scrollY) - 66 ) == document.body.offsetHeight) {
         vm.delay(function(){
-          vm.type = "all"
+          // vm.type = "all"
           vm.get()
           console.log("bottom");   
         },800)
@@ -873,13 +873,19 @@ var feeds = new Vue({
         }
       }).then(function (response) {
 
-        // vm.feeds = response.data.feeds
-        let feeds = vm.feeds
-        response.data.feeds.forEach(function(object){
-          feeds.push(object)
-        })
-        vm.offset = vm.offset + 5
-        vm.isFeedLoading = false
+        if( vm.type === "all" ){
+
+          let feeds = vm.feeds
+          response.data.feeds.forEach(function(object){
+            feeds.push(object)
+          })
+          vm.offset = vm.offset + 5
+          vm.isFeedLoading = false
+
+        }else{//type: hashtag, search
+          vm.feeds = response.data.feeds
+        }
+        
 
       }).catch(function (error) {
 

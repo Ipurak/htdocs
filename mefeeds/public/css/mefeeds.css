@@ -1,7 +1,16 @@
+
 body
 {
   background-color: whitesmoke;
   position: relative
+}
+
+.navbar.is-info{
+  background-color: #ff8a00 !important;
+}
+
+.hero.me-section{
+  background-color: #ffb000 !important;
 }
 
 html, body
@@ -235,35 +244,6 @@ html, body
 
 .me-opacity-0-2:before{
   opacity: 1 !important;
-}
-
-.me-post-status{
-  color: #fff;
-  width: 100%;
-  padding: 5px;
-  text-align: center;
-}
-
-.me-post-closed{
-  background-color: #544d4d;
-}
-
-.me-post-urgent{
-  background-color: #e65858;
-}
-
-.me-post-new{
-  background-color: #41bf31;
-  z-index: 99;
-  width: 100%;
-  /*position: absolute;*/
-}
-
-.me-post-new-with-other{
-  background-color: #41bf31;
-  z-index: 99;
-  width: 105px;
-  position: absolute; 
 }
 
 @media only screen and (min-width: 767px) and (orientation: landscape) {
