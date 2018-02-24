@@ -1,72 +1,10 @@
-<?php
-  $logged = $this->session->has_userdata('logged_in');
-?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta Content-type: "application/json"; charset="utf-8" >
-<meta name="description" content="Vue.js - The Progressive JavaScript Framework">
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Me Feeds</title>
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <link rel="stylesheet" href="<?=site_url("public/font-awesome-4.7.0/css/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="<?=site_url("public/animate/animate.css");?>" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="<?=site_url("public/bulma/css/bulma.css");?>" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="<?=site_url("public/css/mefeeds.css");?>" rel="stylesheet" type="text/css">
-</head>
+<?php $logged = $this->session->has_userdata('logged_in'); ?>
+<?php $this->load->view('layout/start-html'); ?>
+<?php $this->load->view('layout/start-head'); ?>
+<?php $this->load->view('layout/end-head'); ?>
 <body>
-  <nav class="navbar is-info main-menu">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      
-        <img src="https://bulma.io/images/bulma-logo-white.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-      
-    </a>
-    <div class="navbar-burger burger" data-target="navMenuColorlink-example">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  <div id="navMenuColorlink-example" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="#">
-        ติดต่อโฆษณา&nbsp<strong>VIP&nbsp<i class="fa fa-diamond"></i></strong>
-      </a>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="/documentation/overview/start/">
-          <i class="fa fa-question-circle-o">&nbsp</i> การใช้งาน
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="/documentation/overview/start/">
-            Overview
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-            Modifiers
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-            Columns
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-            Layout
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-            Form
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-            Elements
-          </a>
-          <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-            Components
-          </a>
-        </div>
-      </div>
-    </div>
-
-</nav><!-- Menu -->
+  
+<?php $this->load->view('layout/nav-menu'); ?>
 
   <section class="hero me-section is-medium" id="top-banner">
     <div class="hero-body">
