@@ -13,13 +13,13 @@
         <div class="column">
           <p class="title">
             MeJobPhuket
+             - <a class="tag is-info">#เมืองภูเก็ต</a>
+             - <a href="#" class="tag is-info">#กระทู้</a>
+             - <a href="#" class="tag is-info">#ถลาง</a>
           </p>
+          <div></div>
           <p class="subtitle">
             <div class="tags">
-              <div class="tag is-info">สถานที่:</div>&nbsp
-              <a class="tag is-primary">#เมืองภูเก็ต</a>
-              <a class="tag is-primary">#กระทู้</a>
-              <a class="tag is-primary">#ถลาง</a>
               <div class="tag is-info">แท็กยอดนิยม:</div>&nbsp
               <a class="tag">#โปรแกรมเมอร์</a>
               <a class="tag is-white">#ช่างเชื่อม</a>
@@ -29,6 +29,7 @@
               <a class="tag is-white">#ถลาง</a>
               <a class="tag is-white">#แม่บ้าน</a>
               <a class="tag is-white">#โปรแกรมเมอร์</a>
+              <a class="tag is-white">#ช่างเสริมสวย</a>
               <a class="tag is-white">#ช่างเสริมสวย</a>
             </div>
           </p>
@@ -216,13 +217,13 @@
                     </a>
                   </header>
 
-                  <div class="card-image" v-bind:class="{'me-opacity-0-2': feed.status == -1 }" v-if="feed.image !== ''&& feed.image !== null">
+                  <div class="card-image" v-if="feed.image !== ''&& feed.image !== null">
                     <figure class="image">
                       <!-- <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image"> -->
                       <img v-bind:src="'./public/images/'+feed.image" @click="openPostImage" alt="Image">
                     </figure>
                   </div>
-                  <div class="card-content" v-bind:class="{'me-opacity-0-2': feed.status == -1 }">
+                  <div class="card-content">
                     <div class="media">
                       <div class="media-left">
                         <figure class="image is-64x64">

@@ -18,5 +18,27 @@ class metag extends CI_Model {
 
     }
 
+    public function hashtag_clicked( $id ){
+
+      $this->db->set('clicked','clicked', FALSE);
+      $this->db->where('idtag',$id);
+      $this->db->update('tag');
+      if($this->db->affected_rows() > 0){
+        return TRUE;
+      }else{
+        return FALSE
+      }
+
+    }
+
+    public function top10_hashtags(){
+
+      // $this->db->select('TOP');
+      // $this->db->from('tag');
+      // $query = $this->db->get();
+      // return $query->result();
+
+    }
+
 }
 ?>

@@ -65,12 +65,16 @@ class feeds extends CI_Controller {
 	}
 
 	public function diff_days( $d1, $d2 )
-	{//data format need Y-m-d H:i:s
+	{	
+		//data format need Y-m-d H:i:s
 		$ts1 = strtotime( $d1 );
 		$ts2 = strtotime( $d2 );
 		$seconds_diff = $ts1 - $ts2;
 		// echo "[".$d1.",".$d2."]";
 		return intval(intval($seconds_diff) / (3600*24));//Convert sec to days
+	}
+	
+	{
 
 	}
 

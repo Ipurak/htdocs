@@ -914,13 +914,23 @@ var feeds = new Vue({
       });
     },
     getByHashTag: function( hashtag ){
+
       this.type = "hashtag"
       this.hashtag = hashtag
       this.get()
     },
-    hastag: function ( desc ){
+    hashtag_clicked: function( id ){
+      axios.get('tags/logtag?id='+id+'&type=clicked')
+      .then(function( response ){
+        console.log( response )
+      })
+      .catch(function( error ){
+        console.log( error )
+      })
+    },
+    hastag: function ( desc,id ){
 
-      let descHasHastag = desc.replace( /(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<a onclick='feeds.getByHashTag(\"$2\")'>#$2</a>")
+      let descHasHastag = desc.replace( /(^|\s)#([~^a-z0-9_ก-๙\d]+)/ig, "$1<a onclick='feeds.getByHashTag(\"$2\","+id+")'>#$2</a>")
       return descHasHastag
 
     },

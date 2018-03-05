@@ -36,5 +36,29 @@ class tags extends CI_Controller {
 
     }
 
+    public function logtag(){
+
+        $status = FALSE;
+        $type   = $this->uri->segment(3);
+        echo( $type );
+        // if( $type === "clicked" ){
+        //     $status = $this->hashtag_clicked();
+        // }
+        
+        // if( $status ){
+        //     $this->melibs->MeSucc200( "cliked" );
+        // }else{
+        //     $this->melibs->MeSucc200( "cliked fail" );
+        // }
+
+    }
+
+    public function hashtag_clicked( $id )
+    {   
+        $this->load->model('metag');
+        return $this->metag->hashtag_clicked( $id );
+        
+    }
+
 
 }
