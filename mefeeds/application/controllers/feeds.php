@@ -74,6 +74,7 @@ class feeds extends CI_Controller {
 		return intval(intval($seconds_diff) / (3600*24));//Convert sec to days
 	}
 	
+	public function top10_hashtags()
 	{
 
 	}
