@@ -101,7 +101,7 @@ class BooksController extends Controller
         $book->isbn   = $request->input('isbn');
         $book->image  = $request->input('image');
         $book->desc   = $request->input('desc');
-        $book->status = 0;
+        $book->status = $request->input('status');
 
         $book->save();
         return redirect('/manage')->with('success'.'The book have just edited.');
@@ -121,9 +121,16 @@ class BooksController extends Controller
         return redirect('/manage')->with('success'.'The book have just deleted.');
     }
 
+    public function search(Request $request)
+    {   
+        $value = $request->input('name');
+        $Books  = Books::where('name', 'LIKE', '%'.$value.'%')->orderBy('name','asc')->paginate(6);
+        return view('pages.books')->with('books', $Books);
+    }
+
     public function booksList()
     {   
-        $Books = Books::orderBy('name','desc')->paginate(6);
+        $Books = Books::orderBy('name','asc')->paginate(6);
         return view('pages.books')->with('books',$Books);
     }
 }

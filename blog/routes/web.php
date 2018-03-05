@@ -22,3 +22,5 @@ Route::get('/', function () {
 Route::get('/books', 'BooksController@bookslist')->name('books');
 
 Route::resource('manage','BooksController');
+
+Route::get('/search','BooksController@search');

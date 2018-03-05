@@ -35,6 +35,8 @@
                   {{Form::text('desc',$book->desc,['class'=>'form-control','placeholder'=>'How about this book'])}}
                   {{Form::label('image','Image URL')}}
                   {{Form::text('image',$book->image,['class'=>'form-control','placeholder'=>'URL'])}}
+                  {{Form::label('status','is it borrowed? 1 = Yes or 0 = No')}}
+                  {{Form::text('status',$book->status,['class'=>'form-control','placeholder'=>'status'])}}
                 </div>
                 {{Form::hidden('_method','PUT')}}
                 {{Form::submit('Confirm', ['class'=>'btn btn-primary'])}}

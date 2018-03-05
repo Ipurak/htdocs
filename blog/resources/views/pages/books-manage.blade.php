@@ -47,12 +47,11 @@
 				                    <div class="btn-group">
 				                      <button type="button" class="btn btn-sm btn-outline-secondary view-book" id="{{$book->id}}">View</button>
 				                      <button type="button" class="btn btn-sm btn-outline-secondary edit-book" id="{{$book->id}}">Edit</button>
-				                      {!!Form::open(['action'=>['BooksController@destroy', $book->id], 'method' => 'POST', 'class' => 'delete-book'])!!}
+				                    </div>
+				                    {!!Form::open(['action'=>['BooksController@destroy', $book->id], 'method' => 'POST', 'class' => 'delete-book'])!!}
 				                      	{{Form::hidden('_method','DELETE')}}
 				                      	{{Form::submit('Delete', ['class' => 'btn btn-sm btn-outline-secondary'])}}
 				                      {!!Form::close()!!}
-
-				                    </div>
 				                    <small class="text-muted">{{$book->updated_at}}</small>
 				                  </div>
 				                </div>

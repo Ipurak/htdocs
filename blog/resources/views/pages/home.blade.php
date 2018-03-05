@@ -27,11 +27,20 @@
 
 		<section class="jumbotron text-center section">
         <div class="container">
-          <h1 class="jumbotron-heading">Check ability of books</h1>
-          <p class="lead">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+          <h1 class="jumbotron-heading">Search your books</h1>
+          <p class="lead">
+            Et aut ut unde laboriosam in eveniet est magni In et praesentium neque commodi ullamco hic iste Eum sit dolores autem nisi
+            Sunt id officiis et consequatur maiores sunt hic repudiandae anim officia temporibus dolorem soluta porro asperiores nobis debitis nihil officia.
+          </p>
           <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            {!! Form::open(['action' => ['BooksController@search'], 'method' => 'GET']) !!}
+              <div class="input-group">
+                {{Form::text('name','',['class'=>'form-control','placeholder'=>'Search book name'])}}
+                <div class="input-group-btn">
+                    {{Form::submit('Search', ['class'=>'btn btn-info'])}}
+                </div>
+              </div>
+            {!! Form::close() !!}
           </p>
         </div>
       </section>

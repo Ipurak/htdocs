@@ -45,9 +45,9 @@
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="btn-group">
                             @if( $book->status == 0 )
-                            <button type="button" class="btn btn-sm btn-success">I’d like to borrow this book</button>
+                            <button type="button" class="btn btn-sm btn-success">Avaliable</button>
                             @else
-                            <button type="button" class="btn btn-sm btn-danger">Not avaliable</button>
+                            <button type="button" class="btn btn-sm btn-danger">Not available</button>
                             @endif
                           </div>
                           <small class="text-muted">{{$book->updated_at}}</small>
@@ -59,6 +59,7 @@
                 @endforeach
                 
               </div>
+              {{$books->links()}}
           </div>
     	</div>
 

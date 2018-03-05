@@ -13,7 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <style>
-            
+
         </style>
     </head>
     <body>
@@ -35,7 +35,7 @@
             <!-- ISBN -->
             <p>ISBN {{$book->isbn}}</p>
             <!-- Date/Time -->
-            <p>Updated on January 1, 2018 at 12:00 PM</p>
+            <p>{{$book->updated_at}}</p>
             <hr>
             <!-- Preview Image -->
             <img class="img-fluid rounded" src="{{$book->image}}" alt="">
