@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+</head>
+<body>
+
+<h1>Register System Using Cognito + Lamdba + DynamoDB + SES</h1>
+
+<div id="app">
+	<h3>Signin</h3>
+	<div id="signin">
+		Eamil:<br>
+		<input type="text" name="email" v-model="signin.email"><br>
+		Password<br>
+		<input type="password" name="password" v-model="signin.password"><br>
+		<button @click='doSignIn'>Signin</button>
+	</div>
+	<hr>
+	<h3>Create a new acount</h3>
+	<div id="signup">
+		Email:<br>
+		<input type="text" name="email" v-model="signup.email"><br>
+		Password:<br>
+		<input type="password" name="password" v-model="signup.password"><br>
+		Firstname:<br>
+		<input type="text" name="firstname" v-model="signup.firstname"><br>
+		Lastname:<br>
+		<input type="text" name="lastname" v-model="signup.lastname"><br>
+		<button @click='doSignUp'>Register</button>
+	</div>
+
+	<h3>Create account with Facebook</h3>
+	<a href="javascript:void(0)" @click="signupByFacebook">Facebook</a>
+
+	<!-- <div class="fb-login-button" data-width="1000" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
+
+</div>
+
+</body>
+
+<div id="fb-root"></div>
+<script type="text/javascript">
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = 'https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v3.0&appId=1846913548701721&autoLogAppEvents=1';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script type="text/javascript" src="js/amazon-cognito-identity.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+<script type="text/javascript">
+
+	var app = new Vue({
+		el:'#app',
+		data:{
+			signin:{
+				email:'asmi.rungrot@gmail.com',
+				password:'Myipad604255#'
+			},
+			signup:{
+				email:'asmi.rungrot@gmail.com',
+				password:'Myipad604255#',
+				firstname:'Rungrot',
+				lastname:'Suptan'
+			},
+			cognito:{
+				data:{
+					UserPoolId:'ap-southeast-1_Z5JP7IqdD',
+					ClientId:'1rjn8557t6ktc216c4d40p8ltr'
+				},
+				userPool:null
+			}
+		},
+		mounted:function(){
+			this.cognito.userPool = new AmazonCognitoIdentity.CognitoUserPool(this.cognito.data);
+
+
+		},
+		methods:{
+			doSignIn:function(){
+				
+				let authenticationData = {
+			        Username : this.signin.emial,
+			        Password : this.signin.password,
+			    };
+
+			    let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+
+			    var userData = {
+			        Username : this.signin.email,
+			        Pool : this.cognito.userPool
+			    };
+
+			    console.log('This: ',userData);
+
+			    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+				    cognitoUser.authenticateUser(authenticationDetails, {
+				        onSuccess: function (result) {
+				            console.log('access token + ' + result.getAccessToken().getJwtToken());
+
+				            //POTENTIAL: Region needs to be set if not already set previously elsewhere.
+				            AWS.config.region = '<region>';
+
+				            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+				                IdentityPoolId : '...', // your identity pool id here
+				                Logins : {
+				                    // Change the key below according to the specific region your user pool is in.
+				                    'cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>' : result.getIdToken().getJwtToken()
+				                }
+				            });
+
+				            //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+				            AWS.config.credentials.refresh((error) => {
+				                if (error) {
+				                     console.error(error);
+				                } else {
+				                     // Instantiate aws sdk service objects now that the credentials have been updated.
+				                     // example: var s3 = new AWS.S3();
+				                     console.log('Successfully logged!');
+				                }
+				            });
+				        },
+
+				        onFailure: function(err) {
+				        	alert(err.message || JSON.stringify(err));
+				        },
+
+				    });
+
+			},
+			doSignUp:function(){
+
+				var attributeList = [];
+
+			    var dataEmail = {
+			        Name : 'email',
+			        Value : this.signup.email
+			    };
+
+			    var dataName = {
+			        Name : 'name',
+			        Value : this.signup.firstname
+			    };
+
+			    var dataLastName = {
+			        Name : 'family_name',
+			        Value : this.signup.lastname
+			    };
+
+    			var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+    			var attributeName = new AmazonCognitoIdentity.CognitoUserAttribute(dataName);
+    			var attributeLastName = new AmazonCognitoIdentity.CognitoUserAttribute(dataLastName );
+
+    			attributeList.push(attributeEmail);
+    			attributeList.push(attributeName);
+    			attributeList.push(attributeLastName);
+
+				this.userPool.signUp(this.signup.email, this.signup.password, attributeList, null,function (err, result) {
+                	if (err) {alert(err.message);console.log('Error: ',err.message);return;}
+                	cognitoUser = result.user;
+                	alert('Wellocome Register Successfully!!');
+                	console.log(cognitoUser);
+            	});
+
+			},
+			signupByFacebook:function(){
+
+				FB.login(function (response) {
+
+				  // Check if the user logged in successfully.
+				  if (response.authResponse) {
+
+				    console.log('You are now logged in.');
+
+				    // Add the Facebook access token to the Cognito credentials login map.
+				    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+				      IdentityPoolId: 'IDENTITY_POOL_ID',
+				      Logins: {
+				        'graph.facebook.com': response.authResponse.accessToken
+				      }
+				    });
+
+				    // Obtain AWS credentials
+				    AWS.config.credentials.get(function(){
+				        // Access AWS resources here.
+				    });
+
+				  } else {
+				    console.log('There was a problem logging you in.');
+				  }
+
+				});
+
+			}
+		}
+	});
+
+</script>
+</html>

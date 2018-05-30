@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feedback</title>
+	<style type="text/css">
+		input{
+			width: 150px;
+		}
+		textarea{
+			width: 150px;
+			height: 150px;
+		}
+		.list:nth-child(odd){
+			background-color: lightgray;
+		}
+	</style>
+</head>
+<body>
+	<h1>Test Send Feedback Using AWS API geteway + Lambda + DynamoDB + ESE</h1>
+	<div id="form">
+		From:<br>
+			<input type="text" v-model="from" name="from">
+		<br>To:<br>
+			<input type="text" v-model="to" name="to">
+		<br>Message:<br>
+			<textarea v-model="body"></textarea>
+		<br>
+		<button @click="sendEmail">Send</button>
+
+		<hr>
+			History[{{count}}]:
+		<br>
+		<div v-html="history"></div>
+	</div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+<script type="text/javascript">
+	
+	var app = new Vue({
+		el:'#form',
+		data:{
+			from:'rungrot.sup@gmail.com',
+			to:'asmi.rungrot@gmail.com',
+			body:'Please, Put your message here.',
+			apiURL:'https://r02ioqvgn8.execute-api.ap-southeast-1.amazonaws.com/prod/entries',
+			history:'',
+			count:0,
+			items:[]
+		},
+		mounted:function(){
+			this.runHistory();//init get histiry
+		},
+		methods:{
+
+			sendEmail: function(){//send an email
+
+				let vm  = this;
+				axios.post(this.apiURL,{
+					from:this.from,
+					to:this.to,
+					body:this.body
+				}).then(function(res){
+					vm.runHistory();//get history after send an email
+				})
+				
+			},
+			runHistory: function(){//get history
+				
+				let vm  = this;
+				axios.get(this.apiURL).then(function(res){
+					
+					vm.items = res.data.Items;
+					vm.count = res.data.Count;
+					vm.history = '';// clear history content
+					let ItemsArr = vm.items.sort(function(x, y){//sort history by date
+					    return y.date - x.date;
+					});
+					ItemsArr.forEach(function(item){
+						console.log(item.body);
+						vm.history += '<div class="list">[From:] '+item.from+' [To:] '+item.to+' [Date:] '+moment(Number(item.date)).format('MMMM Do YYYY, h:mm:ss a')+'<br><br>'+item.body+'<hr></div>';
+					});
+
+				})
+
+			}
+		}
+
+	});
+
+</script>
+</html>

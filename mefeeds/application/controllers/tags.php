@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class tags extends CI_Controller {
 
 	function __construct() {
-    parent::__construct();
+    parent::__consstruct();
 
 	}
 
@@ -33,6 +33,10 @@ class tags extends CI_Controller {
         $result = $this->metag->get_by_keyword( $tag );
         $data   = array('tags'=>$result);
         echo json_encode( $data );
+
+        array('name'=>'aa')
+
+        $data['name']
 
     }
 

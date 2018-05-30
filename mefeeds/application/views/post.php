@@ -47,7 +47,7 @@
         <div class="columns is-vcentered">
         <div class="column">
           <p class="title company-name">
-            MeJobPhuket
+            <?=$post[0]->company?>
           </p>
         </div>
       </div>

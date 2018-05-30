@@ -1,0 +1,8 @@
+{
+  "name": "hello-world-apex",
+  "description": "to test apex to deploy to aws lambda function",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::580283058526:role/hello-world-apex_lambda_function",
+  "environment": {}
+}

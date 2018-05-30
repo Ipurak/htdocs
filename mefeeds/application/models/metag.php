@@ -26,7 +26,7 @@ class metag extends CI_Model {
       if($this->db->affected_rows() > 0){
         return TRUE;
       }else{
-        return FALSE
+        return FALSE;
       }
 
     }
@@ -38,6 +38,18 @@ class metag extends CI_Model {
       // $query = $this->db->get();
       // return $query->result();
 
+    }
+
+    public function getTagsByPostId( $id ){
+
+      $this->db->select('*');
+      // $this->db->select( 'post.image, post.title, post.desc, post.status, post.dateauto, user.company' );
+      $this->db->from( 'post_has_tag' );
+      $this->db->join('tag', 'tag.idtag = post_has_tag.tag_idtag');
+      $this->db->where( 'post_idpost',$id );
+      $query = $this->db->get();
+      return $query->result();
+      // return $query->result();
     }
 
 }
